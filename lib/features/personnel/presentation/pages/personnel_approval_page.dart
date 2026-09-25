@@ -34,10 +34,10 @@ class _PersonnelApprovalPageState extends State<PersonnelApprovalPage> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: neutral90),
+          icon: Icon(Icons.arrow_back, color: neutral90),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
+        title: Text(
           'Profil Saya',
           style: TextStyle(
             color: neutral90,
@@ -265,7 +265,7 @@ class _PersonnelApprovalPageState extends State<PersonnelApprovalPage> {
               if (isLoading)
                 Container(
                   color: Colors.black.withValues(alpha: 0.3),
-                  child: const Center(
+                  child: Center(
                     child: CircularProgressIndicator(color: primaryColor),
                   ),
                 ),

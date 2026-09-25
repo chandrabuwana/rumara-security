@@ -199,7 +199,7 @@ class _ProfileDetailsScreenViewState extends State<ProfileDetailsScreenView>
         },
         builder: (context, state) {
           if (state is ProfileLoading) {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(
                 color: primaryColor,
               ),
@@ -260,7 +260,7 @@ class _ProfileDetailsScreenViewState extends State<ProfileDetailsScreenView>
                 if (isLoading)
                   Container(
                     color: Colors.black.withOpacity(0.3),
-                    child: const Center(
+                    child: Center(
                       child: CircularProgressIndicator(
                         color: primaryColor,
                       ),

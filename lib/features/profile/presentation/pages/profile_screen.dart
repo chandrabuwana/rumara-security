@@ -12,6 +12,7 @@ import '../bloc/profile_state.dart';
 import '../widgets/profile_menu_item.dart';
 import '../widgets/profile_header.dart';
 import 'profile_details_screen.dart';
+import 'theme_picker_screen.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../../../auth/presentation/pages/change_password_page.dart';
 
@@ -214,6 +215,15 @@ class ProfileScreenView extends StatelessWidget {
 
                               SizedBox(height: 16.h),
 
+                              // Menu Tema
+                              ProfileMenuItem(
+                                icon: Icons.palette,
+                                title: 'Tema',
+                                onTap: () => _navigateToThemePicker(context),
+                              ),
+
+                              SizedBox(height: 16.h),
+
                               // Menu Bantuan
                               ProfileMenuItem(
                                 icon: Icons.help_outline,
@@ -247,7 +257,8 @@ class ProfileScreenView extends StatelessWidget {
                                 icon: Icons.delete_forever,
                                 title: 'Hapus Akun',
                                 titleColor: Colors.red[700],
-                                onTap: () => _showDeleteAccountConfirmation(context),
+                                onTap: () =>
+                                    _showDeleteAccountConfirmation(context),
                               ),
 
                               SizedBox(height: 20.h),
@@ -309,6 +320,15 @@ class ProfileScreenView extends StatelessWidget {
     // TODO: Implement navigation to help page
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Fitur bantuan akan segera tersedia')),
+    );
+  }
+
+  /// Navigate ke halaman tema (paleta + mode brightness).
+  void _navigateToThemePicker(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const ThemePickerScreen(),
+      ),
     );
   }
 
@@ -379,7 +399,9 @@ class ProfileScreenView extends StatelessWidget {
         },
         onCancel: () {
           Navigator.of(dialogContext).pop();
-          context.read<ProfileBloc>().add(const HideDeleteAccountConfirmationEvent());
+          context
+              .read<ProfileBloc>()
+              .add(const HideDeleteAccountConfirmationEvent());
         },
       ),
     );

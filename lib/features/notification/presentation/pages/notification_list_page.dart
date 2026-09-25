@@ -171,7 +171,7 @@ class _NotificationListPageState extends State<NotificationListPage> {
             // Content
             Expanded(
               child: _isLoading
-                  ? const Center(
+                  ? Center(
                       child: CircularProgressIndicator(color: primaryColor),
                     )
                   : _notifications.isEmpty
@@ -222,7 +222,7 @@ class _NotificationListPageState extends State<NotificationListPage> {
           if (index == _notifications.length) {
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 16.h),
-              child: const Center(
+              child: Center(
                 child: CircularProgressIndicator(color: primaryColor),
               ),
             );
@@ -323,7 +323,7 @@ class _NotificationListPageState extends State<NotificationListPage> {
                   Container(
                     width: 8.w,
                     height: 8.w,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: primaryColor,
                       shape: BoxShape.circle,
                     ),

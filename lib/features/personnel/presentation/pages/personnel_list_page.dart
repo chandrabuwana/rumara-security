@@ -110,10 +110,10 @@ class _PersonnelListViewState extends State<_PersonnelListView> with SingleTicke
             backgroundColor: Colors.white,
             elevation: 0,
             leading: IconButton(
-              icon: const Icon(Icons.arrow_back, color: neutral90),
+              icon: Icon(Icons.arrow_back, color: neutral90),
               onPressed: () => Navigator.pop(context),
             ),
-          title: const Text(
+          title: Text(
             'Daftar Personil',
             style: TextStyle(
               color: neutral90,
@@ -217,7 +217,7 @@ class _PersonnelListViewState extends State<_PersonnelListView> with SingleTicke
                       onPressed: () {
                         // TODO: Implement filter
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
+                          SnackBar(
                             content: Text('Filter sedang dalam pengembangan'),
                             backgroundColor: primaryColor,
                           ),
@@ -257,7 +257,7 @@ class _PersonnelListViewState extends State<_PersonnelListView> with SingleTicke
     return BlocBuilder<PersonnelBloc, PersonnelState>(
       builder: (context, state) {
         if (state is PersonnelLoading) {
-          return const Center(
+          return Center(
             child: CircularProgressIndicator(color: primaryColor),
           );
         }
@@ -297,7 +297,7 @@ class _PersonnelListViewState extends State<_PersonnelListView> with SingleTicke
 
         if (state is PersonnelListLoaded) {
           if (state.isLoadingForTab == apiStatus) {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(color: primaryColor),
             );
           }
@@ -367,7 +367,7 @@ class _PersonnelListViewState extends State<_PersonnelListView> with SingleTicke
                   padding: EdgeInsets.symmetric(vertical: 16.h),
                   alignment: Alignment.center,
                   child: tab.isLoadingMore
-                      ? const CircularProgressIndicator(color: primaryColor)
+                      ? CircularProgressIndicator(color: primaryColor)
                       : const SizedBox.shrink(),
                 );
               }

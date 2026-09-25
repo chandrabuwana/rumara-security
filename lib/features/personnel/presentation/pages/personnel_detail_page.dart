@@ -28,10 +28,10 @@ class _PersonnelDetailPageState extends State<PersonnelDetailPage> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: neutral90),
+          icon: Icon(Icons.arrow_back, color: neutral90),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
+        title: Text(
           'Profil Detail',
           style: TextStyle(
             color: neutral90,
@@ -67,7 +67,7 @@ class _PersonnelDetailPageState extends State<PersonnelDetailPage> {
         },
         builder: (context, state) {
           if (state is PersonnelLoading) {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(color: primaryColor),
             );
           }

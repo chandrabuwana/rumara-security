@@ -89,7 +89,7 @@ class _MemberBMIPageState extends State<MemberBMIPage> {
       body: BlocBuilder<BMIBloc, BMIState>(
         builder: (context, state) {
           if (state.isLoading && !state.hasUserProfile) {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(color: primaryColor),
             );
           }

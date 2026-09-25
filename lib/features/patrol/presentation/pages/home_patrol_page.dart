@@ -63,7 +63,7 @@ class _HomePatrolPageState extends State<HomePatrolPage> {
         body: BlocBuilder<PatrolBloc, PatrolState>(
           builder: (context, state) {
             if (state is PatrolLoading) {
-              return const Center(
+              return Center(
                 child: CircularProgressIndicator(
                   color: primaryColor,
                 ),
@@ -196,7 +196,7 @@ class _HomePatrolPageState extends State<HomePatrolPage> {
 
                     // Loading More Indicator
                     if (state.hasMore && state.isLoadingMore)
-                      const SliverPadding(
+                      SliverPadding(
                         padding: EdgeInsets.all(16),
                         sliver: SliverToBoxAdapter(
                           child: Center(

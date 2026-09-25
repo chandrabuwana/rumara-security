@@ -175,7 +175,7 @@ class _PatrolDetailPageState extends State<PatrolDetailPage> {
       body: BlocBuilder<PatrolBloc, PatrolState>(
         builder: (context, state) {
           if (state is PatrolLoading) {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(
                 color: primaryColor,
               ),
@@ -268,7 +268,7 @@ class _PatrolDetailPageState extends State<PatrolDetailPage> {
                         completedCount == totalCount && totalCount > 0
                             ? 'Patroli Selesai'
                             : 'Patroli Selesai',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: primaryColor,

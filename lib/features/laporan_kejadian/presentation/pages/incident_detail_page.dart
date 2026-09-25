@@ -228,7 +228,7 @@ class _IncidentDetailPageState extends State<IncidentDetailPage> {
             
             // Show loading indicator when loading detail for the first time
             if (_hasLoadedDetail && state.isLoading && state.incidentDetail == null) {
-              return const Center(
+              return Center(
                 child: CircularProgressIndicator(color: primaryColor),
               );
             }

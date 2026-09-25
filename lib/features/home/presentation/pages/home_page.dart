@@ -368,7 +368,7 @@ class __HomePageViewState extends State<_HomePageView> {
       },
       builder: (context, state) {
         if (state is HomeLoading) {
-          return const Scaffold(
+          return Scaffold(
             body: Center(
               child: CircularProgressIndicator(color: primaryColor),
             ),
@@ -414,7 +414,7 @@ class __HomePageViewState extends State<_HomePageView> {
         }
 
         if (state is! HomeLoaded) {
-          return const Scaffold(
+          return Scaffold(
             body: Center(
               child: CircularProgressIndicator(color: primaryColor),
             ),
@@ -1176,7 +1176,7 @@ class __HomePageViewState extends State<_HomePageView> {
                 return Center(
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 24.h),
-                    child: const CircularProgressIndicator(color: primaryColor),
+                    child: CircularProgressIndicator(color: primaryColor),
                   ),
                 );
               }
@@ -1776,7 +1776,7 @@ class __HomePageViewState extends State<_HomePageView> {
                 Container(
                   width: 80.w,
                   height: 80.h,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: primaryColor,
                     shape: BoxShape.circle,
                   ),
@@ -1818,7 +1818,7 @@ class __HomePageViewState extends State<_HomePageView> {
                           Navigator.of(context).pop();
                         },
                         style: OutlinedButton.styleFrom(
-                          side: const BorderSide(color: primaryColor),
+                          side: BorderSide(color: primaryColor),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.r),
                           ),

@@ -888,7 +888,7 @@ class _AttendanceRekapScreenContentState
                 },
                 builder: (context, state) {
                   if (state is AttendanceRekapLoading) {
-                    return const Center(
+                    return Center(
                       child: CircularProgressIndicator(color: primaryColor),
                     );
                   }
@@ -915,7 +915,7 @@ class _AttendanceRekapScreenContentState
                             // Loading indicator at bottom
                             return Container(
                               padding: REdgeInsets.symmetric(vertical: 16),
-                              child: const Center(
+                              child: Center(
                                 child: CircularProgressIndicator(color: primaryColor),
                               ),
                             );

@@ -7,6 +7,7 @@ import '../../../../shared/widgets/TextInput/input_primary.dart';
 import '../../../../shared/widgets/Buttons/ui_button.dart';
 import '../../../../core/design/colors.dart';
 import '../../../../core/design/styles.dart';
+import '../../../../core/design/branding_config.dart';
 import '../bloc/auth_bloc.dart';
 
 class ResetPasswordPage extends StatelessWidget {
@@ -75,7 +76,7 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
         },
         child: Container(
           height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.center,
@@ -115,12 +116,11 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: SvgPicture.asset(
-                                      'assets/images/guardify-round-white.svg',
-                                      // color: Colors.blue,
+                                      BrandingController.instance.logo,
                                     ),
                                   ),
                                   Text(
-                                    'Guardify',
+                                    BrandingController.instance.appName,
                                     style: TextStyle(
                                       fontSize: 18.sp,
                                       fontWeight: FontWeight.bold,

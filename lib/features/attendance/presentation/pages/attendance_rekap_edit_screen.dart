@@ -1646,7 +1646,7 @@ class _AttendanceRekapEditScreenState extends State<AttendanceRekapEditScreen> {
                   ],
                 );
               }
-              return const Center(
+              return Center(
                 child: CircularProgressIndicator(color: primaryColor),
               );
             }

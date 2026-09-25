@@ -70,7 +70,7 @@ class ShiftCard extends StatelessWidget {
                   children: [
                     Text(
                       _formatDate(attendanceInfo.date),
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: neutral90,
@@ -85,7 +85,7 @@ class ShiftCard extends StatelessWidget {
                           : (location != null && location!.isNotEmpty
                               ? '${attendanceInfo.shift} - $location'
                               : attendanceInfo.shift),
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 14,
                         color: neutral70,
                       ),
@@ -103,7 +103,7 @@ class ShiftCard extends StatelessWidget {
                       ),
                       child: Text(
                         '$hadirCount Hadir',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           color: neutral90,
@@ -143,7 +143,7 @@ class ShiftCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                const Text(
+                Text(
                   'Tim Jaga',
                   style: TextStyle(
                     fontSize: 14,
@@ -164,7 +164,7 @@ class ShiftCard extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       'Jam Absen',
                       style: TextStyle(
                         fontSize: 14,
@@ -173,7 +173,7 @@ class ShiftCard extends StatelessWidget {
                     ),
                     Text(
                       attendanceInfo.currentTime,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 14,
                         color: neutral70,
                         fontWeight: FontWeight.w500,
@@ -189,7 +189,7 @@ class ShiftCard extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Tim Jaga',
                           style: TextStyle(
                             fontSize: 14,

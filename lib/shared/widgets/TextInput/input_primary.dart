@@ -16,7 +16,7 @@ class InputPrimary extends StatefulWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.color,
-    this.textColor = appTextColor,
+    this.textColor,
     this.margin = EdgeInsets.zero,
     this.padding = EdgeInsets.zero,
     this.contentPadding,
@@ -34,7 +34,7 @@ class InputPrimary extends StatefulWidget {
     this.textCapitalization = TextCapitalization.sentences,
     this.obscureText = false,
     this.inputShape = TextFieldShape.box,
-    this.cursorColor = primaryColor,
+    this.cursorColor,
     this.textAlign = TextAlign.start,
     this.isRequired = false,
     this.requiredText = 'Required',
@@ -51,7 +51,7 @@ class InputPrimary extends StatefulWidget {
     this.borderRadius = 10,
     this.borderWidth = 1.0,
     this.focusedBorderWidth = 2.0,
-    this.hintColor = appHintColor,
+    this.hintColor,
     this.maxLines = 1,
     this.minLines,
     this.action = TextInputAction.done,
@@ -75,7 +75,7 @@ class InputPrimary extends StatefulWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final Color? color;
-  final Color textColor;
+  final Color? textColor;
   final EdgeInsets margin;
   final EdgeInsets padding;
   final EdgeInsets? contentPadding;
@@ -93,7 +93,7 @@ class InputPrimary extends StatefulWidget {
   final TextCapitalization textCapitalization;
   final bool obscureText;
   final TextFieldShape inputShape;
-  final Color cursorColor;
+  final Color? cursorColor;
   final TextAlign textAlign;
   final bool isRequired;
   final String requiredText;
@@ -110,7 +110,7 @@ class InputPrimary extends StatefulWidget {
   final double borderRadius;
   final double borderWidth;
   final double focusedBorderWidth;
-  final Color hintColor;
+  final Color? hintColor;
   final int maxLines;
   final int? minLines;
   final TextInputAction action;
@@ -169,7 +169,7 @@ class _InputPrimaryState extends State<InputPrimary> {
       return widget.errorBorderColor ?? Colors.red;
     }
     if (_isFocused) {
-      return widget.focusedBorderColor ?? widget.cursorColor;
+      return widget.focusedBorderColor ?? widget.cursorColor ?? primaryColor;
     }
     return widget.outlineColor ?? Colors.grey.shade300;
   }
@@ -234,7 +234,7 @@ class _InputPrimaryState extends State<InputPrimary> {
             minLines: widget.minLines,
             expands: widget.expands,
             maxLength: widget.maxLength,
-            cursorColor: widget.cursorColor,
+            cursorColor: widget.cursorColor ?? primaryColor,
             enableInteractiveSelection: widget.enableInteractiveSelection,
             scrollController: widget.scrollController,
             autofillHints: widget.autofillHints,
@@ -278,7 +278,7 @@ class _InputPrimaryState extends State<InputPrimary> {
               focusedBorder: widget.inputShape == TextFieldShape.box
                   ? OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: widget.focusedBorderColor ?? widget.cursorColor,
+                        color: widget.focusedBorderColor ?? widget.cursorColor ?? primaryColor,
                         width: widget.focusedBorderWidth,
                       ),
                       borderRadius: BorderRadius.all(
@@ -286,7 +286,7 @@ class _InputPrimaryState extends State<InputPrimary> {
                     )
                   : UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: widget.focusedBorderColor ?? widget.cursorColor,
+                        color: widget.focusedBorderColor ?? widget.cursorColor ?? primaryColor,
                         width: widget.focusedBorderWidth,
                       ),
                     ),
@@ -346,7 +346,7 @@ class _InputPrimaryState extends State<InputPrimary> {
               hoverColor: widget.outlineColor,
               hintText: widget.hint,
               hintStyle: widget.hintStyle ??
-                  TS.bodyLarge.copyWith(color: widget.hintColor),
+                  TS.bodyLarge.copyWith(color: widget.hintColor ?? appHintColor),
               errorMaxLines: 2,
               errorStyle: widget.errorTextStyle,
               errorText: widget.errorMessage,

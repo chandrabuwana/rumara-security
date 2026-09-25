@@ -1,107 +1,121 @@
 import 'package:flutter/material.dart';
 
-// Red color scheme based on the design
-const primaryColor = Color(0xFF8B0000); // Dark red as specified
-const primaryDark = Color(0xFF5D0000);
-const primaryAccent = Color(0xFFBB0000);
+import 'theme_controller.dart';
 
-const Color primary10 = Color(0xFFFDEDEA);
-const Color primary30 = Color(0xFFF1948A);
-const Color primary50 = Color(0xFFE74C3C);
-const Color primary70 = Color(0xFFC0392B);
-const Color primary90 = Color(0xFF922B21);
+// =============================================================================
+// Brand colors — runtime getters backed by the ACTIVE ColorPalette.
+//
+// Originally these were top-level `const`s frozen at compile time, so changing
+// the theme (JSON branding) never re-skinned screens that referenced them.
+// Now each getter reads the active palette (set at boot from branding_config),
+// so `primaryColor`, `bgColor`, neutrals, etc. all follow the theme instantly.
+// Names are unchanged → all 91 importing files re-skin without edits.
+// =============================================================================
 
-const Color secondary90 = Color(0xFF922B21);
-const Color secondary70 = Color(0xFFC0392B);
-const Color secondary50 = Color(0xFFE74C3C);
-const Color secondary30 = Color(0xFFF1948A);
-const Color secondary10 = Color(0xFFFDEDEA);
+// Brand accent.
+Color get primaryColor => ThemeController.instance.currentPalette.primary;
+Color get primaryDark => ThemeController.instance.currentPalette.primaryDark;
+Color get primaryAccent => ThemeController.instance.currentPalette.primaryAccent;
 
-const Color neutral90 = Color(0xFF101820);
-const Color neutral70 = Color(0xFF333333);
-const Color neutral50 = Color(0xFFBDBDBD);
-const Color neutral30 = Color(0xFFDCDCDC);
-const Color neutral20 = Color(0xFF808080);
-const Color neutral10 = Color(0xFFF5F1F1);
-const Color neutral5 = Color(0xFFFFFFFF);
+// Brand tonal ramp (derived from the active palette's seed).
+Color get primary10 => ThemeController.instance.currentPalette.seed.withOpacity(.1);
+Color get primary30 => ThemeController.instance.currentPalette.seed.withOpacity(.3);
+Color get primary50 => ThemeController.instance.currentPalette.seed.withOpacity(.5);
+Color get primary70 => ThemeController.instance.currentPalette.seed.withOpacity(.7);
+Color get primary90 => ThemeController.instance.currentPalette.seed.withOpacity(.9);
 
-const Color bgColor = Color(0xFFFFFFFF);
-const Color bgColorDark = Color.fromARGB(255, 105, 105, 105);
+Color get secondary10 => ThemeController.instance.currentPalette.seed.withOpacity(.1);
+Color get secondary30 => ThemeController.instance.currentPalette.seed.withOpacity(.3);
+Color get secondary70 => ThemeController.instance.currentPalette.seed.withOpacity(.7);
+Color get secondary90 => ThemeController.instance.currentPalette.seed.withOpacity(.9);
+Color get secondary50 => ThemeController.instance.currentPalette.seed;
 
-const focusColor = Color(0xFFE74C3C);
-const errorColor = Color(0xFFE74C3C);
-const successColor = Color.fromARGB(255, 91, 212, 109);
-const normalColor = Color.fromARGB(255, 177, 177, 177);
-const disabledColor = Color.fromARGB(255, 149, 149, 149);
+// Neutral ramp.
+Color get neutral90 => ThemeController.instance.currentPalette.neutral90;
+Color get neutral70 => ThemeController.instance.currentPalette.neutral70;
+Color get neutral50 => ThemeController.instance.currentPalette.neutral50;
+Color get neutral30 => ThemeController.instance.currentPalette.neutral30;
+Color get neutral20 => ThemeController.instance.currentPalette.neutral20;
+Color get neutral10 => ThemeController.instance.currentPalette.neutral10;
+Color get neutral5 => ThemeController.instance.currentPalette.neutral5;
 
-const appTextColor = Color.fromARGB(255, 27, 27, 27);
-const appHintColor = Color(0xFFBDBDBD);
-const inputColor = Color.fromARGB(186, 235, 238, 246);
+// Surfaces.
+Color get bgColor => ThemeController.instance.currentPalette.background;
+Color get bgColorDark => ThemeController.instance.currentPalette.backgroundDark;
 
-const white = Colors.white;
-const greySecond = Color.fromARGB(118, 231, 231, 231);
-const grey = Color(0xFFBDBDBD);
-const darkGrey = Color.fromARGB(255, 136, 136, 136);
-const cardColor = Color.fromARGB(195, 247, 248, 255);
-const favoriteColor = Color.fromARGB(255, 250, 200, 38);
-const tabbarColor = Color(0xFFFAFAFA);
-const babyBlueColor = Color(0xFFEEF2FF);
+// Semantic.
+Color get focusColor => ThemeController.instance.currentPalette.info;
+Color get errorColor => ThemeController.instance.currentPalette.error;
+Color get successColor => ThemeController.instance.currentPalette.success;
+Color get normalColor => ThemeController.instance.currentPalette.neutral50;
+Color get disabledColor => ThemeController.instance.currentPalette.neutral30;
 
+// Text & fields.
+Color get appTextColor => ThemeController.instance.currentPalette.textPrimary;
+Color get appHintColor => ThemeController.instance.currentPalette.textSecondary;
+Color get inputColor => ThemeController.instance.currentPalette.input;
 
-// Red theme material color map
-const Map<int, Color> materialColor = {
-  50: Color.fromRGBO(231, 76, 60, .1),
-  100: Color.fromRGBO(231, 76, 60, .2),
-  200: Color.fromRGBO(231, 76, 60, .3),
-  300: Color.fromRGBO(231, 76, 60, .4),
-  400: Color.fromRGBO(231, 76, 60, .5),
-  500: Color.fromRGBO(231, 76, 60, .6),
-  600: Color.fromRGBO(231, 76, 60, .7),
-  700: Color.fromRGBO(231, 76, 60, .8),
-  800: Color.fromRGBO(231, 76, 60, .9),
-  900: Color.fromRGBO(231, 76, 60, 1),
-};
+// Grays.
+Color get white => Colors.white;
+Color get greySecond => ThemeController.instance.currentPalette.neutral30;
+Color get grey => ThemeController.instance.currentPalette.neutral50;
+Color get darkGrey => ThemeController.instance.currentPalette.neutral70;
+
+// Surfaces / accents.
+Color get cardColor => ThemeController.instance.currentPalette.surface;
+Color get favoriteColor => const Color(0xFFFAC826); // brand badge (yellow)
+Color get tabbarColor => ThemeController.instance.currentPalette.tabbar;
+Color get babyBlueColor => ThemeController.instance.currentPalette.info.withOpacity(.2);
+
+// Material color map (drives Material2 widgets that read a swatch).
+Map<int, Color> get materialColor {
+  final seed = ThemeController.instance.currentPalette.seed;
+  return {
+    50: seed.withOpacity(.1),
+    100: seed.withOpacity(.2),
+    200: seed.withOpacity(.3),
+    300: seed.withOpacity(.4),
+    400: seed.withOpacity(.5),
+    500: seed.withOpacity(.6),
+    600: seed.withOpacity(.7),
+    700: seed.withOpacity(.8),
+    800: seed.withOpacity(.9),
+    900: seed,
+  };
+}
 
 class Gradients {
   static LinearGradient primary() {
-    return const LinearGradient(
-      colors: [
-        Color(0xFFE74C3C),
-        Color(0xFFC0392B),
-      ],
+    final p = ThemeController.instance.currentPalette;
+    return LinearGradient(
+      colors: [p.seed, p.primary],
       begin: Alignment.topLeft,
       end: Alignment.topRight,
     );
   }
 
   static LinearGradient primaryAccent() {
-    return const LinearGradient(
-      colors: [
-        Color(0xFFE74C3C),
-        Color(0xFFF1948A),
-      ],
+    final p = ThemeController.instance.currentPalette;
+    return LinearGradient(
+      colors: [p.seed, p.primaryAccent],
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
     );
   }
 
   static LinearGradient neutral() {
-    return const LinearGradient(
-      colors: [
-        Color(0xFFDCDCDC),
-        Color(0xFFF5F1F1),
-      ],
+    final p = ThemeController.instance.currentPalette;
+    return LinearGradient(
+      colors: [p.neutral10, p.neutral30],
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
     );
   }
 
   static LinearGradient cardGradient() {
-    return const LinearGradient(
-      colors: [
-        Color(0xFFE74C3C),
-        Color(0xFFC0392B),
-      ],
+    final p = ThemeController.instance.currentPalette;
+    return LinearGradient(
+      colors: [p.seed, p.primary],
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
     );

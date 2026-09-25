@@ -141,7 +141,7 @@ class _ChatListPageState extends State<ChatListPage> with WidgetsBindingObserver
                 child: _isSearchingUsers
                     ? _buildUserList(state)
                     : (state.isLoading && state.chats.isEmpty
-                        ? const Center(
+                        ? Center(
                             child: CircularProgressIndicator(color: primaryColor),
                           )
                         : (state.errorMessage != null && state.chats.isEmpty
@@ -565,7 +565,7 @@ class _ChatListPageState extends State<ChatListPage> with WidgetsBindingObserver
 
   Widget _buildUserList(ChatState state) {
     if (state.isLoadingUsers) {
-      return const Center(
+      return Center(
         child: CircularProgressIndicator(color: primaryColor),
       );
     }

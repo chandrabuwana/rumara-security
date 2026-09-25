@@ -19,7 +19,7 @@ class TaskCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
-        border: const Border(
+        border: Border(
           left: BorderSide(
             color: primaryColor,
             width: 4,
@@ -45,7 +45,7 @@ class TaskCard extends StatelessWidget {
                 Expanded(
                   child: Text(
                     task.title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: neutral90,
@@ -78,7 +78,7 @@ class TaskCard extends StatelessWidget {
             // Task Subtitle
             Text(
               task.subtitle,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 14,
                 color: neutral70,
               ),
@@ -95,7 +95,7 @@ class TaskCard extends StatelessWidget {
                   children: [
                     Text(
                       '${task.completedTasks}/${task.totalTasks} Selesai',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 12,
                         color: neutral70,
                         fontWeight: FontWeight.w500,
@@ -103,7 +103,7 @@ class TaskCard extends StatelessWidget {
                     ),
                     Text(
                       '${(task.progress * 100).round()}%',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 12,
                         color: neutral70,
                         fontWeight: FontWeight.w500,

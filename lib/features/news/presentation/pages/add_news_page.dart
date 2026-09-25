@@ -74,7 +74,7 @@ class _AddNewsPageState extends State<AddNewsPage> {
     } catch (_) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
           content: Text('Gagal memilih foto'),
           backgroundColor: errorColor,
           behavior: SnackBarBehavior.floating,
@@ -86,7 +86,7 @@ class _AddNewsPageState extends State<AddNewsPage> {
   Future<void> _showPickPhotoSheet() async {
     if (!_canCreateNews) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
           content: Text('Hanya role Pengawas yang dapat menambahkan berita'),
           backgroundColor: errorColor,
           behavior: SnackBarBehavior.floating,
@@ -161,7 +161,7 @@ class _AddNewsPageState extends State<AddNewsPage> {
 
           if (state.createSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
+              SnackBar(
                 content: Text('Berita berhasil ditambahkan'),
                 backgroundColor: successColor,
                 behavior: SnackBarBehavior.floating,

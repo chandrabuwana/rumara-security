@@ -599,7 +599,7 @@ class _LaporanKegiatanPageState extends State<LaporanKegiatanPage>
     return BlocBuilder<LaporanKegiatanBloc, LaporanKegiatanState>(
       builder: (context, state) {
         if (state is LaporanLoading && !state.isLoadMore) {
-          return const Center(
+          return Center(
             child: CircularProgressIndicator(
               color: primaryColor,
             ),
@@ -692,7 +692,7 @@ class _LaporanKegiatanPageState extends State<LaporanKegiatanPage>
                 if (index == filteredList.length) {
                   return Padding(
                     padding: REdgeInsets.all(16),
-                    child: const Center(
+                    child: Center(
                       child: CircularProgressIndicator(
                         color: primaryColor,
                       ),

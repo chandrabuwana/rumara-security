@@ -82,7 +82,7 @@ class _AttendanceRekapDetailScreenContentState
           },
           builder: (context, state) {
             if (state is AttendanceRekapDetailLoading) {
-              return const Center(
+              return Center(
                 child: CircularProgressIndicator(color: primaryColor),
               );
             }

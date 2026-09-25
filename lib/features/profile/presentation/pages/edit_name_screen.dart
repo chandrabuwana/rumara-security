@@ -150,7 +150,7 @@ class _EditNameScreenState extends State<EditNameScreen> {
                 if (isLoading)
                   Container(
                     color: Colors.black.withOpacity(0.3),
-                    child: const Center(
+                    child: Center(
                       child: CircularProgressIndicator(
                         color: primaryColor,
                       ),

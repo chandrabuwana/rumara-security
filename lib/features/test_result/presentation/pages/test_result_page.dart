@@ -145,7 +145,7 @@ class _TestResultPageState extends State<TestResultPage>
         child: BlocBuilder<TestResultBloc, TestResultState>(
           builder: (context, state) {
             if (state is TestResultLoading) {
-              return const Center(
+              return Center(
                 child: CircularProgressIndicator(color: primaryColor),
               );
             }
@@ -204,10 +204,10 @@ class _TestResultPageState extends State<TestResultPage>
                     decoration: InputDecoration(
                       hintText: 'Cari',
                       hintStyle: TS.bodyMedium.copyWith(color: neutral50),
-                      prefixIcon: const Icon(Icons.search, color: primaryColor),
+                      prefixIcon: Icon(Icons.search, color: primaryColor),
                       suffixIcon: _searchController.text.isNotEmpty
                           ? IconButton(
-                              icon: const Icon(Icons.clear, color: neutral50),
+                              icon: Icon(Icons.clear, color: neutral50),
                               onPressed: () {
                                 _searchController.clear();
                                 _bloc.add(const SearchMyTestEvent(''));
@@ -287,7 +287,7 @@ class _TestResultPageState extends State<TestResultPage>
         16.verticalSpace,
         Expanded(
           child: state.isLoadingAssessmentList
-              ? const Center(
+              ? Center(
                   child: CircularProgressIndicator(color: primaryColor),
                 )
               : state.assessmentListError != null

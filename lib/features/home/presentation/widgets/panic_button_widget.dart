@@ -37,7 +37,7 @@ class PanicButtonWidget extends StatelessWidget {
               width: 100.w,
               height: 100.w,
               decoration: BoxDecoration(
-                color: const Color(0xFF8B1A1A), // Dark red color
+                color: errorColor, // Theme-driven danger color
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
@@ -47,7 +47,7 @@ class PanicButtonWidget extends StatelessWidget {
                     spreadRadius: 5,
                   ),
                   BoxShadow(
-                    color: const Color(0xFF8B1A1A).withValues(alpha: 0.3),
+                    color: errorColor.withValues(alpha: 0.3),
                     blurRadius: 15,
                     offset: const Offset(0, 5),
                   ),
@@ -66,7 +66,7 @@ class PanicButtonWidget extends StatelessWidget {
                     ),
                     child: Icon(
                       Icons.warning,
-                      color: const Color(0xFF8B1A1A),
+                      color: errorColor,
                       size: 40.sp,
                     ),
                   ),

@@ -1,0 +1,23 @@
+{
+  "app": {
+    "name": "Guardify App",
+    "title": "Guardify App"
+  },
+  "theme": {
+    "palette": "ocean",
+    "seed": "#0A7CFF",
+    "brightness": "system"
+  },
+  "branding": {
+    "logo": "assets/images/guardify-round-white.svg",
+    "logoDark": "assets/images/logo_guardify.svg",
+    "shield": "assets/images/shield_logo.svg"
+  },
+  "backend": {
+    "apiBaseUrl": "https://api-guardify.abb-apps.com/api/v1"
+  },
+  "keys": {
+    "tokenKey": "token_guardify",
+    "encryptionKey": "guardify_encryption_key_2024"
+  }
+}

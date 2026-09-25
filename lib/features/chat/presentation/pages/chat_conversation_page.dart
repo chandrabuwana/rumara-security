@@ -181,7 +181,7 @@ class _ChatConversationPageState extends State<ChatConversationPage> {
               // Messages List
               Expanded(
                 child: state.isLoadingMessages
-                    ? const Center(
+                    ? Center(
                         child: CircularProgressIndicator(color: primaryColor),
                       )
                     : state.messages.isEmpty

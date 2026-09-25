@@ -123,7 +123,7 @@ class _AttendanceRekapKehadiranDetailScreenContentState
         },
         builder: (context, state) {
           if (state is AttendanceRekapDetailLoading) {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(color: primaryColor),
             );
           }
@@ -505,7 +505,7 @@ class _AttendanceRekapKehadiranDetailScreenContentState
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.r),
-              borderSide: const BorderSide(color: primaryColor),
+              borderSide: BorderSide(color: primaryColor),
             ),
             contentPadding: REdgeInsets.all(12),
           ),

@@ -8,6 +8,7 @@ import '../../../../shared/widgets/TextInput/input_primary.dart';
 import '../../../../shared/widgets/Buttons/ui_button.dart';
 import '../../../../core/design/colors.dart';
 import '../../../../core/design/styles.dart';
+import '../../../../core/design/branding_config.dart';
 import '../bloc/auth_bloc.dart';
 
 class LoginPage extends StatefulWidget {
@@ -126,13 +127,14 @@ class _LoginPageState extends State<LoginPage> {
             // Tampilkan popup dialog untuk error
             _showErrorDialog(
               'Login Gagal',
-              state.errorMessage ?? 'Terjadi kesalahan saat login. Silakan coba lagi.',
+              state.errorMessage ??
+                  'Terjadi kesalahan saat login. Silakan coba lagi.',
             );
           }
         },
         child: Container(
           height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.center,
@@ -169,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                             shape: BoxShape.circle,
                           ),
                           child: SvgPicture.asset(
-                            'assets/images/guardify-round-white.svg',
+                            BrandingController.instance.logo,
                           ),
                         ),
 
@@ -347,7 +349,8 @@ class _LoginPageState extends State<LoginPage> {
                                         style: TextButton.styleFrom(
                                           padding: EdgeInsets.zero,
                                           minimumSize: Size.zero,
-                                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                          tapTargetSize:
+                                              MaterialTapTargetSize.shrinkWrap,
                                         ),
                                         child: Text(
                                           'Register',

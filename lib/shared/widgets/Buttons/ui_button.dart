@@ -120,7 +120,7 @@ class UIButton extends StatelessWidget {
     this.elevation = 0,
     this.isLoading = false,
     this.loadingWidget,
-    this.color = primaryColor,
+    this.color,
     this.textColor,
     this.icon,
     this.suffixIcon,
@@ -167,7 +167,7 @@ class UIButton extends StatelessWidget {
   final double? elevation;
 
   ///Button's background Color
-  final Color color;
+  final Color? color;
 
   ///Text's color for a child that usually a Text
   final Color? textColor;
@@ -242,7 +242,7 @@ class UIButton extends StatelessWidget {
   Color get _primaryColor {
     switch (variant) {
       case UIButtonVariant.primary:
-        return color;
+        return color ?? primaryColor;
       case UIButtonVariant.secondary:
         return primaryDark;
       case UIButtonVariant.success:

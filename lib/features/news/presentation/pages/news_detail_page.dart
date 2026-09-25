@@ -208,7 +208,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
                 Positioned.fill(
                   child: Container(
                     color: Colors.black.withValues(alpha: 0.1),
-                    child: const Center(
+                    child: Center(
                       child: CircularProgressIndicator(color: primaryColor),
                     ),
                   ),

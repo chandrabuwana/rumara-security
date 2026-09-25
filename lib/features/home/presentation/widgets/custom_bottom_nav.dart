@@ -98,7 +98,7 @@ class CustomBottomNav extends StatelessWidget {
                 width: 70.w,
                 height: 70.w,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF8B1A1A),
+                  color: errorColor,
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
@@ -108,7 +108,7 @@ class CustomBottomNav extends StatelessWidget {
                       spreadRadius: 2,
                     ),
                     BoxShadow(
-                      color: const Color(0xFF8B1A1A).withValues(alpha: 0.4),
+                      color: errorColor.withValues(alpha: 0.4),
                       blurRadius: 15,
                       offset: const Offset(0, 4),
                     ),
@@ -124,7 +124,7 @@ class CustomBottomNav extends StatelessWidget {
                     ),
                     child: Icon(
                       Icons.warning,
-                      color: const Color(0xFF8B1A1A),
+                      color: errorColor,
                       size: 28.sp,
                     ),
                   ),

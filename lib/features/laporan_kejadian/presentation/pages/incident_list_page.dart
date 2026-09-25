@@ -440,7 +440,7 @@ class _IncidentListPageState extends State<IncidentListPage>
       // Remove buildWhen to ensure it always rebuilds on state changes
       builder: (context, state) {
         if (state.isLoading && state.incidentList.isEmpty) {
-          return const Center(
+          return Center(
             child: CircularProgressIndicator(color: primaryColor),
           );
         }
@@ -547,7 +547,7 @@ class _IncidentListPageState extends State<IncidentListPage>
             itemCount: state.incidentList.length + (state.isLoadingMore ? 1 : 0),
             itemBuilder: (context, index) {
               if (index >= state.incidentList.length) {
-                return const Center(
+                return Center(
                   child: Padding(
                     padding: EdgeInsets.all(16.0),
                     child: CircularProgressIndicator(color: primaryColor),
@@ -569,7 +569,7 @@ class _IncidentListPageState extends State<IncidentListPage>
       builder: (context, state) {
         
         if (state.isLoading && state.myTasks.isEmpty) {
-          return const Center(
+          return Center(
             child: CircularProgressIndicator(color: primaryColor),
           );
         }
@@ -602,7 +602,7 @@ class _IncidentListPageState extends State<IncidentListPage>
             itemCount: state.myTasks.length + (state.isLoadingMore ? 1 : 0),
             itemBuilder: (context, index) {
               if (index >= state.myTasks.length) {
-                return const Center(
+                return Center(
                   child: Padding(
                     padding: EdgeInsets.all(16.0),
                     child: CircularProgressIndicator(color: primaryColor),

@@ -327,7 +327,7 @@ class _CutiPageState extends State<CutiPage>
     return BlocBuilder<CutiBloc, CutiState>(
       builder: (context, state) {
         if (state is CutiLoading) {
-          return const Center(
+          return Center(
             child: CircularProgressIndicator(color: primaryColor),
           );
         }
@@ -605,7 +605,7 @@ class _AjuanSayaTabContentState extends State<_AjuanSayaTabContent> {
         bloc: widget.cutiBloc,
         builder: (context, state) {
           if (state is CutiLoading) {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(color: primaryColor),
             );
           }
@@ -972,7 +972,7 @@ class _AjuanAnggotaTabContentState extends State<_AjuanAnggotaTabContent> {
         bloc: widget.cutiBloc,
         builder: (context, state) {
           if (state is CutiLoading) {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(color: primaryColor),
             );
           }
@@ -1282,7 +1282,7 @@ class _RekapAjuanCutiTabContentState extends State<_RekapAjuanCutiTabContent> {
         bloc: widget.cutiBloc,
         builder: (context, state) {
           if (state is CutiLoading) {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(color: primaryColor),
             );
           }
@@ -1596,7 +1596,7 @@ class _AjuanCutiAnggotaTabContentState extends State<_AjuanCutiAnggotaTabContent
         bloc: widget.cutiBloc,
         builder: (context, state) {
           if (state is CutiLoading) {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(color: primaryColor),
             );
           }

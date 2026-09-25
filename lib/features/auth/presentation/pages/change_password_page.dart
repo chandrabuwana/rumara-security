@@ -84,7 +84,7 @@ class _ChangePasswordViewState extends State<_ChangePasswordView> {
         },
         child: Container(
           height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.center,

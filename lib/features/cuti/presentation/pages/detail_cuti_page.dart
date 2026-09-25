@@ -148,7 +148,7 @@ class _DetailCutiPageState extends State<DetailCutiPage> {
           child: BlocBuilder<CutiBloc, CutiState>(
             builder: (context, state) {
               if (state is CutiLoading) {
-                return const Center(
+                return Center(
                   child: CircularProgressIndicator(color: primaryColor),
                 );
               }
@@ -167,7 +167,7 @@ class _DetailCutiPageState extends State<DetailCutiPage> {
                 return _buildDetailContent(state.cuti);
               }
 
-              return const Center(
+              return Center(
                 child: CircularProgressIndicator(color: primaryColor),
               );
             },

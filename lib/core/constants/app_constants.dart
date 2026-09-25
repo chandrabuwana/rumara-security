@@ -1,6 +1,9 @@
+import '../design/branding_config.dart';
+
 class AppConstants {
   // App Info
-  static const String appName = 'Guardify App';
+  // appName is white-label: driven by the bundled branding config at runtime.
+  static String get appName => BrandingController.instance.appName;
   static const String appVersion = '1.0.0';
 
   // API Configuration
@@ -20,19 +23,22 @@ class AppConstants {
   );
 
   static String get baseUrl {
+    // Explicit env override (API_BASE_URL, e.g. per-deploy) wins.
     if (_apiBaseUrlOverride.isNotEmpty) {
       return _apiBaseUrlOverride;
     }
-
-    if (_appEnv == 'prod') {
-      return 'https://api-guardify.abb-apps.com/api/v1';
+    // White-label: respect the bundled branding config's backend URL.
+    final branded = BrandingController.instance.apiBaseUrl;
+    if (branded.isNotEmpty) {
+      return branded;
     }
-
+    // Final fallback.
     return 'https://api-guardify.abb-apps.com/api/v1';
   }
+
   static const int connectTimeout = 60000; // Increased to 60 seconds
   static const int receiveTimeout = 60000; // Increased to 60 seconds
-  
+
   // SignalR Configuration
   static String get signalRHubUrl {
     if (_signalRHubUrlOverride.isNotEmpty) {
@@ -47,9 +53,8 @@ class AppConstants {
     // return 'https://api-devguardify.abb-apps.com/hubs/chat';
   }
 
-
-  // Storage Keys
-  static const String tokenKey = 'token_guardify';
+  // Storage Keys (white-label: prefix/scoped per-company to avoid collision)
+  static String get tokenKey => BrandingController.instance.tokenKey;
   static const String refreshTokenKey = 'refresh_token';
   static const String userDataKey = 'user_data';
   static const String userIdKey = 'user_id';
@@ -59,7 +64,7 @@ class AppConstants {
   static const String attendanceIdKey = 'attendance_id';
 
   // Security Configuration
-  static const String encryptionKey = 'guardify_encryption_key_2024';
+  static String get encryptionKey => BrandingController.instance.encryptionKey;
   static const int sessionTimeoutMinutes = 30;
   static const int maxLoginAttempts = 5;
   static const int lockoutDurationMinutes = 15;

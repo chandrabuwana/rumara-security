@@ -32,7 +32,7 @@ class MenuGrid extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Menu',
             style: TextStyle(
               fontSize: 18,
@@ -106,7 +106,7 @@ class MenuGrid extends StatelessWidget {
                         child: Container(
                           width: 12,
                           height: 12,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: primaryColor,
                             shape: BoxShape.circle,
                           ),
@@ -121,7 +121,7 @@ class MenuGrid extends StatelessWidget {
                   child: Text(
                     item.title,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
                       color: neutral90,

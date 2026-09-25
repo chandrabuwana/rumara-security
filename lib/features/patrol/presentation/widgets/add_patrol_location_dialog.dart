@@ -1113,7 +1113,7 @@ class _AddPatrolLocationDialogState extends State<AddPatrolLocationDialog> {
                                 const Spacer(),
                                 IconButton(
                                   onPressed: _showImagePickerDialog,
-                                  icon: const Icon(
+                                  icon: Icon(
                                     Icons.camera_alt,
                                     color: primaryColor,
                                   ),
@@ -1121,7 +1121,7 @@ class _AddPatrolLocationDialogState extends State<AddPatrolLocationDialog> {
                                 ),
                                 IconButton(
                                   onPressed: _showImagePickerDialog,
-                                  icon: const Icon(
+                                  icon: Icon(
                                     Icons.photo_library,
                                     color: primaryColor,
                                   ),

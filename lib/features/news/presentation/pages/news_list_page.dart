@@ -191,7 +191,7 @@ class _NewsListPageState extends State<NewsListPage> {
                 // News List
                 Expanded(
                   child: state.isLoading
-                      ? const Center(
+                      ? Center(
                           child: CircularProgressIndicator(color: primaryColor),
                         )
                       : state.filteredNews.isEmpty
@@ -250,7 +250,7 @@ class _NewsListPageState extends State<NewsListPage> {
     return Container(
       alignment: Alignment.center,
       padding: EdgeInsets.symmetric(vertical: 16.h),
-      child: const CircularProgressIndicator(color: primaryColor, strokeWidth: 2),
+      child: CircularProgressIndicator(color: primaryColor, strokeWidth: 2),
     );
   }
 
