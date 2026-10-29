@@ -70,11 +70,12 @@ class BrandingConfig {
       brightness: _asBrightness(theme['brightness']),
       logo: _asString(
         branding['logo'],
-        'assets/images/guardify-round-white.svg',
+        'assets/images/guardify-round-white.png',
       ),
       logoDark:
-          _asString(branding['logoDark'], 'assets/images/logo_guardify.svg'),
-      shield: _asString(branding['shield'], 'assets/images/shield_logo.svg'),
+          _asString(branding['logoDark'], 'assets/images/guardify-logo.png'),
+      shield:
+          _asString(branding['shield'], 'assets/images/guardify-shield.png'),
       apiBaseUrl: _asString(
         backend['apiBaseUrl'],
         'https://api-guardify.abb-apps.com/api/v1',

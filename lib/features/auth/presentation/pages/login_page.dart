@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/utils/screen_utils.dart';
 import '../../../../shared/widgets/app_scaffold.dart';
 import '../../../../shared/widgets/TextInput/input_primary.dart';
@@ -9,6 +8,7 @@ import '../../../../shared/widgets/Buttons/ui_button.dart';
 import '../../../../core/design/colors.dart';
 import '../../../../core/design/styles.dart';
 import '../../../../core/design/branding_config.dart';
+import '../../../../core/design/brand_logo.dart';
 import '../bloc/auth_bloc.dart';
 
 class LoginPage extends StatefulWidget {
@@ -170,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                             // color: Colors.white,
                             shape: BoxShape.circle,
                           ),
-                          child: SvgPicture.asset(
+                          child: BrandLogo(
                             BrandingController.instance.logo,
                           ),
                         ),

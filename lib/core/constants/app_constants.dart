@@ -33,7 +33,7 @@ class AppConstants {
       return branded;
     }
     // Final fallback.
-    return 'https://api-guardify.abb-apps.com/api/v1';
+    return 'https://api-dev-guardify.abb-apps.com/api/v1';
   }
 
   static const int connectTimeout = 60000; // Increased to 60 seconds
@@ -46,10 +46,10 @@ class AppConstants {
     }
 
     if (_appEnv == 'prod') {
-      return 'https://api-guardify.abb-apps.com/hubs/chat';
+      return 'https://api-dev-guardify.abb-apps.com/hubs/chat';
     }
 
-    return 'https://api-guardify.abb-apps.com/hubs/chat';
+    return 'https://api-dev-guardify.abb-apps.com/hubs/chat';
     // return 'https://api-devguardify.abb-apps.com/hubs/chat';
   }
 

@@ -107,5 +107,8 @@ flutter:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "ios/Runner/Assets.xcassets/AppIcon.appiconset/1024.png"
+  # Regenerate with: dart run flutter_launcher_icons
+  # Source is derived from assets/source/guardify-logo-master.png (see assets/icons/).
+  image_path: "assets/icons/app_icon.png"
   remove_alpha_ios: true
+  background_color_ios: "#ffffff"
