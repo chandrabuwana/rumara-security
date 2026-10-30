@@ -94,6 +94,12 @@ class AuthRepositoryImpl implements AuthRepository, LoginRepository {
           );
         }
         
+        if (response.code == 404) {
+          return LoginResult.failure(
+            AuthenticationFailure('Username tidak terdaftar di RUMARA.'),
+          );
+        }
+
         // Login gagal - tampilkan pesan user-friendly
         // Apapun error dari API (404, 400, dll), tampilkan pesan yang sama
         return LoginResult.failure(
@@ -245,7 +251,7 @@ class AuthRepositoryImpl implements AuthRepository, LoginRepository {
       // Catch all other exceptions (parsing error, dll)
       // Juga tampilkan sebagai authentication failure untuk keamanan
       return LoginResult.failure(
-        AuthenticationFailure('Username atau password salah'),
+        ServerFailure('Login berhasil diproses server, tetapi data akun tidak dapat dibaca aplikasi.'),
       );
     }
   }

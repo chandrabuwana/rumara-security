@@ -14,9 +14,9 @@ LoginDataModel _$LoginDataModelFromJson(Map<String, dynamic> json) =>
         final val = LoginDataModel(
           user: $checkedConvert(
               'User', (v) => UserModel.fromJson(v as Map<String, dynamic>)),
-          expiredAt: $checkedConvert('ExpiredAt', (v) => v as String),
-          rawToken: $checkedConvert('RawToken', (v) => v as String),
-          refreshToken: $checkedConvert('RefreshToken', (v) => v as String),
+          expiredAt: $checkedConvert('ExpiredAt', (v) => v as String? ?? ''),
+          rawToken: $checkedConvert('RawToken', (v) => v as String? ?? ''),
+          refreshToken: $checkedConvert('RefreshToken', (v) => v as String? ?? ''),
         );
         return val;
       },
@@ -47,10 +47,10 @@ LoginResponseModel _$LoginResponseModelFromJson(Map<String, dynamic> json) =>
               (v) => v == null
                   ? null
                   : LoginDataModel.fromJson(v as Map<String, dynamic>)),
-          code: $checkedConvert('Code', (v) => (v as num).toInt()),
-          succeeded: $checkedConvert('Succeeded', (v) => v as bool),
-          message: $checkedConvert('Message', (v) => v as String),
-          description: $checkedConvert('Description', (v) => v as String),
+          code: $checkedConvert('Code', (v) => (v as num?)?.toInt() ?? 0),
+          succeeded: $checkedConvert('Succeeded', (v) => v as bool? ?? false),
+          message: $checkedConvert('Message', (v) => v as String? ?? ''),
+          description: $checkedConvert('Description', (v) => v as String? ?? ''),
         );
         return val;
       },

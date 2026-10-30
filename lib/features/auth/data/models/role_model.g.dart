@@ -12,7 +12,7 @@ RoleModel _$RoleModelFromJson(Map<String, dynamic> json) => $checkedCreate(
       ($checkedConvert) {
         final val = RoleModel(
           id: $checkedConvert('Id', (v) => v as String),
-          nama: $checkedConvert('Nama', (v) => v as String),
+          nama: $checkedConvert('Nama', (v) => v as String? ?? ''),
         );
         return val;
       },

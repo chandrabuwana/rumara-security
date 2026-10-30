@@ -48,10 +48,10 @@ class LoginResponseModel {
   @JsonKey(name: 'Succeeded')
   final bool succeeded;
   
-  @JsonKey(name: 'Message')
+  @JsonKey(name: 'Message', defaultValue: '')
   final String message;
   
-  @JsonKey(name: 'Description')
+  @JsonKey(name: 'Description', defaultValue: '')
   final String description;
 
   const LoginResponseModel({

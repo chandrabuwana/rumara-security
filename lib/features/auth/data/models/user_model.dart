@@ -9,16 +9,16 @@ class UserModel {
   @JsonKey(name: 'Id')
   final String id;
 
-  @JsonKey(name: 'Role')
+  @JsonKey(name: 'Role', defaultValue: [])
   final List<RoleModel> role;
 
-  @JsonKey(name: 'Username')
+  @JsonKey(name: 'Username', defaultValue: '')
   final String username;
 
-  @JsonKey(name: 'FullName')
+  @JsonKey(name: 'FullName', defaultValue: '')
   final String fullName;
 
-  @JsonKey(name: 'Mail')
+  @JsonKey(name: 'Mail', defaultValue: '')
   final String mail;
 
   const UserModel({
