@@ -7,10 +7,12 @@ abstract class AuthEvent {
 class AuthLoginRequested extends AuthEvent {
   final String email;
   final String password;
+  final String? otpCode;
 
   const AuthLoginRequested({
     required this.email,
     required this.password,
+    this.otpCode,
   });
 }
 

@@ -18,6 +18,10 @@ class AuthenticationFailure extends Failure {
   const AuthenticationFailure(super.message);
 }
 
+class DeviceVerificationFailure extends Failure {
+  const DeviceVerificationFailure(super.message);
+}
+
 // Validators
 class Validators {
   static String? validateNrp(String? nrp) {
@@ -106,6 +110,12 @@ abstract class LoginRepository {
   Future<LoginResult> login({
     required String username,
     required String password,
+    String? otpCode,
+  });
+
+  Future<({bool ok, String message})> requestDeviceOtp({
+    required String username,
+    required String password,
   });
 }
 
@@ -119,6 +129,7 @@ class LoginUseCase {
   Future<LoginResult> call({
     required String username,
     required String password,
+    String? otpCode,
   }) async {
     try {
       // Validate input - NRP adalah free text, tidak perlu validasi email
@@ -136,6 +147,7 @@ class LoginUseCase {
       final result = await repository.login(
         username: username.trim(),
         password: password,
+        otpCode: otpCode,
       );
 
       return result;

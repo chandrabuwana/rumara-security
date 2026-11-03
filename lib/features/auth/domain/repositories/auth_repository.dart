@@ -4,6 +4,7 @@ abstract class AuthRepository {
   Future<LoginResult> login({
     required String username,
     required String password,
+    String? otpCode,
   });
 
   Future<RegisterResult> register({

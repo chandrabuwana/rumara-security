@@ -41,7 +41,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final result = await loginUseCase(
         username: event.email, // event.email sebenarnya berisi NRP
         password: event.password,
+        otpCode: event.otpCode,
       );
+
+      if (result.failure is DeviceVerificationFailure) {
+        emit(AuthState.deviceVerification(result.failure!.message));
+        return;
+      }
 
       if (result.isSuccess && result.token != null && result.user != null) {
         // Login berhasil, token dan user data sudah tersimpan di secure storage

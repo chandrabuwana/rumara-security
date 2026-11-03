@@ -5,6 +5,7 @@ enum AuthStatus {
   loading,
   passwordResetLinkSent,
   changePasswordSuccess,
+  deviceVerification,
   authenticated,
   unauthenticated,
   error,
@@ -48,6 +49,14 @@ class AuthState {
   factory AuthState.unauthenticated() {
     return const AuthState(
       status: AuthStatus.unauthenticated,
+      isLoading: false,
+    );
+  }
+
+  factory AuthState.deviceVerification(String message) {
+    return AuthState(
+      status: AuthStatus.deviceVerification,
+      errorMessage: message,
       isLoading: false,
     );
   }
