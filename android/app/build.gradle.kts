@@ -33,8 +33,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+    buildFeatures {
+        buildConfig = true
     }
 
     defaultConfig {
@@ -86,10 +86,16 @@ flutter {
     source = "../.."
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+    }
+}
+
 configurations.all {
     resolutionStrategy {
-        force("org.jetbrains.kotlin:kotlin-stdlib:2.1.0")
-        force("org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.0")
-        force("org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.0")
+        force("org.jetbrains.kotlin:kotlin-stdlib:2.4.0")
+        force("org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.4.0")
+        force("org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.4.0")
     }
 }

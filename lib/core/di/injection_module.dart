@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/auth/data/datasources/auth_remote_data_source.dart';
@@ -106,6 +107,15 @@ abstract class InjectionModule {
             final navigator = AppNavigatorKey.navigatorKey.currentState;
             if (navigator != null) {
               navigator.pushNamedAndRemoveUntil('/login', (route) => false);
+              if (response.headers.value('session-replaced') == 'true') {
+                final messenger =
+                    ScaffoldMessenger.maybeOf(navigator.context);
+                messenger?.showSnackBar(
+                  const SnackBar(
+                    content: Text('Sesi berakhir. Akun Anda masuk di perangkat lain.'),
+                  ),
+                );
+              }
             }
           }
 

@@ -7,7 +7,7 @@ class RoleModel {
   @JsonKey(name: 'Id')
   final String id;
   
-  @JsonKey(name: 'Nama')
+  @JsonKey(name: 'Nama', defaultValue: '')
   final String nama;
 
   const RoleModel({

@@ -14,12 +14,12 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => $checkedCreate(
           id: $checkedConvert('Id', (v) => v as String),
           role: $checkedConvert(
               'Role',
-              (v) => (v as List<dynamic>)
+              (v) => (v as List<dynamic>? ?? const [])
                   .map((e) => RoleModel.fromJson(e as Map<String, dynamic>))
                   .toList()),
-          username: $checkedConvert('Username', (v) => v as String),
-          fullName: $checkedConvert('FullName', (v) => v as String),
-          mail: $checkedConvert('Mail', (v) => v as String),
+          username: $checkedConvert('Username', (v) => v as String? ?? ''),
+          fullName: $checkedConvert('FullName', (v) => v as String? ?? ''),
+          mail: $checkedConvert('Mail', (v) => v as String? ?? ''),
         );
         return val;
       },

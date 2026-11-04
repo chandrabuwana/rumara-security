@@ -9,7 +9,10 @@ import '../../../../core/design/colors.dart';
 import '../../../../core/design/styles.dart';
 import '../../../../core/design/branding_config.dart';
 import '../../../../core/design/brand_logo.dart';
+import '../../../../core/di/injection.dart';
+import '../../domain/usecases/login_use_case.dart';
 import '../bloc/auth_bloc.dart';
+import '../widgets/device_verification_dialog.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -49,6 +52,30 @@ class _LoginPageState extends State<LoginPage> {
 
   void _onRegisterPressed() {
     Navigator.pushNamed(context, '/register');
+  }
+
+  Future<void> _verifyDevice(String message) async {
+    final username = _nrpController.text.trim();
+    final password = _passwordController.text;
+    final code = await showDialog<String>(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => DeviceVerificationDialog(
+        message: message,
+        onRequestOtp: () => getIt<LoginRepository>().requestDeviceOtp(
+          username: username,
+          password: password,
+        ),
+      ),
+    );
+    if (!mounted || code == null) return;
+    context.read<AuthBloc>().add(
+          AuthLoginRequested(
+            email: username,
+            password: password,
+            otpCode: code,
+          ),
+        );
   }
 
   void _showErrorDialog(String title, String message) {
@@ -123,6 +150,8 @@ class _LoginPageState extends State<LoginPage> {
             print('🚀 Navigation to /home completed');
             print('🚀 ========================================');
             print('');
+          } else if (state.status == AuthStatus.deviceVerification) {
+            _verifyDevice(state.errorMessage ?? '');
           } else if (state.status == AuthStatus.error) {
             // Tampilkan popup dialog untuk error
             _showErrorDialog(
