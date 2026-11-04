@@ -1,6 +1,6 @@
 {
-    "name": "Guardify App",
-    "short_name": "Guardify",
+    "name": "Rumara Security",
+    "short_name": "Rumara Security",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

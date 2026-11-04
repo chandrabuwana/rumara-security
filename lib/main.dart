@@ -174,7 +174,7 @@ Future<void> _showBackgroundPanicNotification(
   // Use Android system alarm URI for reliable alarm sound (no custom file needed)
   final panicChannel = AndroidNotificationChannel(
     'guardify_panic_v4', // New channel ID to force recreation with alarm sound
-    'Guardify Panic Alerts',
+    'Rumara Security Panic Alerts',
     description: 'Panic button emergency alerts',
     importance: Importance.max,
     playSound: true,

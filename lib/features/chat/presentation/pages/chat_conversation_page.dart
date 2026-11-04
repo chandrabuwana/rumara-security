@@ -1866,7 +1866,7 @@ class _ChatConversationPageState extends State<ChatConversationPage> {
         // Save to gallery using gal
         print('📥 Calling Gal.putImage...');
         try {
-          await Gal.putImage(tempFile.path, album: 'Guardify');
+          await Gal.putImage(tempFile.path, album: 'Rumara Security');
           print('✅ Gal.putImage completed successfully');
         } catch (galError) {
           print('❌ Error from Gal.putImage: $galError');

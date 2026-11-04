@@ -63,8 +63,8 @@ class BrandingConfig {
     final keys = _asMap(map['keys']);
 
     return BrandingConfig(
-      appName: _asString(app['name'], 'Guardify App'),
-      appTitle: _asString(app['title'], 'Guardify App'),
+      appName: _asString(app['name'], 'Rumara Security'),
+      appTitle: _asString(app['title'], 'Rumara Security'),
       palette: _asPalette(theme['palette']),
       seed: _asColor(theme['seed'], const Color(0xFFE74C3C)),
       brightness: _asBrightness(theme['brightness']),

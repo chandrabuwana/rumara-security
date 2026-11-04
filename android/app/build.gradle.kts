@@ -23,7 +23,7 @@ if (file("google-services.json").exists()) {
 }
 
 android {
-    namespace = "com.binarnusapersada.guardify"
+    namespace = "com.rumarasecurity.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -39,7 +39,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.binarnusapersada.guardify"
+        applicationId = "com.rumarasecurity.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -47,7 +47,7 @@ android {
         versionCode = flutter.versionCode
         versionName = flutter.versionName
 
-        manifestPlaceholders["applicationName"] = "com.binarnusapersada.guardify.Application"
+        manifestPlaceholders["applicationName"] = "com.rumarasecurity.app.Application"
     }
 
     signingConfigs {

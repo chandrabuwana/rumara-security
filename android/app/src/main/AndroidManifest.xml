@@ -53,7 +53,7 @@
     <uses-feature android:name="android.hardware.location.gps" android:required="false" />
     
     <application
-        android:label="Guardify Security"
+        android:label="Rumara Security"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon"
         android:enableOnBackInvokedCallback="true">
@@ -91,13 +91,13 @@
             android:value="2" />
 
         <service
-            android:name="com.binarnusapersada.guardify.panic.PanicOverlayService"
+            android:name="com.rumarasecurity.app.panic.PanicOverlayService"
             android:exported="false"
             android:foregroundServiceType="dataSync">
         </service>
 
         <service
-            android:name="com.binarnusapersada.guardify.panic.PanicFirebaseMessagingService"
+            android:name="com.rumarasecurity.app.panic.PanicFirebaseMessagingService"
             android:exported="false">
             <intent-filter android:priority="999">
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

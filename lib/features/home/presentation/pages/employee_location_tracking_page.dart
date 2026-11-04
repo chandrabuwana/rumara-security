@@ -902,7 +902,7 @@ class _EmployeeLocationTrackingPageState extends State<EmployeeLocationTrackingP
                       children: [
                         TileLayer(
                           urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                          userAgentPackageName: 'com.guardify.app',
+                          userAgentPackageName: 'com.rumarasecurity.app',
                           maxZoom: 19,
                           tileProvider: NetworkTileProvider(),
                           // Error handling: Tile errors are expected when offline/no connection

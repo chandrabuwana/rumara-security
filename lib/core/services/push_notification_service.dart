@@ -22,7 +22,7 @@ class PushNotificationService {
   static const AndroidNotificationChannel _androidChannel =
       AndroidNotificationChannel(
     'guardify_default',
-    'Guardify Notifications',
+    'Rumara Security Notifications',
     description: 'Default notifications channel',
     importance: Importance.high,
     playSound: true,
@@ -32,7 +32,7 @@ class PushNotificationService {
   static const AndroidNotificationChannel _panicAndroidChannel =
       AndroidNotificationChannel(
     'guardify_panic_v4',
-    'Guardify Panic Alerts',
+    'Rumara Security Panic Alerts',
     description: 'Panic button emergency alerts',
     importance: Importance.max,
     playSound: true,

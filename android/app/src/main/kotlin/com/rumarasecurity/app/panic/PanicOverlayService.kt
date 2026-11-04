@@ -1,4 +1,4 @@
-package com.binarnusapersada.guardify.panic
+package com.rumarasecurity.app.panic
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -25,8 +25,8 @@ import android.os.Vibrator
 import android.os.VibratorManager
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.binarnusapersada.guardify.MainActivity
-import com.binarnusapersada.guardify.R
+import com.rumarasecurity.app.MainActivity
+import com.rumarasecurity.app.R
 
 class PanicOverlayService : Service() {
 
@@ -40,10 +40,10 @@ class PanicOverlayService : Service() {
         const val EXTRA_STATUS = "panic_status"
 
         private const val CHANNEL_ID = "guardify_panic_native"
-        private const val CHANNEL_NAME = "Guardify Panic Overlay"
+        private const val CHANNEL_NAME = "Rumara Security Panic Overlay"
         private const val NOTIFICATION_ID = 9911
 
-        private const val ACTION_STOP = "com.binarnusapersada.guardify.panic.ACTION_STOP"
+        private const val ACTION_STOP = "com.rumarasecurity.app.panic.ACTION_STOP"
     }
 
     private var windowManager: WindowManager? = null
