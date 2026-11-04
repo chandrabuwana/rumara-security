@@ -1,3 +1,4 @@
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -335,16 +336,17 @@ void main() async {
     debugPrint('⚠️ [Main] Error checking SharedPreferences: $e');
   }
 
-  await configureDependencies();
-
   // Load the white-label branding config (palette, brightness, app name, logo,
-  // api base) BEFORE the app builds. It drives the ThemeController, so the
-  // MaterialApp starts with the configured company's theme.
+  // api base) BEFORE DI: the Dio singleton captures AppConstants.baseUrl at
+  // construction time, so the branded apiBaseUrl must be applied first —
+  // otherwise Dio falls back to the Guardify prod URL permanently.
   try {
     await BrandingController.instance.loadFromAsset(rootBundle);
   } catch (e) {
     debugPrint('⚠️ [Main] Failed to load branding config: $e');
   }
+
+  await configureDependencies();
 
   // Override with the user's persisted theme choice if present (falls back to
   // the branding config values when nothing saved).
@@ -417,7 +419,12 @@ class _GuardifyAppState extends State<GuardifyApp> {
               ),
               themeMode: _toThemeMode(controller.brightness.value),
               builder: (context, child) {
-                return Stack(children: [child ?? const SizedBox.shrink()]);
+                return Stack(
+                  children: [
+                    child ?? const SizedBox.shrink(),
+                    ChuckerFlutter.chuckerButton,
+                  ],
+                );
               },
               routes: {
                 '/': (context) => const _AuthGate(),

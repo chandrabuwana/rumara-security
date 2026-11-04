@@ -78,7 +78,7 @@ class BrandingConfig {
           _asString(branding['shield'], 'assets/images/guardify-shield.png'),
       apiBaseUrl: _asString(
         backend['apiBaseUrl'],
-        'https://api-guardify.abb-apps.com/api/v1',
+        'https://api-devguardify.abb-apps.com/api/v1',
       ),
       tokenKey: _asString(keys['tokenKey'], 'token_guardify'),
       encryptionKey: _asString(
