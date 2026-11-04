@@ -14,7 +14,7 @@
     "shield": "assets/images/guardify-shield.png"
   },
   "backend": {
-    "apiBaseUrl": "https://api-dev-guardify.abb-apps.com/api/v1"
+    "apiBaseUrl": "https://api-devguardify.abb-apps.com/api/v1"
   },
   "keys": {
     "tokenKey": "token_guardify",

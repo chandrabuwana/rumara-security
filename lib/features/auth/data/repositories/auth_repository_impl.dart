@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'dart:io';
 import 'dart:math';
+import 'package:android_id/android_id.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import '../../../../core/di/injection.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../../domain/usecases/login_use_case.dart';
 import '../datasources/auth_remote_data_source.dart';
@@ -12,7 +14,7 @@ import '../../../../core/constants/app_constants.dart';
 class AuthRepositoryImpl implements AuthRepository, LoginRepository {
   final AuthRemoteDataSource remoteDataSource;
 
-  static const String _deviceIdStorageKey = 'device_id';
+  static const String _deviceIdStorageKey = 'device_id_v2';
 
   AuthRepositoryImpl({required this.remoteDataSource});
 
@@ -24,8 +26,7 @@ class AuthRepositoryImpl implements AuthRepository, LoginRepository {
     try {
       final plugin = DeviceInfoPlugin();
       if (Platform.isAndroid) {
-        final info = await plugin.androidInfo;
-        id = info.id;
+        id = await const AndroidId().getId();
       } else if (Platform.isIOS) {
         final info = await plugin.iosInfo;
         id = info.identifierForVendor;
@@ -55,6 +56,7 @@ class AuthRepositoryImpl implements AuthRepository, LoginRepository {
   Future<LoginResult> login({
     required String username,
     required String password,
+    String? otpCode,
   }) async {
     try {
       String firebaseToken = '';
@@ -80,12 +82,29 @@ class AuthRepositoryImpl implements AuthRepository, LoginRepository {
         'FirebaseToken': firebaseToken,
         'DeviceId': deviceId,
         'Platform': platform,
+        if (otpCode != null && otpCode.isNotEmpty) 'OtpCode': otpCode,
       });
 
       // Check if request succeeded
       if (!response.succeeded || response.data == null) {
         // Handle specific error cases
         // Jika code 403 (user not active), tampilkan pesan dari API
+        if (response.code == 406) {
+          return LoginResult.failure(
+            DeviceVerificationFailure(response.message.isNotEmpty
+                ? response.message
+                : 'Akun ini sedang aktif di perangkat lain. Verifikasi dengan kode OTP untuk masuk di perangkat ini.'),
+          );
+        }
+
+        if (response.code == 400 && otpCode != null && otpCode.isNotEmpty) {
+          return LoginResult.failure(
+            DeviceVerificationFailure(response.message.isNotEmpty
+                ? response.message
+                : 'Kode OTP tidak valid.'),
+          );
+        }
+
         if (response.code == 403) {
           return LoginResult.failure(
             AuthenticationFailure(response.message.isNotEmpty 
@@ -94,6 +113,12 @@ class AuthRepositoryImpl implements AuthRepository, LoginRepository {
           );
         }
         
+        if (response.code == 404) {
+          return LoginResult.failure(
+            AuthenticationFailure('Username tidak terdaftar di RUMARA.'),
+          );
+        }
+
         // Login gagal - tampilkan pesan user-friendly
         // Apapun error dari API (404, 400, dll), tampilkan pesan yang sama
         return LoginResult.failure(
@@ -245,8 +270,41 @@ class AuthRepositoryImpl implements AuthRepository, LoginRepository {
       // Catch all other exceptions (parsing error, dll)
       // Juga tampilkan sebagai authentication failure untuk keamanan
       return LoginResult.failure(
-        AuthenticationFailure('Username atau password salah'),
+        ServerFailure('Login berhasil diproses server, tetapi data akun tidak dapat dibaca aplikasi.'),
       );
+    }
+  }
+
+  @override
+  Future<({bool ok, String message})> requestDeviceOtp({
+    required String username,
+    required String password,
+  }) async {
+    try {
+      final dio = getIt<Dio>();
+      final url = Uri.parse(dio.options.baseUrl)
+          .replace(path: '/mobile/otp/device/request', query: null)
+          .toString();
+      final response = await dio.post(
+        url,
+        data: {'Username': username.trim(), 'Password': password},
+      );
+      final data = response.data;
+      final map = data is Map<String, dynamic> ? data : const <String, dynamic>{};
+      final ok = (map['Succeeded'] ?? map['succeeded']) == true;
+      final message = (map['Message'] ?? map['message'])?.toString() ?? '';
+      if (ok) {
+        return (
+          ok: true,
+          message: message.isEmpty ? 'Kode OTP sudah dikirim ke email Anda.' : message,
+        );
+      }
+      return (
+        ok: false,
+        message: message.isEmpty ? 'Gagal mengirim kode OTP.' : message,
+      );
+    } on DioException {
+      return (ok: false, message: 'Gagal mengirim kode OTP. Periksa koneksi Anda.');
     }
   }
 

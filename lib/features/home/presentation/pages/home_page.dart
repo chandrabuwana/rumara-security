@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,6 +37,9 @@ import '../../../chat/domain/entities/chat.dart';
 import '../../../news/presentation/pages/news_list_page.dart';
 import '../../../news/presentation/bloc/news_bloc.dart';
 import '../../../personnel/presentation/pages/personnel_list_page.dart';
+import '../../../visitor_gate/data/gate_access_service.dart';
+import '../../../visitor_gate/presentation/pages/visitor_home_page.dart';
+import '../../../cctv_monitoring/presentation/pages/cctv_monitoring_page.dart';
 import '../../../tugas_lanjutan/presentation/pages/tugas_lanjutan_page.dart';
 import '../../../tugas_lanjutan/presentation/bloc/tugas_lanjutan_bloc.dart';
 import '../../../notification/presentation/pages/notification_list_page.dart';
@@ -91,10 +95,40 @@ class __HomePageViewState extends State<_HomePageView> {
   String _currentTime = '';
   Future<Map<String, String>>? _cachedAreaMapFuture;
   Map<String, String>? _cachedAreaMap;
+  GateAccess _gateAccess = const GateAccess();
+
+  Future<void> _loadGateAccess() async {
+    try {
+      final access = await GateAccessService(getIt<Dio>()).load();
+      if (mounted) setState(() => _gateAccess = access);
+    } catch (_) {
+      return;
+    }
+  }
+
+  List<MenuItem> _gateMenuItems() {
+    return [
+      if (_gateAccess.visitorView)
+        MenuItem(
+          id: 'visitor',
+          title: 'Visitor',
+          icon: Icons.qr_code_scanner,
+          onTap: () => VisitorHomePage.open(context, _gateAccess),
+        ),
+      if (_gateAccess.cctvView)
+        MenuItem(
+          id: 'cctv',
+          title: 'CCTV',
+          icon: Icons.videocam_outlined,
+          onTap: () => CctvMonitoringPage.open(context, _gateAccess),
+        ),
+    ];
+  }
 
   @override
   void initState() {
     super.initState();
+    _loadGateAccess();
     _updateTime();
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       _updateTime();
@@ -1463,6 +1497,7 @@ class __HomePageViewState extends State<_HomePageView> {
     // Menu khusus untuk role Pengawas
     if (userRole == UserRole.pengawas) {
       return [
+        ..._gateMenuItems(),
         MenuItem(
           id: 'incident',
           title: 'Insiden Kejadian',
@@ -1546,6 +1581,7 @@ class __HomePageViewState extends State<_HomePageView> {
     // Menu default untuk role lainnya (Anggota, Danton, PJO, Deputy, Admin)
     // print('✅ BUILDING DEFAULT MENU (With Rekapitulasi Kehadiran)');
     final menuItems = <MenuItem>[
+      ..._gateMenuItems(),
       MenuItem(
         id: 'incident',
         title: 'Insiden Kejadian',
