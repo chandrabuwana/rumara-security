@@ -176,7 +176,7 @@ class _SearchableDropdownState<T> extends State<SearchableDropdown<T>> {
                             child: Text(
                               'Tidak ada data',
                               style: TS.bodyMedium.copyWith(
-                                color: Colors.grey.shade600,
+                                color: const Color(0xFF333333),
                               ),
                             ),
                           ),

@@ -386,7 +386,7 @@ class SignalRChatService {
           }
           
           if (attachmentUrl != null && 
-              attachmentUrl.contains('api-guardify.abb-apps.com') && 
+              attachmentUrl.contains('api-devguardify.abb-apps.com') && 
               !attachmentUrl.contains('amazonaws.com')) {
             print('⚠️ WARNING: Using API URL instead of S3Url. This may cause 404 errors.');
             print('⚠️ Attachment data available: ${attachment.keys.toList()}');

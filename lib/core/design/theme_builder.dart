@@ -20,6 +20,8 @@ class ThemeBuilder {
         colorScheme: ColorScheme.fromSeed(
           seedColor: seed ?? p.seed,
           brightness: Brightness.light,
+          onSurface: p.textPrimary,
+          onSurfaceVariant: p.textSecondary,
         ),
         appBarTheme: const AppBarTheme(centerTitle: true, elevation: 0),
       );
