@@ -1,4 +1,4 @@
-package com.binarnusapersada.guardify.panic
+package com.rumarasecurity.app.panic
 
 import android.content.Intent
 import android.os.Build

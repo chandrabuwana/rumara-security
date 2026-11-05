@@ -507,7 +507,7 @@ class _LocationTrackingPageState extends State<LocationTrackingPage> {
                         // OpenStreetMap Tile Layer
                         TileLayer(
                           urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                          userAgentPackageName: 'com.guardify.app',
+                          userAgentPackageName: 'com.rumarasecurity.app',
                           maxZoom: 19,
                           tileProvider: NetworkTileProvider(),
                         ),

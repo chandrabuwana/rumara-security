@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 class PanicNativeService {
   static const MethodChannel _channel =
-      MethodChannel('com.binarnusapersada.guardify/panic');
+      MethodChannel('com.rumarasecurity.app/panic');
 
   /// Stop the native PanicOverlayService (stops alarm sound and vibration)
   static Future<bool> stopPanicService() async {

@@ -1,4 +1,4 @@
-package com.binarnusapersada.guardify
+package com.rumarasecurity.app
 
 import android.content.Context
 import android.content.Intent
@@ -10,11 +10,11 @@ import io.flutter.plugin.common.MethodChannel
 import java.io.File
 
 // Import panic service
-import com.binarnusapersada.guardify.panic.PanicOverlayService
+import com.rumarasecurity.app.panic.PanicOverlayService
 
 class MainActivity : FlutterActivity() {
 
-    private val CHANNEL = "com.binarnusapersada.guardify/panic"
+    private val CHANNEL = "com.rumarasecurity.app/panic"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Clear corrupted SharedPreferences BEFORE Flutter engine starts
@@ -33,7 +33,7 @@ class MainActivity : FlutterActivity() {
                 "stopPanicService" -> {
                     try {
                         val intent = Intent(this, PanicOverlayService::class.java).apply {
-                            action = "com.binarnusapersada.guardify.panic.ACTION_STOP"
+                            action = "com.rumarasecurity.app.panic.ACTION_STOP"
                         }
                         startService(intent)
                         Log.d("Guardify", "Stop panic service intent sent")

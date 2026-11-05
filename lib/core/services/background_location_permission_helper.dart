@@ -84,7 +84,7 @@ class _BackgroundLocationDisclosureDialog extends StatelessWidget {
               ),
               16.verticalSpace,
               Text(
-                'Guardify mengumpulkan data lokasi perangkat Anda, termasuk saat aplikasi berjalan di latar belakang, untuk keperluan patroli dan pengamanan.',
+                'Rumara Security mengumpulkan data lokasi perangkat Anda, termasuk saat aplikasi berjalan di latar belakang, untuk keperluan patroli dan pengamanan.',
                 style: TextStyle(
                   fontSize: 14.sp,
                   color: Colors.black87,

@@ -1,4 +1,4 @@
-package com.binarnusapersada.guardify
+package com.rumarasecurity.app
 
 import android.app.Application
 
