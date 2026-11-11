@@ -38,8 +38,10 @@ abstract class InjectionModule {
 
     // Base Configuration
     dio.options.baseUrl = AppConstants.baseUrl;
-    dio.options.connectTimeout = const Duration(seconds: 60); // Increased to 60 seconds
-    dio.options.receiveTimeout = const Duration(seconds: 60); // Increased to 60 seconds
+    dio.options.connectTimeout =
+        const Duration(seconds: 60); // Increased to 60 seconds
+    dio.options.receiveTimeout =
+        const Duration(seconds: 60); // Increased to 60 seconds
 
     // ValidateStatus - Jangan throw exception untuk 4xx error
     // Biarkan kita handle sendiri di repository
@@ -74,7 +76,7 @@ abstract class InjectionModule {
             print('🎯 Request Body: ${options.data}');
             print('🎯 ===================================');
           }
-          
+
           // Log untuk Areas/list untuk debugging timeout
           if (options.path.contains('Areas/list')) {
             options.extra['start_time'] = DateTime.now();
@@ -107,15 +109,21 @@ abstract class InjectionModule {
             final navigator = AppNavigatorKey.navigatorKey.currentState;
             if (navigator != null) {
               navigator.pushNamedAndRemoveUntil('/login', (route) => false);
-              if (response.headers.value('session-replaced') == 'true') {
-                final messenger =
-                    ScaffoldMessenger.maybeOf(navigator.context);
-                messenger?.showSnackBar(
-                  const SnackBar(
-                    content: Text('Sesi berakhir. Akun Anda masuk di perangkat lain.'),
-                  ),
-                );
-              }
+              final replaced =
+                  response.headers.value('session-replaced') == 'true';
+              final expired = response.headers.value('token-expired') == 'true';
+              final endpoint = Uri.tryParse(path)?.path ?? path;
+              final message = replaced
+                  ? 'Sesi berakhir. Akun Anda masuk di perangkat lain.'
+                  : expired
+                      ? 'Sesi Anda sudah habis. Silakan masuk kembali.'
+                      : 'Sesi ditolak server (401) saat membuka $endpoint. Silakan masuk kembali.';
+              ScaffoldMessenger.maybeOf(navigator.context)?.showSnackBar(
+                SnackBar(
+                  content: Text(message),
+                  duration: const Duration(seconds: 6),
+                ),
+              );
             }
           }
 
@@ -126,19 +134,19 @@ abstract class InjectionModule {
             print('✅ Response Data: ${response.data}');
             print('✅ ===================================');
           }
-          
+
           // Log response untuk Areas/list
           if (response.requestOptions.path.contains('Areas/list')) {
-            final startTime = response.requestOptions.extra['start_time'] as DateTime?;
-            final duration = startTime != null 
-                ? DateTime.now().difference(startTime) 
-                : null;
+            final startTime =
+                response.requestOptions.extra['start_time'] as DateTime?;
+            final duration =
+                startTime != null ? DateTime.now().difference(startTime) : null;
             print('✅ === AREAS/LIST RESPONSE ===');
             print('✅ Status: ${response.statusCode}');
             print('✅ Response time: ${duration?.inMilliseconds}ms');
             print('✅ ===========================');
           }
-          
+
           handler.next(response);
         },
         onError: (error, handler) async {
@@ -265,13 +273,13 @@ abstract class InjectionModule {
   // ========================================
   // Personnel Feature Dependencies
   // ========================================
-  
+
   // All personnel dependencies are auto-registered with annotations:
   // - PersonnelRemoteDataSource: @LazySingleton(as: PersonnelRemoteDataSource)
   // - PersonnelRepository: @LazySingleton
   // - Use cases: @Injectable
   // - PersonnelBloc: @Injectable
-  
+
   // ========================================
   // Tambahkan dependencies feature lain di sini
   // Contoh:
@@ -280,5 +288,4 @@ abstract class InjectionModule {
   // - Patrol Feature
   // dll
   // ========================================
-
 }
