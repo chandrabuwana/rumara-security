@@ -17,6 +17,8 @@ import '../../../shift/data/models/shift_checkout_detail_response.dart';
 import '../bloc/attendance_bloc.dart';
 import '../bloc/attendance_event.dart';
 import '../bloc/attendance_state.dart';
+import '../../../../shared/widgets/bottom_action_bar.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class CheckOutPage extends StatefulWidget {
   final String userId;
@@ -59,7 +61,13 @@ class _CheckOutPageState extends State<CheckOutPage> {
     _attendanceBloc = getIt<AttendanceBloc>();
     _checkoutDetail = widget.checkoutDetail;
     _applyPrefillDetail(_checkoutDetail);
+    _lokasiPengamananController.addListener(_onFormChanged);
+    _laporanPengamananController.addListener(_onFormChanged);
     _getCurrentGPSLocation();
+  }
+
+  void _onFormChanged() {
+    if (mounted) setState(() {});
   }
 
   Future<void> _getCurrentGPSLocation() async {
@@ -105,14 +113,8 @@ class _CheckOutPageState extends State<CheckOutPage> {
     return BlocProvider.value(
       value: _attendanceBloc..add(const CheckOutStartedEvent()),
       child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
-          title: const Text('Akhiri Bekerja'),
-          centerTitle: true,
-          elevation: 0,
-        ),
+        backgroundColor: bgColor,
+        appBar: const RumaraAppBar(title: 'Akhiri Bekerja'),
         body: BlocConsumer<AttendanceBloc, AttendanceState>(
           listener: (context, state) {
             if (state is AttendanceCheckedOut) {
@@ -162,7 +164,14 @@ class _CheckOutPageState extends State<CheckOutPage> {
               children: [
                 Expanded(
                   child: SingleChildScrollView(
-                    padding: REdgeInsets.all(20),
+                    padding: REdgeInsets.all(16),
+                    child: Container(
+                    padding: REdgeInsets.fromLTRB(16, 16, 16, 0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16.r),
+                      border: Border.all(color: rumaraBorder),
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -312,31 +321,16 @@ class _CheckOutPageState extends State<CheckOutPage> {
                         ),
                       ],
                     ),
+                    ),
                   ),
                 ),
-
-                // Bottom Button
-                Container(
-                  padding: REdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
-                        spreadRadius: 1,
-                        blurRadius: 4,
-                        offset: const Offset(0, -2),
-                      ),
-                    ],
-                  ),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: UIButton(
-                      text: 'AKHIRI BEKERJA',
-                      onPressed:
-                          _canSubmitCheckOut() ? _submitCheckOut : null,
-                      variant: UIButtonVariant.primary,
-                    ),
+                BottomActionBar(
+                  helper: _missingCheckOutFields(),
+                  child: UIButton(
+                    text: 'Akhiri Bekerja',
+                    fullWidth: true,
+                    onPressed: _canSubmitCheckOut() ? _submitCheckOut : null,
+                    variant: UIButtonVariant.primary,
                   ),
                 ),
               ],
@@ -377,6 +371,17 @@ class _CheckOutPageState extends State<CheckOutPage> {
         ),
       ],
     );
+  }
+
+  String? _missingCheckOutFields() {
+    final missing = <String>[
+      if (_lokasiPengamananController.text.isEmpty) 'Lokasi Pengamanan',
+      if (_pakaianPersonil.isEmpty) 'Pakaian Personil',
+      if (_laporanPengamananController.text.isEmpty) 'Laporan Pengamanan',
+      if (_fotoPengamanan.isEmpty) 'Foto Pengamanan',
+    ];
+    if (missing.isEmpty) return null;
+    return 'Lengkapi dulu: ${missing.join(', ')}';
   }
 
   bool _canSubmitCheckOut() {

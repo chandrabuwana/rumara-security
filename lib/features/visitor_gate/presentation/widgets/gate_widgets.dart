@@ -23,14 +23,7 @@ class GateFormat {
   }
 }
 
-LinearGradient gateHeaderGradient() {
-  final palette = ThemeController.instance.currentPalette;
-  return LinearGradient(
-    begin: const Alignment(-0.34, -0.94),
-    end: const Alignment(0.34, 0.94),
-    colors: [palette.primaryDark, palette.primary, palette.seed],
-  );
-}
+LinearGradient gateHeaderGradient() => rumaraHeaderGradient;
 
 Color get gateWarningColor => ThemeController.instance.currentPalette.warning;
 

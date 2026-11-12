@@ -54,12 +54,12 @@ class CustomDropdown<T> extends StatelessWidget {
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.r),
+              borderRadius: BorderRadius.circular(8.r),
               border: Border.all(
-                color: errorText != null ? Colors.red : Colors.grey.shade300,
+                color: errorText != null ? Colors.red : rumaraBorder,
                 width: 1,
               ),
-              color: enabled ? inputColor : Colors.grey.shade100,
+              color: enabled ? inputColor : rumaraSurfaceMuted,
             ),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<T>(
@@ -109,11 +109,11 @@ class CustomDropdown<T> extends StatelessWidget {
                   child: Icon(
                     Icons.keyboard_arrow_down,
                     color:
-                        enabled ? Colors.grey.shade600 : Colors.grey.shade400,
+                        enabled ? rumaraMutedText : rumaraHintText,
                   ),
                 ),
                 dropdownColor: Colors.white,
-                borderRadius: BorderRadius.circular(10.r),
+                borderRadius: BorderRadius.circular(8.r),
                 elevation: 4,
               ),
             ),

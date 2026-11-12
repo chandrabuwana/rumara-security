@@ -16,6 +16,7 @@ import '../bloc/cuti_state.dart';
 import '../dialogs/success_dialog.dart';
 import '../../domain/entities/cuti_entity.dart';
 import 'edit_cuti_page.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class DetailCutiPage extends StatefulWidget {
   final String cutiId;
@@ -69,16 +70,7 @@ class _DetailCutiPageState extends State<DetailCutiPage> {
     return BlocProvider.value(
       value: _cutiBloc,
       child: AppScaffold(
-        appBar: AppBar(
-          title: const Text('Detail Ajuan Cuti'),
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-        ),
+        appBar: const RumaraAppBar(title: 'Detail Ajuan Cuti'),
         child: BlocListener<CutiBloc, CutiState>(
           listener: (context, state) {
             if (state is StatusCutiUpdated) {

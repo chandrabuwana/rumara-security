@@ -16,6 +16,7 @@ import '../bloc/profile_event.dart';
 import '../bloc/profile_state.dart';
 import '../widgets/profile_detail_item.dart';
 import 'edit_name_screen.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Layar detail profil yang menampilkan semua informasi profil lengkap
 class ProfileDetailsScreen extends StatelessWidget {
@@ -130,20 +131,7 @@ class _ProfileDetailsScreenViewState extends State<ProfileDetailsScreenView>
     return AppScaffold(
       backgroundColor: Colors.grey.shade50,
       enableScrolling: false, // Disable scrolling since we're using TabBarView
-      appBar: AppBar(
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: Text(
-          'Profil Saya',
-          style: TS.titleLarge.copyWith(color: Colors.white),
-        ),
-        centerTitle: true,
-        bottom: TabBar(
+      appBar: RumaraAppBar(title: 'Profil Saya', bottom: TabBar(
           controller: _tabController,
           labelColor: Colors.white,
           unselectedLabelColor: Colors.white70,
@@ -152,8 +140,7 @@ class _ProfileDetailsScreenViewState extends State<ProfileDetailsScreenView>
             Tab(text: 'Info Pribadi'),
             Tab(text: 'Dokumen'),
           ],
-        ),
-      ),
+        )),
       child: BlocConsumer<ProfileBloc, ProfileState>(
         listener: (context, state) {
           // Handle profile update success

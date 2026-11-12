@@ -8,6 +8,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/design/colors.dart';
 import '../bloc/schedule_bloc.dart';
 import 'shift_detail_pjo_deputy_page.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Schedule Page for PJO & Deputy
 /// 
@@ -45,22 +46,7 @@ class _SchedulePJODeputyPageState extends State<SchedulePJODeputyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Text(
-          'Jadwal Kerja',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
+      appBar: const RumaraAppBar(title: 'Jadwal Kerja'),
       body: Builder(
         builder: (builderContext) {
           return BlocBuilder<ScheduleBloc, ScheduleState>(

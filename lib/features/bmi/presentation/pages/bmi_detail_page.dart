@@ -5,6 +5,7 @@ import '../../../../core/design/colors.dart';
 import '../../../../core/design/styles.dart';
 import '../../../../core/constants/enums.dart';
 import '../bloc/bmi_bloc.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Page detail untuk melihat profil dan BMI user (untuk role non-anggota)
 class BMIDetailPage extends StatefulWidget {
@@ -101,22 +102,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: white,
-      appBar: AppBar(
-        title: Text(
-          'Detail Body Mass Index',
-          style: TS.titleLarge.copyWith(
-            fontWeight: FontWeight.bold,
-            color: neutral90,
-          ),
-        ),
-        backgroundColor: white,
-        foregroundColor: neutral90,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: const RumaraAppBar(title: 'Detail Body Mass Index'),
       body: BlocBuilder<BMIBloc, BMIState>(
         builder: (context, state) {
           return SingleChildScrollView(
@@ -188,7 +174,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                 border: Border.all(color: white, width: 5),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFB71C1C).withOpacity(0.15),
+                    color: primaryColor.withValues(alpha: 0.15),
                     blurRadius: 20,
                     offset: const Offset(0, 8),
                     spreadRadius: 2,
@@ -256,7 +242,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
               textAlign: TextAlign.center,
               text: TextSpan(
                 style: TS.titleLarge.copyWith(
-                  color: const Color(0xFFB71C1C),
+                  color: primaryColor,
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w500,
                 ),
@@ -285,7 +271,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                 borderRadius: BorderRadius.circular(16.r),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFB71C1C).withOpacity(0.08),
+                    color: primaryColor.withValues(alpha: 0.08),
                     blurRadius: 15,
                     offset: const Offset(0, 4),
                     spreadRadius: 1,
@@ -305,7 +291,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                     width: 1.5,
                     height: 50.h,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFB71C1C).withOpacity(0.2),
+                      color: primaryColor.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(1),
                     ),
                   ),
@@ -319,7 +305,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                     width: 1.5,
                     height: 50.h,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFB71C1C).withOpacity(0.2),
+                      color: primaryColor.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(1),
                     ),
                   ),
@@ -355,12 +341,12 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                 ),
                 borderRadius: BorderRadius.circular(16.r),
                 border: Border.all(
-                  color: const Color(0xFFB71C1C).withOpacity(0.15),
+                  color: primaryColor.withValues(alpha: 0.15),
                   width: 1.5,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFB71C1C).withOpacity(0.06),
+                    color: primaryColor.withValues(alpha: 0.06),
                     blurRadius: 12,
                     offset: const Offset(0, 4),
                     spreadRadius: 0,
@@ -393,7 +379,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                     // Prioritas: 1. Dari API, 2. Fallback ke default recommendation
                     userProfile.recommendation ?? _getRecommendation(bmiStatus),
                     style: TS.bodyMedium.copyWith(
-                      color: const Color(0xFFB71C1C),
+                      color: primaryColor,
                       height: 1.6,
                       fontSize: 14.sp,
                     ),
@@ -482,7 +468,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                     height: 160.w,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: const Color(0xFFB71C1C).withOpacity(0.04),
+                      color: primaryColor.withValues(alpha: 0.04),
                     ),
                   ),
                   Container(
@@ -490,9 +476,9 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                     height: 124.w,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: const Color(0xFFB71C1C).withOpacity(0.07),
+                      color: primaryColor.withValues(alpha: 0.07),
                       border: Border.all(
-                        color: const Color(0xFFB71C1C).withOpacity(0.1),
+                        color: primaryColor.withValues(alpha: 0.1),
                         width: 1.5,
                       ),
                     ),
@@ -508,12 +494,12 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                         end: Alignment.bottomRight,
                       ),
                       border: Border.all(
-                        color: const Color(0xFFB71C1C).withOpacity(0.2),
+                        color: primaryColor.withValues(alpha: 0.2),
                         width: 2,
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFB71C1C).withOpacity(0.12),
+                          color: primaryColor.withValues(alpha: 0.12),
                           blurRadius: 20,
                           spreadRadius: 3,
                           offset: const Offset(0, 5),
@@ -523,7 +509,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                     child: Icon(
                       Icons.monitor_weight_outlined,
                       size: 44.w,
-                      color: const Color(0xFFB71C1C).withOpacity(0.65),
+                      color: primaryColor.withValues(alpha: 0.65),
                     ),
                   ),
                 ],
@@ -640,7 +626,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
           value,
           style: TS.titleLarge.copyWith(
             fontWeight: FontWeight.bold,
-            color: const Color(0xFFB71C1C),
+            color: primaryColor,
             fontSize: 15.sp,
           ),
         ),
@@ -758,12 +744,12 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
         ),
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: const Color(0xFFB71C1C).withOpacity(0.15),
+          color: primaryColor.withValues(alpha: 0.15),
           width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFB71C1C).withOpacity(0.06),
+            color: primaryColor.withValues(alpha: 0.06),
             blurRadius: 10,
             offset: const Offset(0, 3),
             spreadRadius: 0,
@@ -805,7 +791,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                             child: Text(
                               'Height',
                               style: TS.bodySmall.copyWith(
-                                color: const Color(0xFFB71C1C),
+                                color: primaryColor,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12.sp,
                               ),
@@ -815,7 +801,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                             '${record.height.toStringAsFixed(1).replaceAll('.', ',')} CM',
                             style: TS.bodyMedium.copyWith(
                               fontWeight: FontWeight.bold,
-                              color: const Color(0xFFB71C1C),
+                              color: primaryColor,
                               fontSize: 14.sp,
                             ),
                           ),
@@ -829,7 +815,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                             child: Text(
                               'Weight',
                               style: TS.bodySmall.copyWith(
-                                color: const Color(0xFFB71C1C),
+                                color: primaryColor,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12.sp,
                               ),
@@ -839,7 +825,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                             '${record.weight.toStringAsFixed(1).replaceAll('.', ',')} Kg',
                             style: TS.bodyMedium.copyWith(
                               fontWeight: FontWeight.bold,
-                              color: const Color(0xFFB71C1C),
+                              color: primaryColor,
                               fontSize: 14.sp,
                             ),
                           ),
@@ -855,7 +841,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                 Container(
                   padding: REdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFB71C1C).withOpacity(0.1),
+                    color: primaryColor.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(10.r),
                   ),
                   child: Text(
@@ -863,7 +849,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                     textAlign: TextAlign.center,
                     style: TS.titleMedium.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: const Color(0xFFB71C1C),
+                      color: primaryColor,
                       fontSize: 16.sp,
                       height: 1.2,
                     ),
@@ -910,7 +896,7 @@ class _BMIDetailPageState extends State<BMIDetailPage> {
                   // Prioritas: 1. Dari notes (API), 2. Fallback ke default
                   record.notes ?? _getRecommendation(record.status),
                   style: TS.bodySmall.copyWith(
-                    color: const Color(0xFFB71C1C),
+                    color: primaryColor,
                     height: 1.5,
                     fontSize: 13.sp,
                   ),

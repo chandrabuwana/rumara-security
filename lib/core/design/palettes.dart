@@ -4,7 +4,7 @@ import 'color_palette.dart';
 
 /// Predefined accents. Default is `guardify` — identical to the current brand
 /// (red/crimson), so enabling the palette engine changes nothing out of the box.
-enum Palettes { guardify, ocean, forest, amber }
+enum Palettes { guardify, ocean, forest, amber, rumara }
 
 typedef PalettesPalette = ColorPalette;
 
@@ -23,6 +23,8 @@ class PaletteRegistry {
         return _amber;
       case Palettes.guardify:
         return _guardify;
+      case Palettes.rumara:
+        return _rumara;
     }
   }
 
@@ -31,6 +33,7 @@ class PaletteRegistry {
         Palettes.ocean,
         Palettes.forest,
         Palettes.amber,
+        Palettes.rumara,
       ];
 
   static String label(Palettes p) {
@@ -43,6 +46,8 @@ class PaletteRegistry {
         return 'Amber';
       case Palettes.guardify:
         return 'Guardify';
+      case Palettes.rumara:
+        return 'Rumara';
     }
   }
 
@@ -182,5 +187,31 @@ class PaletteRegistry {
         textSecondary: _textSecondary,
         input: _input,
         tabbar: _tabbar,
+      );
+
+  static ColorPalette get _rumara => const ColorPalette(
+        seed: Color(0xFF1A5FD6),
+        primary: Color(0xFF1A5FD6),
+        primaryDark: Color(0xFF0F4CB5),
+        primaryAccent: Color(0xFF4D8DF7),
+        neutral5: Color(0xFFFFFFFF),
+        neutral10: Color(0xFFF4F6FA),
+        neutral20: Color(0xFF8A94A8),
+        neutral30: Color(0xFFE1E6EF),
+        neutral50: Color(0xFFB4BCCB),
+        neutral70: Color(0xFF56627A),
+        neutral90: Color(0xFF0E1B33),
+        error: Color(0xFFD32F2F),
+        success: Color(0xFF11795A),
+        warning: Color(0xFFF08A24),
+        info: Color(0xFF1A5FD6),
+        background: Color(0xFFF4F6FA),
+        backgroundDark: Color(0xFF121212),
+        surface: Color(0xFFFFFFFF),
+        surfaceDark: Color(0xFF1E1E1E),
+        textPrimary: Color(0xFF0E1B33),
+        textSecondary: Color(0xFF8A94A8),
+        input: Color(0xFFFFFFFF),
+        tabbar: Color(0xFFFFFFFF),
       );
 }

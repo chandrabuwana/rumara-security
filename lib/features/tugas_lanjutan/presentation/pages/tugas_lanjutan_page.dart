@@ -21,6 +21,7 @@ import '../widgets/tugas_lanjutan_card.dart';
 import '../widgets/progress_indicator_widget.dart';
 import '../../../attendance/domain/repositories/attendance_repository.dart';
 import '../../../schedule/domain/usecases/get_current_shift.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class TugasLanjutanPage extends StatefulWidget {
   final String? userId;
@@ -331,20 +332,7 @@ class _TugasLanjutanPageState extends State<TugasLanjutanPage>
       child: AppScaffold(
         backgroundColor: Colors.grey[50],
         enableScrolling: false,
-        appBar: AppBar(
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          title: Text(
-            'Tugas Lanjutan',
-            style: TS.titleLarge.copyWith(color: Colors.white),
-          ),
-          centerTitle: true,
-          bottom: TabBar(
+        appBar: RumaraAppBar(title: 'Tugas Lanjutan', bottom: TabBar(
             controller: _tabController,
             indicatorColor: Colors.white,
             labelColor: Colors.white,
@@ -363,8 +351,7 @@ class _TugasLanjutanPageState extends State<TugasLanjutanPage>
                         Tab(text: 'Hari Ini'),
                         Tab(text: 'Riwayat'),
                       ],
-          ),
-        ),
+          )),
         child: BlocListener<TugasLanjutanBloc, TugasLanjutanState>(
           listener: (context, state) {
             // When task is completed, refresh data for "Hari Ini" tab
@@ -1583,11 +1570,7 @@ class _CameraCapturePageState extends State<_CameraCapturePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ambil Foto Bukti Penyelesaian'),
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
-      ),
+      appBar: const RumaraAppBar(title: 'Ambil Foto Bukti Penyelesaian'),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {

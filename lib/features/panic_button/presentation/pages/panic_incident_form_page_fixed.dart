@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../shared/widgets/app_scaffold.dart';
 import '../bloc/panic_button_bloc.dart';
 import '../bloc/panic_button_state.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class PanicIncidentFormPage extends StatelessWidget {
   const PanicIncidentFormPage({super.key});
@@ -124,16 +125,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBar: AppBar(
-        title: const Text('Panic Button'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      appBar: const RumaraAppBar(title: 'Tombol Darurat'),
       child: BlocBuilder<PanicButtonBloc, PanicButtonState>(
         builder: (context, state) {
           return SingleChildScrollView(
@@ -166,7 +158,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
                     width: double.infinity,
                     padding: REdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xFFE74C3C)),
+                      border: Border.all(color: const Color(0xFFE5484D)),
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: InkWell(
@@ -209,7 +201,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
                   8.verticalSpace,
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xFFE74C3C)),
+                      border: Border.all(color: const Color(0xFFE5484D)),
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: TextField(
@@ -266,7 +258,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
                   8.verticalSpace,
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xFFE74C3C)),
+                      border: Border.all(color: const Color(0xFFE5484D)),
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: TextField(
@@ -325,7 +317,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
                           : null,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: _isFormValid()
-                            ? const Color(0xFFE74C3C)
+                            ? const Color(0xFFE5484D)
                             : Colors.grey[300],
                         foregroundColor:
                             _isFormValid() ? Colors.white : Colors.grey[600],
@@ -434,7 +426,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Mengambil gambar dari kamera untuk $fieldType'),
-        backgroundColor: const Color(0xFFE74C3C),
+        backgroundColor: const Color(0xFFE5484D),
       ),
     );
   }
@@ -444,7 +436,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Mengambil gambar dari galeri untuk $fieldType'),
-        backgroundColor: const Color(0xFFE74C3C),
+        backgroundColor: const Color(0xFFE5484D),
       ),
     );
   }
@@ -454,7 +446,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Memilih dokumen untuk $fieldType'),
-        backgroundColor: const Color(0xFFE74C3C),
+        backgroundColor: const Color(0xFFE5484D),
       ),
     );
   }
@@ -464,7 +456,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Memilih file audio untuk $fieldType'),
-        backgroundColor: const Color(0xFFE74C3C),
+        backgroundColor: const Color(0xFFE5484D),
       ),
     );
   }

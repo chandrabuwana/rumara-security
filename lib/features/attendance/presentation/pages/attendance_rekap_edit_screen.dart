@@ -1509,6 +1509,7 @@ import '../../domain/entities/attendance_update_request.dart';
 import '../bloc/attendance_rekap_detail_bloc.dart';
 import '../bloc/attendance_rekap_detail_event.dart';
 import '../bloc/attendance_rekap_detail_state.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 enum AttendanceRekapEditMode {
   checkIn,
@@ -1578,22 +1579,9 @@ class _AttendanceRekapEditScreenState extends State<AttendanceRekapEditScreen> {
     return BlocProvider(
       create: (context) => getIt<AttendanceRekapDetailBloc>(),
       child: AppScaffold(
-        backgroundColor: const Color(0xFFF8F9FA),
+        backgroundColor: bgColor,
         enableScrolling: true,
-        appBar: AppBar(
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          title: Text(
-            widget.isAttendanceDetail ? 'Detail Kehadiran' : 'Detail Laporan Kegiatan',
-            style: TS.titleLarge.copyWith(color: Colors.white),
-          ),
-          centerTitle: true,
-        ),
+        appBar: RumaraAppBar(title: widget.isAttendanceDetail ? 'Detail Kehadiran' : 'Detail Laporan Kegiatan'),
         child: BlocConsumer<AttendanceRekapDetailBloc,
             AttendanceRekapDetailState>(
           listener: (context, state) {

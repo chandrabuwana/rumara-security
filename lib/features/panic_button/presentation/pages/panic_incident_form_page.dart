@@ -18,6 +18,7 @@ import '../../data/models/incident_request_model.dart';
 import '../../domain/repositories/panic_button_repository.dart';
 import '../bloc/panic_button_bloc.dart';
 import '../bloc/panic_button_state.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class PanicIncidentFormPage extends StatelessWidget {
   const PanicIncidentFormPage({super.key});
@@ -205,16 +206,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBar: AppBar(
-        title: const Text('Panic Button'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      appBar: const RumaraAppBar(title: 'Tombol Darurat'),
       child: BlocBuilder<PanicButtonBloc, PanicButtonState>(
         builder: (context, state) {
           return SingleChildScrollView(
@@ -247,7 +239,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
                     width: double.infinity,
                     padding: REdgeInsets.symmetric(horizontal: 16, vertical: 4),
                     decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xFFE74C3C)),
+                      border: Border.all(color: const Color(0xFFE5484D)),
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: _isLoadingAreas
@@ -351,7 +343,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
                   8.verticalSpace,
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xFFE74C3C)),
+                      border: Border.all(color: const Color(0xFFE5484D)),
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: TextField(
@@ -455,7 +447,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
                           : null,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: (_isFormValid() && !_isSubmitting)
-                            ? const Color(0xFFE74C3C)
+                            ? const Color(0xFFE5484D)
                             : Colors.grey[300],
                         foregroundColor: (_isFormValid() && !_isSubmitting)
                             ? Colors.white
@@ -886,7 +878,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
                   Navigator.pushReplacementNamed(context, '/home');
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFE74C3C),
+                  backgroundColor: const Color(0xFFE5484D),
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12.r),
@@ -1104,7 +1096,7 @@ class _PanicIncidentFormViewState extends State<_PanicIncidentFormView> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        backgroundColor: const Color(0xFFE74C3C),
+        backgroundColor: const Color(0xFFE5484D),
       ),
     );
   }
@@ -1167,11 +1159,7 @@ class _CameraScreenState extends State<_CameraScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: Text('Ambil Foto - ${widget.fieldType}'),
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.white,
-      ),
+      appBar: RumaraAppBar(title: 'Ambil Foto - ${widget.fieldType}'),
       body: Column(
         children: [
           Expanded(

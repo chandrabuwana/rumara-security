@@ -85,9 +85,7 @@ class _ShiftDetailPJODeputyPageState extends State<ShiftDetailPJODeputyPage>
 
   Widget _buildEmptyState() {
     return Container(
-      decoration: BoxDecoration(
-        color: primaryColor,
-      ),
+      decoration: BoxDecoration(gradient: rumaraHeaderGradient),
       child: SafeArea(
         child: Column(
           children: [
@@ -131,9 +129,7 @@ class _ShiftDetailPJODeputyPageState extends State<ShiftDetailPJODeputyPage>
 
   Widget _buildContent(ShiftSchedule shift) {
     return Container(
-      decoration: BoxDecoration(
-        color: primaryColor,
-      ),
+      decoration: BoxDecoration(gradient: rumaraHeaderGradient),
       child: SafeArea(
         child: Column(
           children: [

@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import '../../../../core/design/colors.dart';
 import '../../../../core/di/injection.dart';
 import '../../domain/entities/notification_item.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class NotificationListPage extends StatefulWidget {
   const NotificationListPage({super.key});
@@ -140,35 +141,13 @@ class _NotificationListPageState extends State<NotificationListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: neutral10,
+      backgroundColor: bgColor,
+      appBar: const RumaraAppBar(title: 'Notifikasi'),
       body: SafeArea(
+        top: false,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
-              child: Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back),
-                    color: primaryColor,
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                  4.horizontalSpace,
-                  Text(
-                    'Notifikasi',
-                    style: TextStyle(
-                      fontSize: 24.sp,
-                      fontWeight: FontWeight.bold,
-                      color: primaryColor,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            // Content
             Expanded(
               child: _isLoading
                   ? Center(

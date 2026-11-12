@@ -82,7 +82,7 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
               end: Alignment.center,
               colors: [
                 primaryColor,
-                Colors.white,
+                bgColor,
               ],
               stops: [0.4, 0.4],
             ),
@@ -167,6 +167,7 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(16.r),
+                            border: Border.all(color: rumaraBorder),
                           ),
                           padding: EdgeInsets.symmetric(
                               horizontal: 24.w, vertical: 32.h),
@@ -188,8 +189,8 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                                     return null;
                                   },
                                   keyboardType: TextInputType.text,
-                                  borderRadius: 12,
-                                  color: const Color(0xFFF8F9FA),
+                                  borderRadius: 8,
+                                  color: Colors.white,
                                   contentPadding: EdgeInsets.symmetric(
                                     horizontal: 15.w,
                                     vertical: 8.h,
@@ -215,8 +216,8 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                                     return null;
                                   },
                                   keyboardType: TextInputType.emailAddress,
-                                  borderRadius: 12,
-                                  color: const Color(0xFFF8F9FA),
+                                  borderRadius: 8,
+                                  color: Colors.white,
                                   contentPadding: EdgeInsets.symmetric(
                                     horizontal: 15.w,
                                     vertical: 8.h,
@@ -237,7 +238,7 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                                       onPressed: state.isLoading
                                           ? null
                                           : _onSendResetLinkPressed,
-                                      borderRadius: 12,
+                                      borderRadius: 14,
                                     );
                                   },
                                 ),
@@ -258,7 +259,7 @@ class _ResetPasswordViewState extends State<_ResetPasswordView> {
                               'Kembali Ke Login',
                               style: TextStyle(
                                 fontSize: 16.sp,
-                                color: const Color(0xFF3498DB),
+                                color: primaryColor,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),

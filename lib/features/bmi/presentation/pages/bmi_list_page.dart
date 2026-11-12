@@ -11,6 +11,7 @@ import '../../../../shared/widgets/Buttons/ui_button.dart';
 import '../../domain/entities/user_profile.dart';
 import '../bloc/bmi_bloc.dart';
 import 'bmi_detail_page.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Page untuk role non-anggota - menampilkan daftar BMI semua user dengan fitur search dan pin
 class BMIListPage extends StatefulWidget {
@@ -221,22 +222,7 @@ class _BMIListPageState extends State<BMIListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: white,
-      appBar: AppBar(
-        title: Text(
-          'Body Mass Index',
-          style: TS.titleLarge.copyWith(
-            fontWeight: FontWeight.bold,
-            color: neutral90,
-          ),
-        ),
-        backgroundColor: white,
-        foregroundColor: neutral90,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: const RumaraAppBar(title: 'Body Mass Index'),
       body: BlocBuilder<BMIBloc, BMIState>(
         buildWhen: (previous, current) {
           // Hanya rebuild jika state yang relevan berubah
@@ -285,12 +271,12 @@ class _BMIListPageState extends State<BMIListPage> {
                 color: white,
                 borderRadius: BorderRadius.circular(14.r),
                 border: Border.all(
-                  color: const Color(0xFFB71C1C).withOpacity(0.3),
+                  color: primaryColor.withValues(alpha: 0.3),
                   width: 1.5,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFB71C1C).withOpacity(0.08),
+                    color: primaryColor.withValues(alpha: 0.08),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                     spreadRadius: 0,
@@ -310,12 +296,12 @@ class _BMIListPageState extends State<BMIListPage> {
                 decoration: InputDecoration(
                   hintText: 'Cari',
                   hintStyle: TS.bodyMedium.copyWith(
-                    color: const Color(0xFFB71C1C).withOpacity(0.6),
+                    color: primaryColor.withValues(alpha: 0.6),
                     fontSize: 14.sp,
                   ),
                   prefixIcon: Icon(
                     Icons.search,
-                    color: const Color(0xFFB71C1C),
+                    color: primaryColor,
                     size: 22.w,
                   ),
                   suffixIcon: _searchController.text.isNotEmpty
@@ -351,7 +337,7 @@ class _BMIListPageState extends State<BMIListPage> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  const Color(0xFFB71C1C),
+                  primaryColor,
                   const Color(0xFFD32F2F),
                 ],
                 begin: Alignment.topLeft,
@@ -360,7 +346,7 @@ class _BMIListPageState extends State<BMIListPage> {
               borderRadius: BorderRadius.circular(14.r),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFB71C1C).withOpacity(0.3),
+                  color: primaryColor.withValues(alpha: 0.3),
                   blurRadius: 8,
                   offset: const Offset(0, 4),
                   spreadRadius: 0,
@@ -543,12 +529,12 @@ class _BMIListPageState extends State<BMIListPage> {
         ),
         borderRadius: BorderRadius.circular(18.r),
         border: Border.all(
-          color: const Color(0xFFB71C1C).withOpacity(0.1),
+          color: primaryColor.withValues(alpha: 0.1),
           width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFB71C1C).withOpacity(0.08),
+            color: primaryColor.withValues(alpha: 0.08),
             blurRadius: 12,
             offset: const Offset(0, 4),
             spreadRadius: 0,
@@ -557,7 +543,7 @@ class _BMIListPageState extends State<BMIListPage> {
       ),
       child: Center(
         child: CircularProgressIndicator(
-          color: const Color(0xFFB71C1C),
+          color: primaryColor,
           strokeWidth: 2.5,
         ),
       ),
@@ -592,14 +578,14 @@ class _BMIListPageState extends State<BMIListPage> {
               borderRadius: BorderRadius.circular(18.r),
               border: Border.all(
                 color: hasData
-                    ? const Color(0xFFB71C1C).withOpacity(0.1)
+                    ? primaryColor.withValues(alpha: 0.1)
                     : neutral20,
                 width: 1.5,
               ),
               boxShadow: [
                 BoxShadow(
                   color: hasData
-                      ? const Color(0xFFB71C1C).withOpacity(0.1)
+                      ? primaryColor.withValues(alpha: 0.1)
                       : neutral50.withOpacity(0.1),
                   blurRadius: 12,
                   offset: const Offset(0, 4),
@@ -632,14 +618,14 @@ class _BMIListPageState extends State<BMIListPage> {
                       color: neutral20,
                       border: Border.all(
                         color: hasData
-                            ? const Color(0xFFB71C1C).withOpacity(0.2)
+                            ? primaryColor.withValues(alpha: 0.2)
                             : neutral30,
                         width: 3,
                       ),
                       boxShadow: [
                         BoxShadow(
                           color: hasData
-                              ? const Color(0xFFB71C1C).withOpacity(0.15)
+                              ? primaryColor.withValues(alpha: 0.15)
                               : neutral50.withOpacity(0.1),
                           blurRadius: 8,
                           offset: const Offset(0, 3),
@@ -696,15 +682,15 @@ class _BMIListPageState extends State<BMIListPage> {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            const Color(0xFFB71C1C).withOpacity(0.1),
-                            const Color(0xFFB71C1C).withOpacity(0.05),
+                            primaryColor.withValues(alpha: 0.1),
+                            primaryColor.withValues(alpha: 0.05),
                           ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
                         borderRadius: BorderRadius.circular(12.r),
                         border: Border.all(
-                          color: const Color(0xFFB71C1C).withOpacity(0.2),
+                          color: primaryColor.withValues(alpha: 0.2),
                           width: 1,
                         ),
                       ),
@@ -714,7 +700,7 @@ class _BMIListPageState extends State<BMIListPage> {
                             '${userProfile.currentBMI!.toStringAsFixed(1).replaceAll('.', ',')} Kg/m2',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: const Color(0xFFB71C1C),
+                              color: primaryColor,
                               fontSize: 16.sp,
                             ),
                           ),
@@ -753,7 +739,7 @@ class _BMIListPageState extends State<BMIListPage> {
                           ),
                           borderRadius: BorderRadius.circular(12.r),
                           border: Border.all(
-                            color: const Color(0xFFB71C1C).withOpacity(0.15),
+                            color: primaryColor.withValues(alpha: 0.15),
                             width: 1,
                           ),
                         ),
@@ -777,7 +763,7 @@ class _BMIListPageState extends State<BMIListPage> {
                                   '${userProfile.currentWeight!.toStringAsFixed(1).replaceAll('.', ',')} KG',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: const Color(0xFFB71C1C),
+                                    color: primaryColor,
                                     fontSize: 11.sp,
                                   ),
                                 ),
@@ -788,7 +774,7 @@ class _BMIListPageState extends State<BMIListPage> {
                             width: 1.5,
                             height: 24.h,
                             decoration: BoxDecoration(
-                              color: const Color(0xFFB71C1C).withOpacity(0.2),
+                              color: primaryColor.withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(1),
                             ),
                           ),
@@ -809,7 +795,7 @@ class _BMIListPageState extends State<BMIListPage> {
                                   '${userProfile.height!.toStringAsFixed(1).replaceAll('.', ',')} CM',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: const Color(0xFFB71C1C),
+                                    color: primaryColor,
                                     fontSize: 11.sp,
                                   ),
                                 ),
@@ -857,7 +843,7 @@ class _BMIListPageState extends State<BMIListPage> {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        const Color(0xFFB71C1C),
+                        primaryColor,
                         const Color(0xFFD32F2F),
                       ],
                       begin: Alignment.topLeft,
@@ -866,7 +852,7 @@ class _BMIListPageState extends State<BMIListPage> {
                     borderRadius: BorderRadius.circular(8.r),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFB71C1C).withOpacity(0.4),
+                        color: primaryColor.withValues(alpha: 0.4),
                         blurRadius: 6,
                         offset: const Offset(0, 2),
                         spreadRadius: 0,
@@ -908,7 +894,7 @@ class _BMIListPageState extends State<BMIListPage> {
                       height: 200.w,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: const Color(0xFFB71C1C).withOpacity(0.04),
+                        color: primaryColor.withValues(alpha: 0.04),
                       ),
                     ),
                     Container(
@@ -916,9 +902,9 @@ class _BMIListPageState extends State<BMIListPage> {
                       height: 158.w,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: const Color(0xFFB71C1C).withOpacity(0.07),
+                        color: primaryColor.withValues(alpha: 0.07),
                         border: Border.all(
-                          color: const Color(0xFFB71C1C).withOpacity(0.1),
+                          color: primaryColor.withValues(alpha: 0.1),
                           width: 1.5,
                         ),
                       ),
@@ -934,12 +920,12 @@ class _BMIListPageState extends State<BMIListPage> {
                           end: Alignment.bottomRight,
                         ),
                         border: Border.all(
-                          color: const Color(0xFFB71C1C).withOpacity(0.18),
+                          color: primaryColor.withValues(alpha: 0.18),
                           width: 2,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFB71C1C).withOpacity(0.12),
+                            color: primaryColor.withValues(alpha: 0.12),
                             blurRadius: 24,
                             spreadRadius: 4,
                             offset: const Offset(0, 6),
@@ -949,7 +935,7 @@ class _BMIListPageState extends State<BMIListPage> {
                       child: Icon(
                         Icons.people_outline,
                         size: 56.w,
-                        color: const Color(0xFFB71C1C).withOpacity(0.65),
+                        color: primaryColor.withValues(alpha: 0.65),
                       ),
                     ),
                   ],

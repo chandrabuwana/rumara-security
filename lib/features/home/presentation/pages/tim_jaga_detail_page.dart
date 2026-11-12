@@ -16,6 +16,7 @@ import '../../../laporan_kegiatan/presentation/bloc/laporan_kegiatan_bloc.dart';
 import '../../../laporan_kegiatan/presentation/pages/laporan_kegiatan_detail_page.dart';
 import '../../../schedule/domain/entities/shift_schedule.dart';
 import '../../../schedule/domain/repositories/schedule_repository.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Halaman Tim Jaga Hari Ini dengan 2 tab per shift (Shift Pagi, Shift Malam)
 class TimJagaDetailPage extends StatefulWidget {
@@ -166,24 +167,7 @@ class _TimJagaDetailPageState extends State<TimJagaDetailPage>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Tim Jaga Hari Ini',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        centerTitle: true,
-        bottom: PreferredSize(
+      appBar: RumaraAppBar(title: 'Tim Jaga Hari Ini', bottom: PreferredSize(
           preferredSize: Size.fromHeight(48.h),
           child: _shiftDetail != null
               ? Align(
@@ -209,8 +193,7 @@ class _TimJagaDetailPageState extends State<TimJagaDetailPage>
                   ),
                 )
               : const SizedBox.shrink(),
-        ),
-      ),
+        )),
       body: Column(
         children: [
           // Search and Filter

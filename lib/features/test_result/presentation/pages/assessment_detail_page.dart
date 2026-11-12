@@ -9,6 +9,7 @@ import '../../domain/entities/test_result_entity.dart';
 import '../../domain/entities/test_summary_entity.dart';
 import '../bloc/test_result_bloc.dart';
 import '../widgets/test_result_header_widget.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Detail page for Assessment (Ujian Anggota)
 class AssessmentDetailPage extends StatefulWidget {
@@ -46,32 +47,14 @@ class _AssessmentDetailPageState extends State<AssessmentDetailPage> {
       builder: (context, state) {
         if (state is TestResultLoading) {
           return AppScaffold(
-            appBar: AppBar(
-              title: Text(
-                'Detail Assessment',
-                style: TS.titleLarge.copyWith(fontWeight: FontWeight.bold),
-              ),
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ),
+            appBar: const RumaraAppBar(title: 'Detail Penilaian'),
             child: const Center(child: CircularProgressIndicator()),
           );
         }
 
         if (state is TestResultError) {
           return AppScaffold(
-            appBar: AppBar(
-              title: Text(
-                'Detail Assessment',
-                style: TS.titleLarge.copyWith(fontWeight: FontWeight.bold),
-              ),
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ),
+            appBar: const RumaraAppBar(title: 'Detail Penilaian'),
             child: Center(child: Text('Error: ${state.message}')),
           );
         }
@@ -83,32 +66,14 @@ class _AssessmentDetailPageState extends State<AssessmentDetailPage> {
 
           if (isLoading && assessmentDetailList.isEmpty) {
             return AppScaffold(
-              appBar: AppBar(
-                title: Text(
-                  'Detail Assessment',
-                  style: TS.titleLarge.copyWith(fontWeight: FontWeight.bold),
-                ),
-                leading: IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: () => Navigator.pop(context),
-                ),
-              ),
+              appBar: const RumaraAppBar(title: 'Detail Penilaian'),
               child: const Center(child: CircularProgressIndicator()),
             );
           }
 
           if (error != null && assessmentDetailList.isEmpty) {
             return AppScaffold(
-              appBar: AppBar(
-                title: Text(
-                  'Detail Assessment',
-                  style: TS.titleLarge.copyWith(fontWeight: FontWeight.bold),
-                ),
-                leading: IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: () => Navigator.pop(context),
-                ),
-              ),
+              appBar: const RumaraAppBar(title: 'Detail Penilaian'),
               child: Center(child: Text('Error: $error')),
             );
           }
@@ -124,16 +89,7 @@ class _AssessmentDetailPageState extends State<AssessmentDetailPage> {
               : assessmentDetailList.map((r) => r.nilaiKKM).reduce((a, b) => a < b ? a : b);
 
           return AppScaffold(
-            appBar: AppBar(
-              title: Text(
-                'Detail Assessment',
-                style: TS.titleLarge.copyWith(fontWeight: FontWeight.bold),
-              ),
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ),
+            appBar: const RumaraAppBar(title: 'Detail Penilaian'),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -279,16 +235,7 @@ class _AssessmentDetailPageState extends State<AssessmentDetailPage> {
         }
 
         return AppScaffold(
-          appBar: AppBar(
-            title: Text(
-              'Detail Assessment',
-              style: TS.titleLarge.copyWith(fontWeight: FontWeight.bold),
-            ),
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () => Navigator.pop(context),
-            ),
-          ),
+          appBar: const RumaraAppBar(title: 'Detail Penilaian'),
           child: const Center(child: Text('Unknown state')),
         );
       },

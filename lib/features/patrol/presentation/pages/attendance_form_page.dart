@@ -7,6 +7,8 @@ import '../../../../core/di/injection.dart';
 import '../../../../core/services/location_service.dart';
 import '../../domain/entities/patrol_location.dart';
 import '../bloc/attendance_bloc.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
+import '../../../../core/design/colors.dart';
 
 class AttendanceFormPage extends StatefulWidget {
   final PatrolLocation location;
@@ -325,19 +327,8 @@ class _AttendanceFormPageState extends State<AttendanceFormPage> {
           }
         },
         child: Scaffold(
-          backgroundColor: const Color(0xFFF5F5F5),
-          appBar: AppBar(
-            title: const Text(
-              'Patroli Hari Ini',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            backgroundColor: const Color(0xFF8B1538),
-            iconTheme: const IconThemeData(color: Colors.white),
-            elevation: 0,
-          ),
+          backgroundColor: bgColor,
+          appBar: const RumaraAppBar(title: 'Patroli Hari Ini'),
           body: SingleChildScrollView(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -365,28 +356,28 @@ class _AttendanceFormPageState extends State<AttendanceFormPage> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: const Color(0xFF8B1538),
+                            color: primaryColor,
                             width: 4,
                           ),
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text(
                             '3/5',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF8B1538),
+                              color: primaryColor,
                             ),
                           ),
                         ),
                       ),
                       const SizedBox(width: 16),
-                      const Text(
+                      Text(
                         'Patroli Selesai',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF8B1538),
+                          color: primaryColor,
                         ),
                       ),
                     ],
@@ -655,18 +646,18 @@ class _AttendanceFormPageState extends State<AttendanceFormPage> {
                               child: OutlinedButton(
                                 onPressed: () => Navigator.pop(context),
                                 style: OutlinedButton.styleFrom(
-                                  side: const BorderSide(
-                                    color: Color(0xFF8B1538),
+                                  side: BorderSide(
+                                    color: primaryColor,
                                   ),
                                   padding: const EdgeInsets.symmetric(vertical: 12),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
-                                child: const Text(
+                                child: Text(
                                   'Batal',
                                   style: TextStyle(
-                                    color: Color(0xFF8B1538),
+                                    color: primaryColor,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -681,7 +672,7 @@ class _AttendanceFormPageState extends State<AttendanceFormPage> {
                                         ? null
                                         : _submitAttendance,
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: const Color(0xFF8B1538),
+                                      backgroundColor: primaryColor,
                                       padding: const EdgeInsets.symmetric(vertical: 12),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(8),
@@ -734,8 +725,8 @@ class _AttendanceFormPageState extends State<AttendanceFormPage> {
             Container(
               width: 80,
               height: 80,
-              decoration: const BoxDecoration(
-                color: Color(0xFF8B1538),
+              decoration: BoxDecoration(
+                color: primaryColor,
                 shape: BoxShape.circle,
               ),
               child: const Icon(
@@ -772,7 +763,7 @@ class _AttendanceFormPageState extends State<AttendanceFormPage> {
                   Navigator.of(context).pop(); // Go back to detail page
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF8B1538),
+                  backgroundColor: primaryColor,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -874,11 +865,7 @@ class _CameraCapturePageState extends State<CameraCapturePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ambil Foto Bukti'),
-        backgroundColor: const Color(0xFF8B1538),
-        foregroundColor: Colors.white,
-      ),
+      appBar: const RumaraAppBar(title: 'Ambil Foto Bukti'),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {

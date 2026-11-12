@@ -15,6 +15,7 @@ import '../bloc/cuti_state.dart';
 import '../dialogs/success_dialog.dart';
 import '../../domain/entities/cuti_entity.dart';
 import '../../domain/entities/leave_request_type_entity.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class FormAjuanCutiPage extends StatefulWidget {
   final String userId;
@@ -69,16 +70,7 @@ class _FormAjuanCutiPageState extends State<FormAjuanCutiPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBar: AppBar(
-        title: const Text('Buat Ajuan Cuti'),
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ),
+      appBar: const RumaraAppBar(title: 'Buat Ajuan Cuti'),
       child: Stack(
         children: [
           SingleChildScrollView(

@@ -8,6 +8,7 @@ import '../bloc/personnel_event.dart';
 import '../bloc/personnel_state.dart';
 import '../../domain/entities/personnel.dart';
 import 'personnel_document_page.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class PersonnelDetailPage extends StatefulWidget {
   final String personnelId;
@@ -24,22 +25,7 @@ class _PersonnelDetailPageState extends State<PersonnelDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: neutral10,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: neutral90),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Profil Detail',
-          style: TextStyle(
-            color: neutral90,
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
+      appBar: const RumaraAppBar(title: 'Profil Detail'),
       body: BlocConsumer<PersonnelBloc, PersonnelState>(
         listener: (context, state) {
           if (state is PersonnelError) {

@@ -15,6 +15,7 @@ import 'profile_details_screen.dart';
 import 'theme_picker_screen.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../../../auth/presentation/pages/change_password_page.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Layar utama profil yang menampilkan informasi singkat dan menu-menu profil
 class ProfileScreen extends StatelessWidget {
@@ -47,20 +48,7 @@ class ProfileScreenView extends StatelessWidget {
     return AppScaffold(
       backgroundColor: primaryColor,
       enableScrolling: false, // Disable scrolling since we're using Expanded
-      appBar: AppBar(
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: Text(
-          'Profile',
-          style: TS.titleLarge.copyWith(color: Colors.white),
-        ),
-        centerTitle: true,
-      ),
+      appBar: const RumaraAppBar(title: 'Profil'),
       child: BlocConsumer<ProfileBloc, ProfileState>(
         listener: (context, state) {
           // Handle logout success

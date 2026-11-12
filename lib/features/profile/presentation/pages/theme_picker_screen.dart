@@ -7,6 +7,7 @@ import '../../../../core/design/palettes.dart';
 import '../../../../core/design/styles.dart';
 import '../../../../core/design/theme_controller.dart';
 import '../../../../shared/widgets/app_scaffold.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Picker screen for the active [Palettes] accent + [ThemeBrightness] mode.
 ///
@@ -21,20 +22,7 @@ class ThemePickerScreen extends StatelessWidget {
     return AppScaffold(
       backgroundColor: primaryColor,
       enableScrolling: false,
-      appBar: AppBar(
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: Text(
-          'Tema',
-          style: TS.titleLarge.copyWith(color: Colors.white),
-        ),
-        centerTitle: true,
-      ),
+      appBar: const RumaraAppBar(title: 'Tema'),
       child: Padding(
         padding: EdgeInsets.all(20.w),
         child: Column(

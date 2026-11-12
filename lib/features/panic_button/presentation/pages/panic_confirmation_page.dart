@@ -5,6 +5,7 @@ import '../../../../shared/widgets/app_scaffold.dart';
 import '../bloc/panic_button_bloc.dart';
 import '../bloc/panic_button_state.dart';
 import '../bloc/panic_button_event.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class PanicConfirmationPage extends StatelessWidget {
   const PanicConfirmationPage({super.key});
@@ -21,12 +22,7 @@ class _PanicConfirmationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBar: AppBar(
-        title: const Text('Panic Button'),
-        backgroundColor: const Color(0xFFE74C3C),
-        foregroundColor: Colors.white,
-        elevation: 0,
-      ),
+      appBar: const RumaraAppBar(title: 'Tombol Darurat'),
       child: BlocListener<PanicButtonBloc, PanicButtonState>(
         listener: (context, state) {
           if (state.status == PanicButtonStateStatus.activated) {
@@ -64,7 +60,7 @@ class _PanicConfirmationView extends StatelessWidget {
                       width: 100.w,
                       height: 100.h,
                       decoration: const BoxDecoration(
-                        color: Color(0xFFE74C3C),
+                        color: Color(0xFFE5484D),
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
@@ -149,7 +145,7 @@ class _PanicConfirmationView extends StatelessWidget {
                                             );
                                       },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFFE74C3C),
+                              backgroundColor: const Color(0xFFE5484D),
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12.r),
@@ -193,7 +189,7 @@ class _PanicConfirmationView extends StatelessWidget {
       width: 12.w,
       height: 12.h,
       decoration: BoxDecoration(
-        color: isActive ? const Color(0xFFE74C3C) : Colors.grey[300],
+        color: isActive ? const Color(0xFFE5484D) : Colors.grey[300],
         shape: BoxShape.circle,
       ),
     );
@@ -203,7 +199,7 @@ class _PanicConfirmationView extends StatelessWidget {
     return Expanded(
       child: Container(
         height: 2.h,
-        color: isActive ? const Color(0xFFE74C3C) : Colors.grey[300],
+        color: isActive ? const Color(0xFFE5484D) : Colors.grey[300],
       ),
     );
   }
@@ -224,7 +220,7 @@ class _PanicConfirmationView extends StatelessWidget {
                 width: 80.w,
                 height: 80.h,
                 decoration: const BoxDecoration(
-                  color: Color(0xFFE74C3C),
+                  color: Color(0xFFE5484D),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
@@ -262,7 +258,7 @@ class _PanicConfirmationView extends StatelessWidget {
                     Navigator.popUntil(context, (route) => route.isFirst);
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFE74C3C),
+                    backgroundColor: const Color(0xFFE5484D),
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.r),
@@ -309,7 +305,7 @@ class _PanicConfirmationView extends StatelessWidget {
               child: Text(
                 'OK',
                 style: TextStyle(
-                  color: const Color(0xFFE74C3C),
+                  color: const Color(0xFFE5484D),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ),

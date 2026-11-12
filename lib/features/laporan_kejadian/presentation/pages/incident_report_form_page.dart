@@ -15,6 +15,7 @@ import '../bloc/incident_event.dart';
 import '../bloc/incident_state.dart';
 import '../../domain/entities/incident_location_entity.dart';
 import '../../domain/entities/incident_type_entity.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class IncidentReportFormPage extends StatefulWidget {
   const IncidentReportFormPage({super.key});
@@ -198,22 +199,7 @@ class _IncidentReportFormPageState extends State<IncidentReportFormPage> {
       },
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Navigator.pop(context),
-          ),
-          title: Text(
-            'Lapor Insiden Kejadian',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
+        appBar: const RumaraAppBar(title: 'Lapor Insiden Kejadian'),
         body: BlocBuilder<IncidentBloc, IncidentState>(
           builder: (context, state) {
             return SingleChildScrollView(

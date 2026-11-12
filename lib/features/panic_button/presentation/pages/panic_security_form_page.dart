@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../shared/widgets/app_scaffold.dart';
 import '../bloc/panic_button_bloc.dart';
 import '../bloc/panic_button_state.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class PanicSecurityFormPage extends StatelessWidget {
   const PanicSecurityFormPage({super.key});
@@ -36,12 +37,7 @@ class _PanicSecurityFormViewState extends State<_PanicSecurityFormView> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBar: AppBar(
-        title: const Text('Panic Button'),
-        backgroundColor: const Color(0xFFE74C3C),
-        foregroundColor: Colors.white,
-        elevation: 0,
-      ),
+      appBar: const RumaraAppBar(title: 'Tombol Darurat'),
       child: BlocBuilder<PanicButtonBloc, PanicButtonState>(
         builder: (context, state) {
           return Padding(
@@ -181,7 +177,7 @@ class _PanicSecurityFormViewState extends State<_PanicSecurityFormView> {
                           }
                         : null,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFE74C3C),
+                      backgroundColor: const Color(0xFFE5484D),
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.r),
@@ -211,7 +207,7 @@ class _PanicSecurityFormViewState extends State<_PanicSecurityFormView> {
       width: 12.w,
       height: 12.h,
       decoration: BoxDecoration(
-        color: isActive ? const Color(0xFFE74C3C) : Colors.grey[300],
+        color: isActive ? const Color(0xFFE5484D) : Colors.grey[300],
         shape: BoxShape.circle,
       ),
     );
@@ -221,7 +217,7 @@ class _PanicSecurityFormViewState extends State<_PanicSecurityFormView> {
     return Expanded(
       child: Container(
         height: 2.h,
-        color: isActive ? const Color(0xFFE74C3C) : Colors.grey[300],
+        color: isActive ? const Color(0xFFE5484D) : Colors.grey[300],
       ),
     );
   }

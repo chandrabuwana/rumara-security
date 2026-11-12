@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../domain/entities/patrol_route.dart';
 import '../../domain/entities/patrol_location.dart';
 import 'patrol_progress_widget.dart';
+import '../../../../core/design/colors.dart';
 
 class PatrolRouteCard extends StatelessWidget {
   final PatrolRoute route;
@@ -48,7 +49,7 @@ class PatrolRouteCard extends StatelessWidget {
                   width: 4,
                   height: 60,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF8B1538),
+                    color: primaryColor,
                     borderRadius: BorderRadius.circular(2),
                   ),
                 ),
@@ -87,10 +88,10 @@ class PatrolRouteCard extends StatelessWidget {
                           const SizedBox(width: 16),
                           Text(
                             '$progressPercentage%',
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF8B1538),
+                              color: primaryColor,
                             ),
                           ),
                         ],
@@ -122,7 +123,7 @@ class PatrolRouteCard extends StatelessWidget {
                     : 0.0,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: const Color(0xFF8B1538),
+                    color: primaryColor,
                     borderRadius: BorderRadius.circular(3),
                   ),
                 ),

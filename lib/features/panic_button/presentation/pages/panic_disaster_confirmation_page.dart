@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../shared/widgets/app_scaffold.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class PanicDisasterConfirmationPage extends StatelessWidget {
   const PanicDisasterConfirmationPage({super.key});
@@ -8,23 +9,7 @@ class PanicDisasterConfirmationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBar: AppBar(
-        title: Text(
-          'Panic Button',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      appBar: const RumaraAppBar(title: 'Tombol Darurat'),
       child: Padding(
         padding: REdgeInsets.all(20),
         child: Column(
@@ -35,7 +20,7 @@ class PanicDisasterConfirmationPage extends StatelessWidget {
               width: 120.w,
               height: 120.h,
               decoration: const BoxDecoration(
-                color: Color(0xFFE74C3C),
+                color: Color(0xFFE5484D),
                 shape: BoxShape.circle,
               ),
               child: Icon(
@@ -106,7 +91,7 @@ class PanicDisasterConfirmationPage extends StatelessWidget {
                             context, '/panic-disaster-selection');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFE74C3C),
+                        backgroundColor: const Color(0xFFE5484D),
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12.r),

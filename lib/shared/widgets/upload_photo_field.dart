@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../core/design/colors.dart';
 import '../../core/design/styles.dart';
 
 class UploadPhotoField extends StatefulWidget {
@@ -139,8 +140,8 @@ class _UploadPhotoFieldState extends State<UploadPhotoField> {
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.r),
-                        border: Border.all(color: Colors.grey.shade300),
-                        color: Colors.grey.shade200,
+                        border: Border.all(color: rumaraBorder),
+                        color: rumaraSurfaceMuted,
                       ),
                       child: Center(
                         child: Column(
@@ -149,13 +150,13 @@ class _UploadPhotoFieldState extends State<UploadPhotoField> {
                             Icon(
                               Icons.image,
                               size: 24.sp,
-                              color: Colors.grey.shade600,
+                              color: rumaraMutedText,
                             ),
                             4.verticalSpace,
                             Text(
                               'Foto ${index + 1}',
                               style: TS.bodySmall.copyWith(
-                                color: Colors.grey.shade600,
+                                color: rumaraMutedText,
                               ),
                             ),
                           ],
@@ -199,11 +200,11 @@ class _UploadPhotoFieldState extends State<UploadPhotoField> {
                   border: Border.all(
                     color: widget.errorText != null
                         ? Colors.red
-                        : Colors.grey.shade300,
+                        : rumaraBorder,
                     style: BorderStyle.solid,
                   ),
                   borderRadius: BorderRadius.circular(8.r),
-                  color: Colors.grey.shade50,
+                  color: rumaraSurfaceMuted,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -211,7 +212,7 @@ class _UploadPhotoFieldState extends State<UploadPhotoField> {
                     Icon(
                       Icons.add_a_photo,
                       size: 32.sp,
-                      color: Colors.grey.shade600,
+                      color: rumaraMutedText,
                     ),
                     4.verticalSpace,
                     Text(
@@ -219,7 +220,7 @@ class _UploadPhotoFieldState extends State<UploadPhotoField> {
                           ? 'Tambah Foto'
                           : 'Tambah Foto Lagi',
                       style: TS.bodyMedium.copyWith(
-                        color: Colors.grey.shade600,
+                        color: rumaraMutedText,
                       ),
                     ),
                     if (widget.multiple) ...[
@@ -227,7 +228,7 @@ class _UploadPhotoFieldState extends State<UploadPhotoField> {
                       Text(
                         '${widget.photos.length}/${widget.maxPhotos}',
                         style: TS.bodySmall.copyWith(
-                          color: Colors.grey.shade500,
+                          color: rumaraHintText,
                         ),
                       ),
                     ],

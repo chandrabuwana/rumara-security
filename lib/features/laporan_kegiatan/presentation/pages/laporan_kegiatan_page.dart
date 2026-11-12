@@ -13,6 +13,7 @@ import '../../domain/entities/laporan_kegiatan_entity.dart';
 import '../widgets/laporan_card.dart';
 import '../widgets/empty_state_widget.dart';
 import 'laporan_kegiatan_detail_page.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class LaporanKegiatanPage extends StatefulWidget {
   final String? userId;
@@ -471,23 +472,7 @@ class _LaporanKegiatanPageState extends State<LaporanKegiatanPage>
       child: AppScaffold(
         backgroundColor: Colors.white,
         enableScrolling: false,
-        appBar: AppBar(
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          title: Text(
-            'Laporan Kegiatan',
-            style: TS.titleLarge.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          centerTitle: true,
-          bottom: PreferredSize(
+        appBar: RumaraAppBar(title: 'Laporan Kegiatan', bottom: PreferredSize(
             preferredSize: Size.fromHeight(48.h),
             child: Container(
               color: primaryColor,
@@ -507,8 +492,7 @@ class _LaporanKegiatanPageState extends State<LaporanKegiatanPage>
                 ],
               ),
             ),
-          ),
-        ),
+          )),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [

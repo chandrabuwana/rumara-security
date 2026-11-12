@@ -121,3 +121,22 @@ class Gradients {
     );
   }
 }
+
+Color get rumaraBorder => ThemeController.instance.currentPalette.neutral30;
+Color get rumaraMutedText => ThemeController.instance.currentPalette.neutral70;
+Color get rumaraHintText => ThemeController.instance.currentPalette.neutral20;
+Color get rumaraSurfaceMuted => ThemeController.instance.currentPalette.neutral10;
+
+LinearGradient get rumaraHeaderGradient {
+  final palette = ThemeController.instance.currentPalette;
+  return LinearGradient(
+    colors: [
+      Color.lerp(palette.primaryDark, Colors.black, 0.18)!,
+      palette.primaryDark,
+      Color.lerp(palette.primary, palette.primaryAccent, 0.15)!,
+    ],
+    stops: const [0, 0.55, 1],
+    begin: const Alignment(-0.34, -0.94),
+    end: const Alignment(0.34, 0.94),
+  );
+}

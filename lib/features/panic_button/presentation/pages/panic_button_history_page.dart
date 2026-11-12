@@ -9,6 +9,7 @@ import '../bloc/panic_button_event.dart';
 import '../bloc/panic_button_state.dart';
 import '../../domain/entities/panic_button_history_item.dart';
 import 'panic_button_detail_page.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class PanicButtonHistoryPage extends StatefulWidget {
   const PanicButtonHistoryPage({super.key});
@@ -224,8 +225,8 @@ class _PanicButtonHistoryPageState extends State<PanicButtonHistoryPage> {
                     //     OutlinedButton(
                     //       onPressed: pickDate,
                     //       style: OutlinedButton.styleFrom(
-                    //         foregroundColor: const Color(0xFFE74C3C),
-                    //         side: const BorderSide(color: Color(0xFFE74C3C)),
+                    //         foregroundColor: const Color(0xFFE5484D),
+                    //         side: const BorderSide(color: Color(0xFFE5484D)),
                     //         shape: RoundedRectangleBorder(
                     //           borderRadius: BorderRadius.circular(12.r),
                     //         ),
@@ -306,8 +307,8 @@ class _PanicButtonHistoryPageState extends State<PanicButtonHistoryPage> {
                               });
                             },
                             style: OutlinedButton.styleFrom(
-                              foregroundColor: const Color(0xFFE74C3C),
-                              side: const BorderSide(color: Color(0xFFE74C3C)),
+                              foregroundColor: const Color(0xFFE5484D),
+                              side: const BorderSide(color: Color(0xFFE5484D)),
                               padding: EdgeInsets.symmetric(vertical: 14.h),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12.r),
@@ -331,7 +332,7 @@ class _PanicButtonHistoryPageState extends State<PanicButtonHistoryPage> {
                               Navigator.pop(sheetContext, true);
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFFE74C3C),
+                              backgroundColor: const Color(0xFFE5484D),
                               padding: EdgeInsets.symmetric(vertical: 14.h),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12.r),
@@ -360,23 +361,7 @@ class _PanicButtonHistoryPageState extends State<PanicButtonHistoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Riwayat Panic Button',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        centerTitle: false,
-      ),
+      appBar: const RumaraAppBar(title: 'Riwayat Tombol Darurat'),
       body: SafeArea(
         child: BlocConsumer<PanicButtonBloc, PanicButtonState>(
           listener: (context, state) {
@@ -402,7 +387,7 @@ class _PanicButtonHistoryPageState extends State<PanicButtonHistoryPage> {
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
-                            border: Border.all(color: const Color(0xFFE74C3C)),
+                            border: Border.all(color: const Color(0xFFE5484D)),
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           child: TextField(
@@ -410,12 +395,12 @@ class _PanicButtonHistoryPageState extends State<PanicButtonHistoryPage> {
                             decoration: InputDecoration(
                               hintText: 'Cari',
                               hintStyle: TextStyle(
-                                color: const Color(0xFFE74C3C).withOpacity(0.6),
+                                color: const Color(0xFFE5484D).withValues(alpha: 0.6),
                                 fontSize: 14.sp,
                               ),
                               prefixIcon: Icon(
                                 Icons.search,
-                                color: const Color(0xFFE74C3C),
+                                color: const Color(0xFFE5484D),
                                 size: 20.r,
                               ),
                               border: InputBorder.none,
@@ -435,7 +420,7 @@ class _PanicButtonHistoryPageState extends State<PanicButtonHistoryPage> {
                         width: 48.w,
                         height: 48.h,
                         decoration: BoxDecoration(
-                          color: const Color(0xFFE74C3C),
+                          color: const Color(0xFFE5484D),
                           borderRadius: BorderRadius.circular(8.r),
                         ),
                         child: IconButton(
@@ -464,7 +449,7 @@ class _PanicButtonHistoryPageState extends State<PanicButtonHistoryPage> {
   Widget _buildList(PanicButtonState state) {
     if (state.isLoadingHistory && state.historyItems.isEmpty) {
       return const Center(
-        child: CircularProgressIndicator(color: Color(0xFFE74C3C)),
+        child: CircularProgressIndicator(color: Color(0xFFE5484D)),
       );
     }
 
@@ -484,7 +469,7 @@ class _PanicButtonHistoryPageState extends State<PanicButtonHistoryPage> {
       onRefresh: () async {
         context.read<PanicButtonBloc>().add(const RefreshPanicButtonHistoryEvent());
       },
-      color: const Color(0xFFE74C3C),
+      color: const Color(0xFFE5484D),
       child: ListView.builder(
         controller: _scrollController,
         padding: REdgeInsets.all(16),
@@ -494,7 +479,7 @@ class _PanicButtonHistoryPageState extends State<PanicButtonHistoryPage> {
             return const Center(
               child: Padding(
                 padding: EdgeInsets.all(16.0),
-                child: CircularProgressIndicator(color: Color(0xFFE74C3C)),
+                child: CircularProgressIndicator(color: Color(0xFFE5484D)),
               ),
             );
           }

@@ -12,6 +12,7 @@ import '../bloc/laporan_kegiatan_bloc.dart';
 import '../../domain/entities/laporan_kegiatan_entity.dart';
 import '../widgets/patrol_timeline_widget.dart';
 import 'package:intl/intl.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 // tugas tertunda = carryOver
 //tugas lanjutan =listCarryOver.note
 class LaporanKegiatanDetailPage extends StatefulWidget {
@@ -56,20 +57,11 @@ class _LaporanKegiatanDetailPageState extends State<LaporanKegiatanDetailPage> {
       },
       child: AppScaffold(
         enableScrolling: false,
-        appBar: AppBar(
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
-            onPressed: () async {
+        appBar: RumaraAppBar(title: 'Detail Laporan Kegiatan', onBack: () async {
               if (context.mounted) {
                 Navigator.of(context).pop();
               }
-            },
-          ),
-          title: const Text('Detail Laporan Kegiatan'),
-          centerTitle: true,
-        ),
+            }),
         child: BlocConsumer<LaporanKegiatanBloc, LaporanKegiatanState>(
         listener: (context, state) {
           if (_isSubmittingRevisi && state is LaporanDetailLoaded) {

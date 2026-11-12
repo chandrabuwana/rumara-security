@@ -10,6 +10,7 @@ import '../../domain/entities/shift_schedule.dart';
 import '../bloc/schedule_bloc.dart';
 import 'shift_detail_page.dart';
 import '../../../home/presentation/widgets/custom_bottom_nav.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Schedule Page - Jadwal Kerja (Untuk Anggota & Danton)
 ///
@@ -55,22 +56,7 @@ class _SchedulePageState extends State<SchedulePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Text(
-          'Jadwal Kerja',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
+      appBar: const RumaraAppBar(title: 'Jadwal Kerja'),
       body: Builder(
         builder: (builderContext) {
           return BlocBuilder<ScheduleBloc, ScheduleState>(

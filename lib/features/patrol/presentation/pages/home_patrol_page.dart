@@ -7,6 +7,7 @@ import '../../../../core/design/colors.dart';
 import '../bloc/patrol_bloc.dart';
 import '../widgets/patrol_route_card.dart';
 import 'patrol_detail_page.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class HomePatrolPage extends StatefulWidget {
   const HomePatrolPage({super.key});
@@ -48,18 +49,8 @@ class _HomePatrolPageState extends State<HomePatrolPage> {
     return BlocProvider(
       create: (_) => getIt<PatrolBloc>()..add(LoadPatrolRoutes()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFF5F5F5),
-        appBar: AppBar(
-          title: const Text(
-            'Daftar Rute Patroli',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          backgroundColor: primaryColor,
-          elevation: 0,
-        ),
+        backgroundColor: bgColor,
+        appBar: const RumaraAppBar(title: 'Daftar Rute Patroli'),
         body: BlocBuilder<PatrolBloc, PatrolState>(
           builder: (context, state) {
             if (state is PatrolLoading) {

@@ -129,7 +129,7 @@ class UIButton extends StatelessWidget {
     this.borderSide,
     this.text = 'Button',
     this.enable = true,
-    this.borderRadius = 10,
+    this.borderRadius = 14,
     this.isOutline = false,
     this.outlineColor,
     this.textStyle,
@@ -228,9 +228,9 @@ class UIButton extends StatelessWidget {
   double get _buttonHeight {
     switch (size) {
       case UIButtonSize.small:
-        return 32.h;
+        return 40.h;
       case UIButtonSize.medium:
-        return 48.h;
+        return 52.h;
       case UIButtonSize.large:
         return 56.h;
       case UIButtonSize.extraLarge:
@@ -372,7 +372,9 @@ class UIButton extends StatelessWidget {
         foregroundColor: textColor ?? Colors.white,
         backgroundColor: isLoading
             ? color.withOpacity(0.4)
-            : (enable ? color : Colors.grey.shade300),
+            : (enable ? color : rumaraBorder),
+        disabledBackgroundColor: rumaraBorder,
+        disabledForegroundColor: rumaraHintText,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
         ),
@@ -425,6 +427,8 @@ class UIButton extends StatelessWidget {
     );
   }
 
+  bool get _isDisabled => !isLoading && (!enable || onPressed == null);
+
   /// Get button callback
   VoidCallback? _getButtonCallback() {
     if (isLoading) return () {};
@@ -454,11 +458,13 @@ class UIButton extends StatelessWidget {
               Text(
                 text,
                 style: _defaultTextStyle.copyWith(
-                  color: textColor ??
-                      (buttonType == UIButtonType.outline ||
-                              buttonType == UIButtonType.text
-                          ? _primaryColor
-                          : Colors.white),
+                  color: _isDisabled
+                      ? rumaraHintText
+                      : textColor ??
+                          (buttonType == UIButtonType.outline ||
+                                  buttonType == UIButtonType.text
+                              ? _primaryColor
+                              : Colors.white),
                 ),
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,

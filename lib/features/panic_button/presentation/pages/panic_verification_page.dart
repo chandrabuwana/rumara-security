@@ -5,6 +5,7 @@ import '../bloc/panic_button_bloc.dart';
 import '../bloc/panic_button_event.dart';
 import '../bloc/panic_button_state.dart';
 import '../../../../shared/widgets/app_scaffold.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class PanicVerificationPage extends StatelessWidget {
   const PanicVerificationPage({super.key});
@@ -25,26 +26,10 @@ class _PanicVerificationView extends StatelessWidget {
     return AppScaffold(
       enableScrolling: false,
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
+      appBar: RumaraAppBar(title: 'Tombol Darurat', onBack: () {
             context.read<PanicButtonBloc>().add(const ResetVerificationEvent());
             Navigator.pop(context);
-          },
-        ),
-        title: Text(
-          'Panic Button',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        centerTitle: false,
-      ),
+          }),
       child: BlocConsumer<PanicButtonBloc, PanicButtonState>(
         listener: (context, state) {
           if (state.status == PanicButtonStateStatus.activated) {
@@ -57,7 +42,7 @@ class _PanicVerificationView extends StatelessWidget {
           if (state.status == PanicButtonStateStatus.loading) {
             return const Center(
               child: CircularProgressIndicator(
-                color: Color(0xFFE74C3C),
+                color: Color(0xFFE5484D),
               ),
             );
           }
@@ -87,7 +72,7 @@ class _PanicVerificationView extends StatelessWidget {
                                             index, value ?? false),
                                       );
                                 },
-                                activeColor: const Color(0xFFE74C3C),
+                                activeColor: const Color(0xFFE5484D),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(4.r),
                                 ),
@@ -123,7 +108,7 @@ class _PanicVerificationView extends StatelessWidget {
                             Navigator.pop(context);
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFFE74C3C),
+                            backgroundColor: const Color(0xFFE5484D),
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12.r),
@@ -153,7 +138,7 @@ class _PanicVerificationView extends StatelessWidget {
                               : null,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: state.allVerified
-                                ? const Color(0xFFE74C3C)
+                                ? const Color(0xFFE5484D)
                                 : Colors.grey[300],
                             foregroundColor: state.allVerified
                                 ? Colors.white
@@ -199,7 +184,7 @@ class _PanicVerificationView extends StatelessWidget {
               width: 80.w,
               height: 80.h,
               decoration: const BoxDecoration(
-                color: Color(0xFFE74C3C),
+                color: Color(0xFFE5484D),
                 shape: BoxShape.circle,
               ),
               child: Icon(
@@ -241,7 +226,7 @@ class _PanicVerificationView extends StatelessWidget {
                       .add(const ResetVerificationEvent());
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFE74C3C),
+                  backgroundColor: const Color(0xFFE5484D),
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.r),
