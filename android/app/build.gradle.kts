@@ -63,6 +63,11 @@ android {
 
     buildTypes {
         release {
+            // The Flutter Gradle plugin enables R8/AGP minification + resource
+            // shrinking for release builds and points at android/app/proguard-rules.pro.
+            // We ship unminified builds: disable it here so no proguard file is required.
+            isMinifyEnabled = false
+            isShrinkResources = false
             signingConfig = if (keystorePropertiesFile.exists()) {
                 signingConfigs.getByName("release")
             } else {

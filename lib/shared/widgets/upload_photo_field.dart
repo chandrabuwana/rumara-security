@@ -156,6 +156,7 @@ class _UploadPhotoFieldState extends State<UploadPhotoField> {
                             Text(
                               'Foto ${index + 1}',
                               style: TS.bodySmall.copyWith(
+                                color: const Color(0xFF333333),
                                 color: rumaraMutedText,
                               ),
                             ),
@@ -220,6 +221,7 @@ class _UploadPhotoFieldState extends State<UploadPhotoField> {
                           ? 'Tambah Foto'
                           : 'Tambah Foto Lagi',
                       style: TS.bodyMedium.copyWith(
+                        color: const Color(0xFF333333),
                         color: rumaraMutedText,
                       ),
                     ),
@@ -228,6 +230,7 @@ class _UploadPhotoFieldState extends State<UploadPhotoField> {
                       Text(
                         '${widget.photos.length}/${widget.maxPhotos}',
                         style: TS.bodySmall.copyWith(
+                          color: const Color(0xFF333333),
                           color: rumaraHintText,
                         ),
                       ),

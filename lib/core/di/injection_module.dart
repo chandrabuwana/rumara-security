@@ -1,4 +1,6 @@
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -172,6 +174,10 @@ abstract class InjectionModule {
         responseHeader: false,
       ),
     );
+
+    if (kDebugMode) {
+      dio.interceptors.add(ChuckerDioInterceptor());
+    }
 
     return dio;
   }

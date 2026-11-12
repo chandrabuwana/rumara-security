@@ -1999,9 +1999,11 @@ class _ChatConversationPageState extends State<ChatConversationPage> {
       }
 
       if (fileToShare != null) {
-        await Share.shareXFiles(
-          [fileToShare],
-          text: message.content.isNotEmpty ? message.content : 'Gambar dari chat',
+        await SharePlus.instance.share(
+          ShareParams(
+            files: [fileToShare],
+            text: message.content.isNotEmpty ? message.content : 'Gambar dari chat',
+          ),
         );
       } else {
         if (mounted) {

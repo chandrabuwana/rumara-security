@@ -261,6 +261,8 @@ class _LoginPageState extends State<LoginPage> {
                                   keyboardType: TextInputType.text,
                                   borderRadius: 8,
                                   color: Colors.white,
+                                  textStyle: TS.labelLarge.copyWith(color: appTextColor),
+                                  labelTextStyle: TS.labelLarge.copyWith(color: appTextColor),
                                   contentPadding: EdgeInsets.symmetric(
                                     horizontal: 15.w,
                                     vertical: 8.h,
@@ -281,7 +283,7 @@ class _LoginPageState extends State<LoginPage> {
                                       _isPasswordVisible
                                           ? Icons.visibility_off
                                           : Icons.visibility,
-                                      color: neutral50,
+                                      color: neutral70,
                                     ),
                                     onPressed: () {
                                       setState(() {
@@ -298,6 +300,8 @@ class _LoginPageState extends State<LoginPage> {
                                   },
                                   borderRadius: 8,
                                   color: Colors.white,
+                                  textStyle: TS.labelLarge.copyWith(color: appTextColor),
+                                  labelTextStyle: TS.labelLarge.copyWith(color: appTextColor),
                                   contentPadding: EdgeInsets.symmetric(
                                     horizontal: 15.w,
                                     vertical: 8.h,

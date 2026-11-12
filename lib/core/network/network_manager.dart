@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
@@ -89,6 +90,7 @@ class NetworkManager {
           responseHeader: false,
         ),
       );
+      _dio.interceptors.add(ChuckerDioInterceptor());
     }
   }
 

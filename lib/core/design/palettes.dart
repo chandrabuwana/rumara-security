@@ -64,7 +64,7 @@ class PaletteRegistry {
   static const Color _neutral90 = Color(0xFF101820);
 
   static const Color _textPrimary = Color(0xFF1B1B1B);
-  static const Color _textSecondary = Color(0xFFBDBDBD);
+  static const Color _textSecondary = Color(0xFF333333);
   static const Color _input = Color.fromARGB(186, 235, 238, 246);
   static const Color _tabbar = Color(0xFFFAFAFA);
 

@@ -9,9 +9,9 @@
     "brightness": "light"
   },
   "branding": {
-    "logo": "assets/images/guardify-round-white.png",
-    "logoDark": "assets/images/guardify-logo.png",
-    "shield": "assets/images/guardify-shield.png"
+    "logo": "assets/icons/app_icon.png",
+    "logoDark": "assets/icons/app_icon.png",
+    "shield": "assets/icons/app_icon.png"
   },
   "backend": {
     "apiBaseUrl": "https://api-devguardify.abb-apps.com/api/v1"
