@@ -15,6 +15,7 @@ import '../../domain/entities/incident_entity.dart';
 import '../../data/datasources/incident_remote_datasource.dart';
 import 'incident_report_form_page.dart';
 import 'incident_detail_page.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class IncidentListPage extends StatefulWidget {
   const IncidentListPage({super.key});
@@ -233,30 +234,14 @@ class _IncidentListPageState extends State<IncidentListPage>
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[100],
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Navigator.pop(context),
-          ),
-          title: Text(
-            'Insiden Kejadian',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          actions: [
+        appBar: RumaraAppBar(title: 'Insiden Kejadian', actions: [
             IconButton(
               icon: Icon(Icons.download, color: primaryColor, size: 24.r),
               onPressed: () {
                 // TODO: Implement download functionality
               },
             ),
-          ],
-          bottom: _isPengawas
+          ], bottom: _isPengawas
               ? null // Pengawas tidak punya tab bar
               : TabBar(
                   controller: _tabController,
@@ -276,8 +261,7 @@ class _IncidentListPageState extends State<IncidentListPage>
                     Tab(text: 'Daftar Insiden'),
                     Tab(text: 'Tugas Saya'),
                   ],
-                ),
-        ),
+                )),
         body: SafeArea(
           child: BlocConsumer<IncidentBloc, IncidentState>(
             listener: (context, state) {

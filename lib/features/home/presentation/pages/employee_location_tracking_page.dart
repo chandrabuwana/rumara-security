@@ -13,6 +13,7 @@ import '../../../auth/data/models/current_location_request_model.dart';
 import '../../../auth/data/models/current_location_response_model.dart';
 import '../../../patrol/data/models/area_list_api_response.dart' as patrol_models;
 import '../../../patrol/data/models/route_detail_api_response.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class EmployeeLocationTrackingPage extends StatefulWidget {
   const EmployeeLocationTrackingPage({super.key});
@@ -771,22 +772,7 @@ class _EmployeeLocationTrackingPageState extends State<EmployeeLocationTrackingP
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Lacak Lokasi Anggota',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
+      appBar: const RumaraAppBar(title: 'Lacak Lokasi Anggota'),
       body: Column(
         children: [
           // Search Bar

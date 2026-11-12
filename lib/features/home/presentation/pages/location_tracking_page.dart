@@ -11,6 +11,7 @@ import '../../../chat/presentation/bloc/chat_bloc.dart';
 import '../../../chat/presentation/bloc/chat_event.dart';
 import '../../../chat/presentation/pages/chat_conversation_page.dart';
 import '../../../schedule/domain/repositories/schedule_repository.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Model untuk personil dengan lokasi
 class PersonnelLocation {
@@ -408,22 +409,7 @@ class _LocationTrackingPageState extends State<LocationTrackingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Lacak Lokasi',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
+      appBar: const RumaraAppBar(title: 'Lacak Lokasi'),
       body: Column(
         children: [
           // Search Bar

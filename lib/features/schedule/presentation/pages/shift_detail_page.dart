@@ -74,11 +74,7 @@ class _ShiftDetailPageState extends State<ShiftDetailPage> {
   Widget _buildEmptyState() {
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [primaryColor, primaryColor.withOpacity(0.8)],
-        ),
+        gradient: rumaraHeaderGradient,
       ),
       child: SafeArea(
         child: Column(
@@ -119,11 +115,7 @@ class _ShiftDetailPageState extends State<ShiftDetailPage> {
   Widget _buildContent(ShiftSchedule shift) {
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [primaryColor, primaryColor.withOpacity(0.8)],
-        ),
+        gradient: rumaraHeaderGradient,
       ),
       child: SafeArea(
         child: Column(

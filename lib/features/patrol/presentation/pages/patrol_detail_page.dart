@@ -15,6 +15,7 @@ import '../../../schedule/domain/usecases/get_current_task.dart';
 import '../../../home/presentation/bloc/home_bloc.dart';
 import '../../../home/presentation/bloc/home_event.dart';
 import '../../../home/presentation/bloc/home_state.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class PatrolDetailPage extends StatefulWidget {
   final PatrolRoute route;
@@ -159,19 +160,8 @@ class _PatrolDetailPageState extends State<PatrolDetailPage> {
 
   Widget _buildScaffold(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5),
-      appBar: AppBar(
-        title: const Text(
-          'Patroli Hari Ini',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: primaryColor,
-        iconTheme: const IconThemeData(color: Colors.white),
-        elevation: 0,
-      ),
+      backgroundColor: bgColor,
+      appBar: const RumaraAppBar(title: 'Patroli Hari Ini'),
       body: BlocBuilder<PatrolBloc, PatrolState>(
         builder: (context, state) {
           if (state is PatrolLoading) {
@@ -342,8 +332,8 @@ class _PatrolDetailPageState extends State<PatrolDetailPage> {
                                   Container(
                                     width: 80,
                                     height: 80,
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xFF8B0000),
+                                    decoration: BoxDecoration(
+                                      color: primaryColor,
                                       shape: BoxShape.circle,
                                     ),
                                     child: const Icon(
@@ -377,7 +367,7 @@ class _PatrolDetailPageState extends State<PatrolDetailPage> {
                                         Navigator.of(dialogContext).pop();
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: const Color(0xFF8B0000),
+                                        backgroundColor: primaryColor,
                                         padding: const EdgeInsets.symmetric(vertical: 16),
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(8),
@@ -464,8 +454,8 @@ class _PatrolDetailPageState extends State<PatrolDetailPage> {
                                     Container(
                                       width: 80,
                                       height: 80,
-                                      decoration: const BoxDecoration(
-                                        color: Color(0xFF8B0000),
+                                      decoration: BoxDecoration(
+                                        color: primaryColor,
                                         shape: BoxShape.circle,
                                       ),
                                       child: const Icon(
@@ -499,7 +489,7 @@ class _PatrolDetailPageState extends State<PatrolDetailPage> {
                                           Navigator.of(dialogContext).pop();
                                         },
                                         style: ElevatedButton.styleFrom(
-                                          backgroundColor: const Color(0xFF8B0000),
+                                          backgroundColor: primaryColor,
                                           padding: const EdgeInsets.symmetric(vertical: 16),
                                           shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(8),

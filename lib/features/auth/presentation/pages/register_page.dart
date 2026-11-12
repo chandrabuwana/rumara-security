@@ -214,7 +214,7 @@ class _RegisterPageState extends State<RegisterPage> {
               end: Alignment.center,
               colors: [
                 primaryColor,
-                Colors.white,
+                bgColor,
               ],
               stops: [0.35, 0.35],
             ),
@@ -226,7 +226,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: [
                     Container(
                       height: ScreenUtils.halfHeight * 0.7,
-                      color: primaryColor,
+                      decoration: BoxDecoration(
+                        gradient: rumaraHeaderGradient,
+                        borderRadius: BorderRadius.vertical(bottom: Radius.circular(24.r)),
+                      ),
                     ),
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -276,6 +279,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(16.r),
+                              border: Border.all(color: rumaraBorder),
                             ),
                             padding: EdgeInsets.symmetric(
                               horizontal: 24.w,
@@ -306,7 +310,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       return null;
                                     },
                                     keyboardType: TextInputType.emailAddress,
-                                    borderRadius: 12,
+                                    borderRadius: 8,
                                     color: Colors.white,
                                     contentPadding: EdgeInsets.symmetric(
                                       horizontal: 15.w,
@@ -332,7 +336,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       return null;
                                     },
                                     keyboardType: TextInputType.text,
-                                    borderRadius: 12,
+                                    borderRadius: 8,
                                     color: Colors.white,
                                     contentPadding: EdgeInsets.symmetric(
                                       horizontal: 15.w,
@@ -372,7 +376,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       }
                                       return null;
                                     },
-                                    borderRadius: 12,
+                                    borderRadius: 8,
                                     color: Colors.white,
                                     contentPadding: EdgeInsets.symmetric(
                                       horizontal: 15.w,
@@ -409,7 +413,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       }
                                       return null;
                                     },
-                                    borderRadius: 12,
+                                    borderRadius: 8,
                                     color: Colors.white,
                                     contentPadding: EdgeInsets.symmetric(
                                       horizontal: 15.w,
@@ -431,7 +435,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                         onPressed: state.isLoading
                                             ? null
                                             : _onRegisterPressed,
-                                        borderRadius: 12,
+                                        borderRadius: 14,
                                       );
                                     },
                                   ),

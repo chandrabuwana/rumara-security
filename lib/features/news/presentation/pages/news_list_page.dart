@@ -68,8 +68,9 @@ class _NewsListPageState extends State<NewsListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: neutral10,
+      backgroundColor: bgColor,
       body: SafeArea(
+        top: false,
         child: BlocConsumer<NewsBloc, NewsState>(
           listener: (context, state) {
             if (state.errorMessage != null) {
@@ -85,29 +86,39 @@ class _NewsListPageState extends State<NewsListPage> {
           builder: (context, state) {
             return Column(
               children: [
-                // Header
-                Padding(
-                  padding: EdgeInsets.fromLTRB(16.w, 16.h, 16.w, 0),
+                Container(
+                  padding: EdgeInsets.fromLTRB(
+                    16.w,
+                    12.h + MediaQuery.of(context).padding.top,
+                    16.w,
+                    12.h,
+                  ),
+                  decoration: BoxDecoration(
+                    gradient: rumaraHeaderGradient,
+                    borderRadius: const BorderRadius.vertical(
+                      bottom: Radius.circular(16),
+                    ),
+                  ),
                   child: Row(
                     children: [
                       GestureDetector(
                         onTap: () => Navigator.pop(context),
-                        child: Icon(Icons.arrow_back, color: primaryColor, size: 24.sp),
+                        child: Icon(Icons.arrow_back, color: Colors.white, size: 24.sp),
                       ),
                       12.horizontalSpace,
                       Expanded(
                         child: Text(
                           'Berita',
                           style: TextStyle(
-                            fontSize: 24.sp,
-                            fontWeight: FontWeight.bold,
-                            color: primaryColor,
+                            fontSize: 19.sp,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
                           ),
                         ),
                       ),
                       if (!_isLoadingRole && _userRole == UserRole.pengawas)
                         IconButton(
-                          icon: Icon(Icons.add, color: primaryColor, size: 28.sp),
+                          icon: Icon(Icons.add, color: Colors.white, size: 28.sp),
                           onPressed: () {
                             final newsBloc = context.read<NewsBloc>();
                             Navigator.push(

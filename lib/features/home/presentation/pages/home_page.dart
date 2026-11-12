@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:async';
@@ -456,8 +457,9 @@ class __HomePageViewState extends State<_HomePageView> {
         }
 
         return Scaffold(
-          backgroundColor: neutral10,
+          backgroundColor: bgColor,
           body: SafeArea(
+            top: false,
             bottom: false, // Let bottomNavigationBar handle bottom padding
             child: Column(
               children: [
@@ -839,10 +841,17 @@ class __HomePageViewState extends State<_HomePageView> {
   }
 
   Widget _buildAppHeader(UserProfile userProfile) {
-    return Container(
-      padding: EdgeInsets.all(16.w),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: Container(
+      padding: EdgeInsets.fromLTRB(
+        16.w,
+        16.w + MediaQuery.of(context).padding.top,
+        16.w,
+        16.w,
+      ),
       decoration: BoxDecoration(
-        color: primaryColor,
+        gradient: rumaraHeaderGradient,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(24.r),
           bottomRight: Radius.circular(24.r),
@@ -941,7 +950,7 @@ class __HomePageViewState extends State<_HomePageView> {
           ),
         ],
       ),
-    );
+    ));
   }
 
   Widget _buildTimJagaSection(HomeLoaded state) {

@@ -63,14 +63,14 @@ class _SearchableDropdownState<T> extends State<SearchableDropdown<T>> {
               width: double.infinity,
               padding: REdgeInsets.symmetric(horizontal: 12, vertical: 16),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.r),
+                borderRadius: BorderRadius.circular(8.r),
                 border: Border.all(
                   color: widget.errorText != null
                       ? Colors.red
-                      : Colors.grey.shade300,
+                      : rumaraBorder,
                   width: 1,
                 ),
-                color: widget.enabled ? inputColor : Colors.grey.shade100,
+                color: widget.enabled ? inputColor : rumaraSurfaceMuted,
               ),
               child: Row(
                 children: [
@@ -98,8 +98,8 @@ class _SearchableDropdownState<T> extends State<SearchableDropdown<T>> {
                   Icon(
                     Icons.keyboard_arrow_down,
                     color: widget.enabled
-                        ? Colors.grey.shade600
-                        : Colors.grey.shade400,
+                        ? rumaraMutedText
+                        : rumaraHintText,
                   ),
                 ],
               ),
@@ -177,6 +177,7 @@ class _SearchableDropdownState<T> extends State<SearchableDropdown<T>> {
                               'Tidak ada data',
                               style: TS.bodyMedium.copyWith(
                                 color: const Color(0xFF333333),
+                                color: rumaraMutedText,
                               ),
                             ),
                           ),

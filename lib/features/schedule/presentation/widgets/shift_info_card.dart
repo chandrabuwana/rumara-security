@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/design/colors.dart';
 
 class ShiftInfoCard extends StatelessWidget {
   final String shiftName;
@@ -33,12 +34,12 @@ class ShiftInfoCard extends StatelessWidget {
               width: 48.w,
               height: 48.h,
               decoration: BoxDecoration(
-                color: const Color(0xFFE74C3C).withOpacity(0.1),
+                color: primaryColor.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8.r),
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.calendar_today,
-                color: Color(0xFFE74C3C),
+                color: primaryColor,
               ),
             ),
             SizedBox(width: 12.w),
@@ -77,7 +78,7 @@ class ShiftInfoCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
-                    color: const Color(0xFFE74C3C),
+                    color: primaryColor,
                   ),
                 ),
                 SizedBox(height: 4.h),

@@ -19,6 +19,7 @@ import '../widgets/search_filter_cuti_widget.dart';
 import 'form_ajuan_cuti_page.dart';
 import 'detail_cuti_page.dart';
 import '../../domain/entities/cuti_entity.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class CutiPage extends StatefulWidget {
   final String? userId;
@@ -163,12 +164,7 @@ class _CutiPageState extends State<CutiPage>
     // Show loading while initializing
     if (!_isInitialized || _tabController == null) {
       return AppScaffold(
-        appBar: AppBar(
-          title: const Text('Pengajuan Cuti'),
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
-          elevation: 0,
-        ),
+        appBar: const RumaraAppBar(title: 'Pengajuan Cuti'),
         child: const Center(
           child: CircularProgressIndicator(),
         ),
@@ -178,12 +174,7 @@ class _CutiPageState extends State<CutiPage>
     return BlocProvider.value(
       value: _cutiBloc,
       child: AppScaffold(
-        appBar: AppBar(
-          title: const Text('Pengajuan Cuti'),
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
-          elevation: 0,
-        ),
+        appBar: const RumaraAppBar(title: 'Pengajuan Cuti'),
         enableScrolling: false,
         child: Column(
           children: [

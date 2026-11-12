@@ -8,6 +8,7 @@ import '../../../../core/design/colors.dart';
 import '../../../../core/design/styles.dart';
 import '../../../../shared/widgets/app_scaffold.dart';
 import '../../domain/entities/document_entity.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Halaman preview dokumen (PDF atau gambar)
 class DocumentPreviewPage extends StatefulWidget {
@@ -100,23 +101,13 @@ class _DocumentPreviewPageState extends State<DocumentPreviewPage> {
     return AppScaffold(
       backgroundColor: Colors.black,
       enableScrolling: false,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        iconTheme: const IconThemeData(color: Colors.white),
-        title: Text(
-          widget.document.title,
-          style: TS.titleMedium.copyWith(color: Colors.white),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
-        actions: [
+      appBar: RumaraAppBar(title: widget.document.title, actions: [
           IconButton(
             icon: const Icon(Icons.open_in_new),
             tooltip: 'Buka di Browser',
             onPressed: () => _openInBrowser(context),
           ),
-        ],
-      ),
+        ]),
       child: _buildPreview(context),
     );
   }

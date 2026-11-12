@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/design/colors.dart';
-import '../../../../core/design/styles.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Custom AppBar dengan design yang konsisten untuk halaman peraturan perusahaan
 ///
@@ -49,35 +48,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: Text(
-        title,
-        style: TS.titleMedium.copyWith(
-          color: foregroundColor ?? Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      centerTitle: centerTitle,
-      backgroundColor: backgroundColor ?? primaryColor,
-      foregroundColor: foregroundColor ?? Colors.white,
-      elevation: elevation,
-      leading: showBackButton
-          ? IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: onBackPressed ?? () => Navigator.of(context).pop(),
-            )
-          : null,
+    return RumaraAppBar(
+      title: title,
+      showBack: showBackButton,
+      onBack: onBackPressed,
       actions: actions,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(8.r),
-        ),
-      ),
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(56.h);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 /// Factory methods untuk variasi AppBar yang umum digunakan

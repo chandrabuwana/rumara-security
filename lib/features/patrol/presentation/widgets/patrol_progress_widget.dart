@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+import '../../../../core/design/colors.dart';
 
 class PatrolProgressWidget extends StatelessWidget {
   final int completedCount;
@@ -37,7 +38,7 @@ class PatrolProgressWidget extends StatelessWidget {
             size: Size(size, size),
             painter: ProgressPainter(
               progress: progress,
-              color: const Color(0xFF8B1538),
+              color: primaryColor,
               strokeWidth: 8,
             ),
           ),
@@ -47,10 +48,10 @@ class PatrolProgressWidget extends StatelessWidget {
             children: [
               Text(
                 '$completedCount/$totalCount',
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF8B1538),
+                  color: primaryColor,
                 ),
               ),
               const SizedBox(height: 4),

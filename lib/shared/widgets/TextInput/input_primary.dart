@@ -48,7 +48,7 @@ class InputPrimary extends StatefulWidget {
     this.focusedBorderColor,
     this.errorBorderColor,
     this.disabledBorderColor,
-    this.borderRadius = 10,
+    this.borderRadius = 8,
     this.borderWidth = 1.0,
     this.focusedBorderWidth = 2.0,
     this.hintColor,
@@ -163,7 +163,7 @@ class _InputPrimaryState extends State<InputPrimary> {
 
   Color _getBorderColor() {
     if (!widget.enable) {
-      return widget.disabledBorderColor ?? Colors.grey.shade300;
+      return widget.disabledBorderColor ?? rumaraBorder;
     }
     if (widget.errorMessage != null && widget.errorMessage!.isNotEmpty) {
       return widget.errorBorderColor ?? Colors.red;
@@ -171,7 +171,7 @@ class _InputPrimaryState extends State<InputPrimary> {
     if (_isFocused) {
       return widget.focusedBorderColor ?? widget.cursorColor ?? primaryColor;
     }
-    return widget.outlineColor ?? Colors.grey.shade300;
+    return widget.outlineColor ?? rumaraBorder;
   }
 
   double _getBorderWidth() {
@@ -324,7 +324,7 @@ class _InputPrimaryState extends State<InputPrimary> {
                   ? OutlineInputBorder(
                       borderSide: BorderSide(
                         color:
-                            widget.disabledBorderColor ?? Colors.grey.shade300,
+                            widget.disabledBorderColor ?? rumaraBorder,
                         width: widget.borderWidth,
                       ),
                       borderRadius: BorderRadius.all(
@@ -333,7 +333,7 @@ class _InputPrimaryState extends State<InputPrimary> {
                   : UnderlineInputBorder(
                       borderSide: BorderSide(
                         color:
-                            widget.disabledBorderColor ?? Colors.grey.shade300,
+                            widget.disabledBorderColor ?? rumaraBorder,
                         width: widget.borderWidth,
                       ),
                     ),

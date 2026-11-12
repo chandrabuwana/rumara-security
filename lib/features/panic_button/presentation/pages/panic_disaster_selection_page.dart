@@ -4,6 +4,7 @@ import '../../../../shared/widgets/app_scaffold.dart';
 import '../../../../core/di/injection.dart';
 import '../../data/models/panic_button_incident_type_model.dart';
 import '../../domain/repositories/panic_button_repository.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class PanicDisasterSelectionPage extends StatefulWidget {
   const PanicDisasterSelectionPage({super.key});
@@ -66,7 +67,7 @@ class _PanicDisasterSelectionPageState
   Color _getColorForType(String name) {
     final lowerName = name.toLowerCase();
     if (lowerName.contains('keamanan') || lowerName.contains('kecelakaan')) {
-      return const Color(0xFFE74C3C);
+      return const Color(0xFFE5484D);
     } else if (lowerName.contains('bencana') || lowerName.contains('alam')) {
       return const Color(0xFFE67E22);
     } else if (lowerName.contains('kebakaran') || lowerName.contains('fire')) {
@@ -74,29 +75,13 @@ class _PanicDisasterSelectionPageState
     } else if (lowerName.contains('medis') || lowerName.contains('kesehatan')) {
       return const Color(0xFF2ECC71);
     }
-    return const Color(0xFFE74C3C);
+    return const Color(0xFFE5484D);
   }
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBar: AppBar(
-        title: Text(
-          'Panic Button',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      appBar: const RumaraAppBar(title: 'Tombol Darurat'),
       child: Padding(
         padding: REdgeInsets.all(20),
         child: Column(
@@ -182,7 +167,7 @@ class _PanicDisasterSelectionPageState
                     : null,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: selectedIncidentTypeId != null && !_isLoading
-                      ? const Color(0xFFE74C3C)
+                      ? const Color(0xFFE5484D)
                       : Colors.grey[300],
                   foregroundColor: selectedIncidentTypeId != null && !_isLoading
                       ? Colors.white

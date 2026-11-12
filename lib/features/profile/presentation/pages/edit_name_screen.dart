@@ -11,6 +11,7 @@ import '../../../../shared/widgets/confirm_dialog.dart';
 import '../bloc/profile_bloc.dart';
 import '../bloc/profile_event.dart';
 import '../bloc/profile_state.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Layar untuk edit nama user
 class EditNameScreen extends StatefulWidget {
@@ -60,20 +61,7 @@ class _EditNameScreenState extends State<EditNameScreen> {
         backgroundColor: Colors.grey.shade50,
         enableScrolling:
             false, // Disable scrolling since we're using Spacer in Column
-        appBar: AppBar(
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () => _onBackPressed(),
-          ),
-          title: Text(
-            'Ubah Nama',
-            style: TS.titleLarge.copyWith(color: Colors.white),
-          ),
-          centerTitle: true,
-        ),
+        appBar: RumaraAppBar(title: 'Ubah Nama', onBack: () => _onBackPressed()),
         child: BlocConsumer<ProfileBloc, ProfileState>(
           listener: (context, state) {
             // Handle update success

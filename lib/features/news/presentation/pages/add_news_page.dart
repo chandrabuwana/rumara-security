@@ -12,6 +12,7 @@ import '../bloc/news_event.dart';
 import '../bloc/news_state.dart';
 import '../../domain/entities/news.dart';
 import '../../../../core/design/colors.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class AddNewsPage extends StatefulWidget {
   const AddNewsPage({super.key});
@@ -130,23 +131,7 @@ class _AddNewsPageState extends State<AddNewsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Tambah Berita',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-      ),
+      appBar: const RumaraAppBar(title: 'Tambah Berita'),
       body: BlocConsumer<NewsBloc, NewsState>(
         listener: (context, state) {
           if (state.errorMessage != null) {

@@ -24,6 +24,8 @@ import '../../../../core/services/location_service.dart';
 import '../../../../core/services/location_update_service.dart';
 import '../../../../core/security/security_manager.dart';
 import '../../../../core/constants/app_constants.dart';
+import '../../../../shared/widgets/bottom_action_bar.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class CheckInPage extends StatefulWidget {
   final String userId;
@@ -297,14 +299,8 @@ class _CheckInPageState extends State<CheckInPage> {
     return BlocProvider.value(
       value: _attendanceBloc,
       child: Scaffold(
-        backgroundColor: const Color(0xFFF6F6F8),
-        appBar: AppBar(
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
-          title: const Text('Mulai Bekerja'),
-          centerTitle: true,
-          elevation: 0,
-        ),
+        backgroundColor: bgColor,
+        appBar: const RumaraAppBar(title: 'Mulai Bekerja'),
         body: BlocConsumer<AttendanceBloc, AttendanceState>(
           listener: (context, state) {
             if (state is AttendanceCheckedIn) {
@@ -421,21 +417,7 @@ class _CheckInPageState extends State<CheckInPage> {
                   ),
                 ),
 
-                // Bottom Navigation
-                Container(
-                  padding: REdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
-                        blurRadius: 12,
-                        offset: const Offset(0, -6),
-                      ),
-                    ],
-                  ),
-                  child: _buildBottomButtons(),
-                ),
+                BottomActionBar(child: _buildBottomButtons()),
               ],
             );
           },
@@ -1125,7 +1107,7 @@ class _CheckInPageState extends State<CheckInPage> {
         children: [
           Expanded(
             child: UIButton(
-              text: 'KEMBALI',
+              text: 'Kembali',
               buttonType: UIButtonType.outline,
               onPressed: () => Navigator.of(context).pop(),
             ),
@@ -1133,7 +1115,7 @@ class _CheckInPageState extends State<CheckInPage> {
           16.horizontalSpace,
           Expanded(
             child: UIButton(
-              text: 'LANJUT',
+              text: 'Lanjut',
               onPressed: _canProceedFromStep1()
                   ? () {
                       setState(() {
@@ -1150,7 +1132,7 @@ class _CheckInPageState extends State<CheckInPage> {
         children: [
           Expanded(
             child: UIButton(
-              text: 'KEMBALI',
+              text: 'Kembali',
               buttonType: UIButtonType.outline,
               onPressed: () {
                 setState(() {
@@ -1162,7 +1144,7 @@ class _CheckInPageState extends State<CheckInPage> {
           16.horizontalSpace,
           Expanded(
             child: UIButton(
-              text: 'LANJUT',
+              text: 'Lanjut',
               onPressed: _canProceedFromStep2()
                   ? () {
                       setState(() {
@@ -1179,7 +1161,7 @@ class _CheckInPageState extends State<CheckInPage> {
         children: [
           Expanded(
             child: UIButton(
-              text: 'KEMBALI',
+              text: 'Kembali',
               buttonType: UIButtonType.outline,
               onPressed: () {
                 setState(() {
@@ -1191,7 +1173,7 @@ class _CheckInPageState extends State<CheckInPage> {
           16.horizontalSpace,
           Expanded(
             child: UIButton(
-              text: 'MULAI BEKERJA',
+              text: 'Mulai Bekerja',
               onPressed: _submitCheckIn,
             ),
           ),
@@ -1227,8 +1209,8 @@ class _CheckInPageState extends State<CheckInPage> {
             Container(
               width: 60.w,
               height: 60.h,
-              decoration: const BoxDecoration(
-                color: Color(0xFFB71C1C),
+              decoration: BoxDecoration(
+                color: primaryColor,
                 shape: BoxShape.circle,
               ),
               child: const Icon(
@@ -1257,7 +1239,7 @@ class _CheckInPageState extends State<CheckInPage> {
                 child: ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(true),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFB71C1C),
+                    backgroundColor: primaryColor,
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.r),
@@ -1277,8 +1259,8 @@ class _CheckInPageState extends State<CheckInPage> {
                 child: OutlinedButton(
                   onPressed: () => Navigator.of(context).pop(false),
                   style: OutlinedButton.styleFrom(
-                    foregroundColor: const Color(0xFFB71C1C),
-                    side: const BorderSide(color: Color(0xFFB71C1C)),
+                    foregroundColor: primaryColor,
+                    side: BorderSide(color: primaryColor),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.r),
                     ),
@@ -1591,11 +1573,7 @@ class _SelfieCameraPageState extends State<_SelfieCameraPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ambil Foto Wajah'),
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
-      ),
+      appBar: const RumaraAppBar(title: 'Ambil Foto Wajah'),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {

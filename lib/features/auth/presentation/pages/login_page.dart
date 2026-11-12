@@ -169,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
               end: Alignment.center,
               colors: [
                 primaryColor,
-                Colors.white,
+                bgColor,
               ],
               stops: [0.4, 0.4],
             ),
@@ -181,7 +181,10 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   Container(
                     height: ScreenUtils.halfHeight,
-                    color: primaryColor,
+                    decoration: BoxDecoration(
+                      gradient: rumaraHeaderGradient,
+                      borderRadius: BorderRadius.vertical(bottom: Radius.circular(24.r)),
+                    ),
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -234,6 +237,7 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(16.r),
+                            border: Border.all(color: rumaraBorder),
                           ),
                           padding: EdgeInsets.symmetric(
                               horizontal: 24.w, vertical: 32.h),
@@ -255,7 +259,7 @@ class _LoginPageState extends State<LoginPage> {
                                     return null;
                                   },
                                   keyboardType: TextInputType.text,
-                                  borderRadius: 12,
+                                  borderRadius: 8,
                                   color: Colors.white,
                                   textStyle: TS.labelLarge.copyWith(color: appTextColor),
                                   labelTextStyle: TS.labelLarge.copyWith(color: appTextColor),
@@ -294,7 +298,7 @@ class _LoginPageState extends State<LoginPage> {
                                     }
                                     return null;
                                   },
-                                  borderRadius: 12,
+                                  borderRadius: 8,
                                   color: Colors.white,
                                   textStyle: TS.labelLarge.copyWith(color: appTextColor),
                                   labelTextStyle: TS.labelLarge.copyWith(color: appTextColor),
@@ -337,7 +341,7 @@ class _LoginPageState extends State<LoginPage> {
                                       child: Text(
                                         'Lupa Password ?',
                                         style: TS.bodyMedium.copyWith(
-                                          color: const Color(0xFF4A90E2),
+                                          color: primaryColor,
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
@@ -359,7 +363,7 @@ class _LoginPageState extends State<LoginPage> {
                                       onPressed: state.isLoading
                                           ? null
                                           : _onLoginPressed,
-                                      borderRadius: 12,
+                                      borderRadius: 14,
                                     );
                                   },
                                 ),

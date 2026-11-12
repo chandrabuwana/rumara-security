@@ -655,6 +655,7 @@ import '../bloc/attendance_rekap_bloc.dart';
 import '../bloc/attendance_rekap_event.dart';
 import '../bloc/attendance_rekap_state.dart';
 import 'attendance_rekap_kehadiran_detail_screen.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class AttendanceRekapScreen extends StatefulWidget {
   const AttendanceRekapScreen({super.key});
@@ -783,22 +784,9 @@ class _AttendanceRekapScreenContentState
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-        backgroundColor: const Color(0xFFF8F9FA),
+        backgroundColor: bgColor,
         enableScrolling: false,
-        appBar: AppBar(
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          title: Text(
-            'Rekapitulasi Kehadiran',
-            style: TS.titleLarge.copyWith(color: Colors.white),
-          ),
-          centerTitle: true,
-        ),
+        appBar: const RumaraAppBar(title: 'Rekapitulasi Kehadiran'),
         child: Column(
           children: [
             // Search and Filter Bar

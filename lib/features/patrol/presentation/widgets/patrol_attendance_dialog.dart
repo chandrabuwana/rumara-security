@@ -14,6 +14,7 @@ import '../../domain/entities/patrol_route.dart';
 import '../../domain/repositories/patrol_repository.dart';
 import '../../../schedule/domain/repositories/schedule_repository.dart';
 import '../bloc/patrol_bloc.dart';
+import '../../../../core/design/colors.dart';
 
 class PatrolAttendanceDialog extends StatefulWidget {
   final String routeId;
@@ -1012,18 +1013,18 @@ class _PatrolAttendanceDialogState extends State<PatrolAttendanceDialog> {
                                 style: OutlinedButton.styleFrom(
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 16),
-                                  side: const BorderSide(
-                                      color: Color(0xFF8B0000)),
+                                  side: BorderSide(
+                                      color: primaryColor),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
-                                child: const Text(
+                                child: Text(
                                   'Batal',
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
-                                    color: Color(0xFF8B0000),
+                                    color: primaryColor,
                                   ),
                                 ),
                               ),
@@ -1034,7 +1035,7 @@ class _PatrolAttendanceDialogState extends State<PatrolAttendanceDialog> {
                                 onPressed:
                                     _isLoading ? null : _submitAttendance,
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color(0xFF8B0000),
+                                  backgroundColor: primaryColor,
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 16),
                                   shape: RoundedRectangleBorder(
@@ -1131,7 +1132,7 @@ class _CameraCapturePageState extends State<_CameraCapturePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Ambil Foto Bukti Patroli'),
-        backgroundColor: const Color(0xFF8B0000),
+        backgroundColor: primaryColor,
         foregroundColor: Colors.white,
       ),
       body: FutureBuilder<void>(

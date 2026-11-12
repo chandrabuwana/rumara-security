@@ -25,7 +25,7 @@ class PanicDialogWidget extends StatelessWidget {
               width: 60.w,
               height: 60.h,
               decoration: const BoxDecoration(
-                color: Color(0xFFE74C3C),
+                color: Color(0xFFE5484D),
                 shape: BoxShape.circle,
               ),
               child: CustomPaint(
@@ -56,7 +56,7 @@ class PanicDialogWidget extends StatelessWidget {
                             .add(const ResetVerificationEvent());
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFE74C3C),
+                        backgroundColor: const Color(0xFFE5484D),
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12.r),
@@ -83,7 +83,7 @@ class PanicDialogWidget extends StatelessWidget {
                         Navigator.pushNamed(context, '/panic-verification');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFE74C3C),
+                        backgroundColor: const Color(0xFFE5484D),
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12.r),
@@ -134,7 +134,7 @@ class TrianglePainter extends CustomPainter {
       text: TextSpan(
         text: '!',
         style: TextStyle(
-          color: const Color(0xFFE74C3C),
+          color: const Color(0xFFE5484D),
           fontSize: 16.sp,
           fontWeight: FontWeight.bold,
         ),

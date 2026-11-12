@@ -30,6 +30,7 @@ import '../../../chat/presentation/bloc/chat_bloc.dart';
 import '../../../chat/presentation/bloc/chat_event.dart';
 import '../../../chat/presentation/pages/chat_conversation_page.dart';
 import '../../../chat/domain/entities/chat.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class IncidentDetailPage extends StatefulWidget {
   final IncidentEntity incident;
@@ -205,22 +206,7 @@ class _IncidentDetailPageState extends State<IncidentDetailPage> {
       },
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Navigator.pop(context),
-          ),
-          title: Text(
-            'Lapor Insiden Kejadian',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
+        appBar: const RumaraAppBar(title: 'Lapor Insiden Kejadian'),
         body: BlocBuilder<IncidentBloc, IncidentState>(
           builder: (context, state) {
             // Use detail from API if available, otherwise use widget.incident

@@ -13,6 +13,7 @@ import '../bloc/attendance_rekap_detail_bloc.dart';
 import '../bloc/attendance_rekap_detail_event.dart';
 import '../bloc/attendance_rekap_detail_state.dart';
 import 'attendance_rekap_edit_screen.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class AttendanceRekapDetailScreen extends StatelessWidget {
   final String idAttendance;
@@ -48,22 +49,9 @@ class _AttendanceRekapDetailScreenContentState
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-        backgroundColor: const Color(0xFFF8F9FA),
+        backgroundColor: bgColor,
         enableScrolling: true,
-        appBar: AppBar(
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          title: Text(
-            'Detail Laporan Kegiatan',
-            style: TS.titleLarge.copyWith(color: Colors.white),
-          ),
-          centerTitle: true,
-        ),
+        appBar: const RumaraAppBar(title: 'Detail Laporan Kegiatan'),
         child: BlocConsumer<AttendanceRekapDetailBloc,
             AttendanceRekapDetailState>(
           listener: (context, state) {

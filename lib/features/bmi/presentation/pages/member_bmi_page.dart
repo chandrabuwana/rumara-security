@@ -7,6 +7,7 @@ import '../../../../core/constants/enums.dart';
 import '../../../../shared/widgets/Buttons/ui_button.dart';
 import '../bloc/bmi_bloc.dart';
 import '../widgets/bmi_calculation_dialog.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Page untuk role anggota - menampilkan BMI personal
 class MemberBMIPage extends StatefulWidget {
@@ -74,18 +75,7 @@ class _MemberBMIPageState extends State<MemberBMIPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Body Mass Index',
-          style: TS.titleLarge.copyWith(
-            fontWeight: FontWeight.bold,
-            color: white,
-          ),
-        ),
-        backgroundColor: primaryColor,
-        foregroundColor: white,
-        elevation: 0,
-      ),
+      appBar: const RumaraAppBar(title: 'Body Mass Index'),
       body: BlocBuilder<BMIBloc, BMIState>(
         builder: (context, state) {
           if (state.isLoading && !state.hasUserProfile) {

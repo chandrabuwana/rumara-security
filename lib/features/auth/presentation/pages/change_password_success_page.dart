@@ -77,7 +77,7 @@ class ChangePasswordSuccessPage extends StatelessWidget {
                 onPressed: () {
                   _goToLogin(context);
                 },
-                borderRadius: 12,
+                borderRadius: 14,
               ),
             ],
           ),

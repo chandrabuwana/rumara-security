@@ -16,6 +16,7 @@ import '../../domain/entities/panic_button_history_item.dart';
 import '../bloc/panic_button_bloc.dart';
 import '../bloc/panic_button_event.dart';
 import '../bloc/panic_button_state.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class PanicButtonDetailPage extends StatefulWidget {
   final String incidentId;
@@ -147,23 +148,7 @@ class _PanicButtonDetailPageState extends State<PanicButtonDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Detail Panic Button',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        centerTitle: false,
-      ),
+      appBar: const RumaraAppBar(title: 'Detail Tombol Darurat'),
       body: SafeArea(
         child: BlocListener<PanicButtonBloc, PanicButtonState>(
           listener: (context, state) {

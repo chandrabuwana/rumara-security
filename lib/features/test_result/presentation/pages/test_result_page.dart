@@ -11,6 +11,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../bloc/test_result_bloc.dart';
 import '../widgets/test_result_card_widget.dart';
 import '../widgets/assessment_card_widget.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 /// Halaman utama untuk menampilkan Hasil Test
 /// Menampilkan view berbeda berdasarkan role pengguna:
@@ -104,23 +105,8 @@ class _TestResultPageState extends State<TestResultPage>
       create: (context) => _bloc,
       child: AppScaffold(
         enableScrolling: false,
-        backgroundColor: const Color(0xFFF5F5F5),
-        appBar: AppBar(
-          backgroundColor: primaryColor,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          title: Text(
-            'Hasil Test',
-            style: TS.titleLarge.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          centerTitle: true,
-          bottom: _canViewMemberResults()
+        backgroundColor: bgColor,
+        appBar: RumaraAppBar(title: 'Hasil Tes', bottom: _canViewMemberResults()
               ? TabBar(
                   controller: _tabController,
                   indicatorColor: Colors.white,
@@ -140,8 +126,7 @@ class _TestResultPageState extends State<TestResultPage>
                           Tab(text: 'Ujian Anggota'),
                         ],
                 )
-              : null,
-        ),
+              : null),
         child: BlocBuilder<TestResultBloc, TestResultState>(
           builder: (context, state) {
             if (state is TestResultLoading) {

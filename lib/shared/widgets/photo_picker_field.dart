@@ -4,6 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../core/design/colors.dart';
 import '../../core/design/styles.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -351,8 +352,8 @@ class _PhotoPickerFieldState extends State<PhotoPickerField> {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8.r),
-                          border: Border.all(color: Colors.grey.shade300),
-                          color: Colors.grey.shade200,
+                          border: Border.all(color: rumaraBorder),
+                          color: rumaraSurfaceMuted,
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.r),
@@ -368,13 +369,14 @@ class _PhotoPickerFieldState extends State<PhotoPickerField> {
                                           Icon(
                                             Icons.broken_image,
                                             size: 24.sp,
-                                            color: Colors.grey.shade600,
+                                            color: rumaraMutedText,
                                           ),
                                           4.verticalSpace,
                                           Text(
                                             'Gagal memuat',
                                             style: TS.bodySmall.copyWith(
                                               color: const Color(0xFF333333),
+                                              color: rumaraMutedText,
                                             ),
                                           ),
                                         ],
@@ -405,13 +407,14 @@ class _PhotoPickerFieldState extends State<PhotoPickerField> {
                                           Icon(
                                             Icons.broken_image,
                                             size: 24.sp,
-                                            color: Colors.grey.shade600,
+                                            color: rumaraMutedText,
                                           ),
                                           4.verticalSpace,
                                           Text(
                                             'Gagal memuat',
                                             style: TS.bodySmall.copyWith(
                                               color: const Color(0xFF333333),
+                                              color: rumaraMutedText,
                                             ),
                                           ),
                                         ],
@@ -463,11 +466,11 @@ class _PhotoPickerFieldState extends State<PhotoPickerField> {
                   border: Border.all(
                     color: widget.errorText != null
                         ? Colors.red
-                        : Colors.grey.shade300,
+                        : rumaraBorder,
                     style: BorderStyle.solid,
                   ),
                   borderRadius: BorderRadius.circular(8.r),
-                  color: Colors.grey.shade50,
+                  color: rumaraSurfaceMuted,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -475,7 +478,7 @@ class _PhotoPickerFieldState extends State<PhotoPickerField> {
                     Icon(
                       Icons.add_a_photo,
                       size: 32.sp,
-                      color: Colors.grey.shade600,
+                      color: rumaraMutedText,
                     ),
                     4.verticalSpace,
                     Text(
@@ -484,6 +487,7 @@ class _PhotoPickerFieldState extends State<PhotoPickerField> {
                           : 'Tambah Foto Lagi',
                       style: TS.bodyMedium.copyWith(
                         color: const Color(0xFF333333),
+                        color: rumaraMutedText,
                       ),
                     ),
                     if (widget.multiple) ...[
@@ -492,6 +496,7 @@ class _PhotoPickerFieldState extends State<PhotoPickerField> {
                         '${widget.photos.length}/${widget.maxPhotos}',
                         style: TS.bodySmall.copyWith(
                           color: const Color(0xFF333333),
+                          color: rumaraHintText,
                         ),
                       ),
                     ],

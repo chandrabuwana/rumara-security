@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/di/injection.dart';
 import '../../../../core/services/location_service.dart';
 import '../../domain/entities/patrol_location.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
+import '../../../../core/design/colors.dart';
 
 class AddPatrolLocationPage extends StatefulWidget {
   final String routeId;
@@ -62,19 +64,8 @@ class _AddPatrolLocationPageState extends State<AddPatrolLocationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5),
-      appBar: AppBar(
-        title: const Text(
-          'Tambah Lokasi Patroli',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: const Color(0xFF8B1538),
-        iconTheme: const IconThemeData(color: Colors.white),
-        elevation: 0,
-      ),
+      backgroundColor: bgColor,
+      appBar: const RumaraAppBar(title: 'Tambah Lokasi Patroli'),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Form(
@@ -348,20 +339,20 @@ class _AddPatrolLocationPageState extends State<AddPatrolLocationPage> {
                             );
                           }
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.my_location,
-                          color: Color(0xFF8B1538),
+                          color: primaryColor,
                         ),
-                        label: const Text(
+                        label: Text(
                           'Gunakan Lokasi Saat Ini',
                           style: TextStyle(
-                            color: Color(0xFF8B1538),
+                            color: primaryColor,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                         style: OutlinedButton.styleFrom(
-                          side: const BorderSide(
-                            color: Color(0xFF8B1538),
+                          side: BorderSide(
+                            color: primaryColor,
                           ),
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           shape: RoundedRectangleBorder(
@@ -380,18 +371,18 @@ class _AddPatrolLocationPageState extends State<AddPatrolLocationPage> {
                           child: OutlinedButton(
                             onPressed: () => Navigator.pop(context),
                             style: OutlinedButton.styleFrom(
-                              side: const BorderSide(
-                                color: Color(0xFF8B1538),
+                              side: BorderSide(
+                                color: primaryColor,
                               ),
                               padding: const EdgeInsets.symmetric(vertical: 12),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
                             ),
-                            child: const Text(
+                            child: Text(
                               'Batal',
                               style: TextStyle(
-                                color: Color(0xFF8B1538),
+                                color: primaryColor,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -402,7 +393,7 @@ class _AddPatrolLocationPageState extends State<AddPatrolLocationPage> {
                           child: ElevatedButton(
                             onPressed: _addLocation,
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF8B1538),
+                              backgroundColor: primaryColor,
                               padding: const EdgeInsets.symmetric(vertical: 12),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),

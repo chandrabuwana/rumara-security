@@ -254,7 +254,10 @@ class _ChatConversationPageState extends State<ChatConversationPage> {
               : _getLastSeenText(isOnline, lastSeen);
           
           return AppBar(
-            backgroundColor: primaryColor,
+            backgroundColor: Colors.transparent,
+            flexibleSpace: DecoratedBox(
+              decoration: BoxDecoration(gradient: rumaraHeaderGradient),
+            ),
             elevation: 0,
             leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.white),

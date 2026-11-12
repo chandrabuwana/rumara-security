@@ -7,6 +7,7 @@ import '../bloc/personnel_bloc.dart';
 import '../bloc/personnel_event.dart';
 import '../bloc/personnel_state.dart';
 import 'personnel_detail_page.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class PersonnelListPage extends StatelessWidget {
   const PersonnelListPage({super.key});
@@ -106,22 +107,7 @@ class _PersonnelListViewState extends State<_PersonnelListView> with SingleTicke
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: neutral10,
-        appBar: AppBar(
-            backgroundColor: Colors.white,
-            elevation: 0,
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back, color: neutral90),
-              onPressed: () => Navigator.pop(context),
-            ),
-          title: Text(
-            'Daftar Personil',
-            style: TextStyle(
-              color: neutral90,
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          bottom: PreferredSize(
+        appBar: RumaraAppBar(title: 'Daftar Personil', bottom: PreferredSize(
             preferredSize: Size.fromHeight(48.h),
             child: Container(
               decoration: BoxDecoration(
@@ -154,8 +140,7 @@ class _PersonnelListViewState extends State<_PersonnelListView> with SingleTicke
                 ],
               ),
             ),
-          ),
-        ),
+          )),
         body: Column(
           children: [
             // Search and Filter

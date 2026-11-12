@@ -6,6 +6,7 @@ import '../bloc/personnel_bloc.dart';
 import '../bloc/personnel_event.dart';
 import '../bloc/personnel_state.dart';
 import '../../domain/entities/personnel.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class PersonnelApprovalPage extends StatefulWidget {
   final Personnel personnel;
@@ -30,22 +31,7 @@ class _PersonnelApprovalPageState extends State<PersonnelApprovalPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: neutral10,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: neutral90),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Profil Saya',
-          style: TextStyle(
-            color: neutral90,
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
+      appBar: const RumaraAppBar(title: 'Profil Saya'),
       body: BlocConsumer<PersonnelBloc, PersonnelState>(
         listener: (context, state) {
           if (state is PersonnelActionSuccess) {

@@ -9,6 +9,7 @@ import '../../../../core/design/colors.dart';
 import '../bloc/personnel_bloc.dart';
 import '../bloc/personnel_event.dart';
 import '../../domain/entities/personnel.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class _PdfPreview extends StatefulWidget {
   final String url;
@@ -94,23 +95,7 @@ class _PersonnelDocumentPageState extends State<PersonnelDocumentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: neutral10,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: neutral90),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Dokumen Personil',
-          style: TextStyle(
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
-            color: neutral90,
-          ),
-        ),
-        centerTitle: true,
-      ),
+      appBar: const RumaraAppBar(title: 'Dokumen Personil'),
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -12,6 +12,7 @@ import '../bloc/attendance_state.dart';
 import 'check_in_page.dart';
 import 'check_out_page.dart';
 import '../../domain/usecases/get_attendance_status_usecase.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class AttendanceScreen extends StatelessWidget {
   final String userId;
@@ -48,22 +49,9 @@ class _AttendanceScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
+      backgroundColor: bgColor,
       enableScrolling: false,
-      appBar: AppBar(
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: Text(
-          'Absensi',
-          style: TS.titleLarge.copyWith(color: Colors.white),
-        ),
-        centerTitle: true,
-      ),
+      appBar: const RumaraAppBar(title: 'Absensi'),
       child: BlocConsumer<AttendanceBloc, AttendanceState>(
         listener: (context, state) {
           if (state is AttendanceFailure) {

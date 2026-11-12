@@ -14,6 +14,7 @@ import '../../../../core/design/colors.dart';
 import '../../../../core/security/security_manager.dart';
 import '../../../../core/constants/app_constants.dart';
 import 'chat_conversation_page.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class ChatListPage extends StatefulWidget {
   const ChatListPage({super.key});
@@ -60,21 +61,7 @@ class _ChatListPageState extends State<ChatListPage> with WidgetsBindingObserver
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text(
-          'Pesan',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: primaryColor,
-        elevation: 0,
-        centerTitle: true,
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-        ),
-      ),
+      appBar: const RumaraAppBar(title: 'Pesan'),
       body: BlocConsumer<ChatBloc, ChatState>(
         listener: (context, state) {
           if (state.errorMessage != null) {

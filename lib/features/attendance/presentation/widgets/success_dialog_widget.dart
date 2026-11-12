@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/design/styles.dart';
+import '../../../../core/design/colors.dart';
 
 class SuccessDialogWidget extends StatelessWidget {
   final String message;
@@ -26,8 +27,8 @@ class SuccessDialogWidget extends StatelessWidget {
           Container(
             width: 80.w,
             height: 80.h,
-            decoration: const BoxDecoration(
-              color: Color(0xFFB71C1C),
+            decoration: BoxDecoration(
+              color: primaryColor,
               shape: BoxShape.circle,
             ),
             child: Icon(
@@ -59,7 +60,7 @@ class SuccessDialogWidget extends StatelessWidget {
             child: ElevatedButton(
               onPressed: onConfirm,
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFB71C1C),
+                backgroundColor: primaryColor,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.r),

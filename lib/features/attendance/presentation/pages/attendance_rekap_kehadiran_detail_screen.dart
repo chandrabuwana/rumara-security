@@ -15,6 +15,7 @@ import '../../domain/entities/attendance_update_request.dart';
 import '../bloc/attendance_rekap_detail_bloc.dart';
 import '../bloc/attendance_rekap_detail_event.dart';
 import '../bloc/attendance_rekap_detail_state.dart';
+import '../../../../shared/widgets/rumara_app_bar.dart';
 
 class AttendanceRekapKehadiranDetailScreen extends StatelessWidget {
   final String idAttendance;
@@ -69,22 +70,9 @@ class _AttendanceRekapKehadiranDetailScreenContentState
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
+      backgroundColor: bgColor,
       enableScrolling: true,
-      appBar: AppBar(
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: Text(
-          'Detail Kehadiran',
-          style: TS.titleLarge.copyWith(color: Colors.white),
-        ),
-        centerTitle: true,
-      ),
+      appBar: const RumaraAppBar(title: 'Detail Kehadiran'),
       child: BlocConsumer<AttendanceRekapDetailBloc, AttendanceRekapDetailState>(
         listener: (context, state) {
           if (state is AttendanceRekapDetailFailure) {

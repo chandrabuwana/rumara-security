@@ -4,9 +4,9 @@
     "title": "Rumara Security"
   },
   "theme": {
-    "palette": "ocean",
-    "seed": "#0A7CFF",
-    "brightness": "system"
+    "palette": "rumara",
+    "seed": "#1A5FD6",
+    "brightness": "light"
   },
   "branding": {
     "logo": "assets/icons/app_icon.png",
