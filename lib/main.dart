@@ -57,6 +57,7 @@ import 'core/design/theme_builder.dart';
 import 'core/design/theme_controller.dart';
 import 'core/services/background_location_task.dart';
 import 'core/services/background_location_permission_helper.dart';
+import 'core/services/live_location_tracker.dart';
 import 'core/services/push_notification_service.dart';
 
 @pragma('vm:entry-point')
@@ -380,6 +381,7 @@ void main() async {
       debugPrint('⚠️ [Main] Failed to initialize workmanager: $e');
       debugPrint('⚠️ [Main] Background location updates will be disabled');
     }
+    await LiveLocationTracker.instance.resume();
   });
 }
 

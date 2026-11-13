@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/design/colors.dart';
 import '../../../../core/design/styles.dart';
 import '../../../../core/di/injection.dart';
+import '../../../../core/services/live_location_tracker.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/security/security_manager.dart';
 import '../../../../core/services/location_service.dart';
@@ -118,6 +119,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
         body: BlocConsumer<AttendanceBloc, AttendanceState>(
           listener: (context, state) {
             if (state is AttendanceCheckedOut) {
+              LiveLocationTracker.instance.stop();
               // Close loading dialog if exists
               if (Navigator.of(context).canPop()) {
                 Navigator.of(context).pop();

@@ -375,7 +375,6 @@ class _PhotoPickerFieldState extends State<PhotoPickerField> {
                                           Text(
                                             'Gagal memuat',
                                             style: TS.bodySmall.copyWith(
-                                              color: const Color(0xFF333333),
                                               color: rumaraMutedText,
                                             ),
                                           ),
@@ -413,7 +412,6 @@ class _PhotoPickerFieldState extends State<PhotoPickerField> {
                                           Text(
                                             'Gagal memuat',
                                             style: TS.bodySmall.copyWith(
-                                              color: const Color(0xFF333333),
                                               color: rumaraMutedText,
                                             ),
                                           ),
@@ -486,7 +484,6 @@ class _PhotoPickerFieldState extends State<PhotoPickerField> {
                           ? 'Tambah Foto'
                           : 'Tambah Foto Lagi',
                       style: TS.bodyMedium.copyWith(
-                        color: const Color(0xFF333333),
                         color: rumaraMutedText,
                       ),
                     ),
@@ -495,7 +492,6 @@ class _PhotoPickerFieldState extends State<PhotoPickerField> {
                       Text(
                         '${widget.photos.length}/${widget.maxPhotos}',
                         style: TS.bodySmall.copyWith(
-                          color: const Color(0xFF333333),
                           color: rumaraHintText,
                         ),
                       ),

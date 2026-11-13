@@ -9,6 +9,7 @@ import '../../domain/repositories/auth_repository.dart';
 import '../../domain/usecases/login_use_case.dart';
 import '../datasources/auth_remote_data_source.dart';
 import '../../../../core/security/security_manager.dart';
+import '../../../../core/services/live_location_tracker.dart';
 import '../../../../core/constants/app_constants.dart';
 
 class AuthRepositoryImpl implements AuthRepository, LoginRepository {
@@ -324,6 +325,7 @@ class AuthRepositoryImpl implements AuthRepository, LoginRepository {
   @override
   Future<LogoutResult> logout() async {
     try {
+      await LiveLocationTracker.instance.stop();
       // Clear tokens and user data from secure storage
       await SecurityManager.deleteSecurely(AppConstants.tokenKey);
       await SecurityManager.deleteSecurely(AppConstants.refreshTokenKey);

@@ -15,6 +15,7 @@ import '../bloc/home_bloc.dart';
 import '../bloc/home_event.dart';
 import '../bloc/home_state.dart';
 import '../../../../core/di/injection.dart';
+import '../../../../core/services/live_location_tracker.dart';
 import '../../../../core/design/colors.dart';
 import '../../../attendance/presentation/pages/check_in_page.dart';
 import '../../../attendance/presentation/pages/check_out_page.dart';
@@ -67,6 +68,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _bloc = getIt<HomeBloc>();
     _bloc.add(const HomeInitialEvent());
+    LiveLocationTracker.instance.resume();
   }
 
   @override

@@ -16,13 +16,6 @@ import 'theme_controller.dart';
 /// `appTheme`/`darkTheme` set `primarySwatch`/`platform`/`textTheme` but were
 /// DEAD CODE (never referenced by main.dart), so they are intentionally dropped.
 class ThemeBuilder {
-  static ThemeData lightOf(ColorPalette p, {Color? seed}) => ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: seed ?? p.seed,
-          brightness: Brightness.light,
-          onSurface: p.textPrimary,
-          onSurfaceVariant: p.textSecondary,
   static ThemeData lightOf(ColorPalette p, {Color? seed}) {
     final scheme = ColorScheme.fromSeed(
       seedColor: seed ?? p.seed,

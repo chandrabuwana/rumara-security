@@ -10,6 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 import '../../../../core/design/colors.dart';
 import '../../../../core/design/styles.dart';
 import '../../../../core/di/injection.dart';
+import '../../../../core/services/live_location_tracker.dart';
 import '../../../../shared/widgets/Buttons/ui_button.dart';
 import '../../../../shared/widgets/TextInput/input_primary.dart';
 import '../../../../shared/widgets/photo_picker_field.dart';
@@ -340,6 +341,7 @@ class _CheckInPageState extends State<CheckInPage> {
               } catch (e) {
                 print('❌ [CheckIn] Error getting LocationUpdateService: $e');
               }
+              LiveLocationTracker.instance.start();
               
               // Show success dialog when check-in is successful
               // Return true to indicate successful check-in, so home page can reload data
