@@ -42,6 +42,7 @@ import '../../../personnel/presentation/pages/personnel_list_page.dart';
 import '../../../visitor_gate/data/gate_access_service.dart';
 import '../../../visitor_gate/presentation/pages/visitor_home_page.dart';
 import '../../../cctv_monitoring/presentation/pages/cctv_monitoring_page.dart';
+import '../../../info_create/presentation/pages/info_create_page.dart';
 import '../../../tugas_lanjutan/presentation/pages/tugas_lanjutan_page.dart';
 import '../../../tugas_lanjutan/presentation/bloc/tugas_lanjutan_bloc.dart';
 import '../../../notification/presentation/pages/notification_list_page.dart';
@@ -124,6 +125,13 @@ class __HomePageViewState extends State<_HomePageView> {
           title: 'CCTV',
           icon: Icons.videocam_outlined,
           onTap: () => CctvMonitoringPage.open(context, _gateAccess),
+        ),
+      if (_gateAccess.newsCreate)
+        MenuItem(
+          id: 'info_create',
+          title: 'Buat Informasi',
+          icon: Icons.campaign_outlined,
+          onTap: () => InfoCreatePage.open(context),
         ),
     ];
   }
@@ -1510,15 +1518,6 @@ class __HomePageViewState extends State<_HomePageView> {
       return [
         ..._gateMenuItems(),
         MenuItem(
-          id: 'incident',
-          title: 'Insiden Kejadian',
-          icon: Icons.report_problem,
-          hasNotification: true,
-          onTap: () => context
-              .read<HomeBloc>()
-              .add(const NavigateToIncidentReportEvent()),
-        ),
-        MenuItem(
           id: 'personnel_list',
           title: 'Daftar Personil',
           icon: Icons.people,
@@ -1544,12 +1543,6 @@ class __HomePageViewState extends State<_HomePageView> {
               .add(const NavigateToActivityReportEvent()),
         ),
         MenuItem(
-          id: 'bmi',
-          title: 'Body Mass Index (BMI)',
-          icon: Icons.monitor_weight,
-          onTap: () => context.read<HomeBloc>().add(const NavigateToBMIEvent()),
-        ),
-        MenuItem(
           id: 'test_result',
           title: 'Hasil Ujian',
           icon: Icons.quiz,
@@ -1565,26 +1558,12 @@ class __HomePageViewState extends State<_HomePageView> {
               context.read<HomeBloc>().add(const NavigateToLeaveRequestEvent()),
         ),
         MenuItem(
-          id: 'regulations',
-          title: 'Peraturan Perusahaan',
-          icon: Icons.gavel,
-          onTap: () =>
-              context.read<HomeBloc>().add(const NavigateToRegulationsEvent()),
-        ),
-        MenuItem(
           id: 'emergency_history',
           title: 'Riwayat Tombol Darurat',
           icon: Icons.history,
           onTap: () => context
               .read<HomeBloc>()
               .add(const NavigateToEmergencyHistoryEvent()),
-        ),
-        MenuItem(
-          id: 'disaster_info',
-          title: 'Informasi Bencana',
-          icon: Icons.info,
-          onTap: () =>
-              context.read<HomeBloc>().add(const NavigateToDisasterInfoEvent()),
         ),
       ];
     }
@@ -1593,14 +1572,6 @@ class __HomePageViewState extends State<_HomePageView> {
     // print('✅ BUILDING DEFAULT MENU (With Rekapitulasi Kehadiran)');
     final menuItems = <MenuItem>[
       ..._gateMenuItems(),
-      MenuItem(
-        id: 'incident',
-        title: 'Insiden Kejadian',
-        icon: Icons.report_problem,
-        hasNotification: true,
-        onTap: () =>
-            context.read<HomeBloc>().add(const NavigateToIncidentReportEvent()),
-      ),
       MenuItem(
         id: 'attendance_recap',
         title: 'Rekapitulasi Kehadiran',
@@ -1626,12 +1597,6 @@ class __HomePageViewState extends State<_HomePageView> {
 
     menuItems.addAll([
       MenuItem(
-        id: 'bmi',
-        title: 'Body Mass Index (BMI)',
-        icon: Icons.monitor_weight,
-        onTap: () => context.read<HomeBloc>().add(const NavigateToBMIEvent()),
-      ),
-      MenuItem(
         id: 'test_result',
         title: 'Hasil Ujian',
         icon: Icons.quiz,
@@ -1647,26 +1612,12 @@ class __HomePageViewState extends State<_HomePageView> {
             context.read<HomeBloc>().add(const NavigateToLeaveRequestEvent()),
       ),
       MenuItem(
-        id: 'regulations',
-        title: 'Peraturan Perusahaan',
-        icon: Icons.gavel,
-        onTap: () =>
-            context.read<HomeBloc>().add(const NavigateToRegulationsEvent()),
-      ),
-      MenuItem(
         id: 'emergency_history',
         title: 'Riwayat Tombol Darurat',
         icon: Icons.history,
         onTap: () => context
             .read<HomeBloc>()
             .add(const NavigateToEmergencyHistoryEvent()),
-      ),
-      MenuItem(
-        id: 'disaster_info',
-        title: 'Informasi Bencana',
-        icon: Icons.info,
-        onTap: () =>
-            context.read<HomeBloc>().add(const NavigateToDisasterInfoEvent()),
       ),
     ]);
 
